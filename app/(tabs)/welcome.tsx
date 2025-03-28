@@ -1,10 +1,7 @@
-import Button from "@/components/button";
-import ShopByCategory from "@/components/shop-by-category";
-import Wrapper from "@/components/wrapper";
-import { Image, StyleSheet, Platform } from "react-native";
 import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
-import BackgroundImage from "../../assets/images/bg-welcome.png";
+import BackgroundImage from "@/assets/images/bg-welcome.png";
 import { useRouter } from "expo-router";
+
 export default function SelectYourAccount() {
   const router = useRouter();
   return (
@@ -14,7 +11,10 @@ export default function SelectYourAccount() {
         className="flex-1  flex-col justify-start items-center px-6"
       >
         <View className="absolute top-10 right-4">
-          <TouchableOpacity className="bg-white px-4 py-2 rounded-full">
+          <TouchableOpacity
+            onPress={() => router.push("/")}
+            className="bg-white px-4 py-2 rounded-full"
+          >
             <Text className="text-green-600 font-bold">Skip</Text>
           </TouchableOpacity>
         </View>

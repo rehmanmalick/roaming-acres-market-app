@@ -8,7 +8,7 @@ export default function SelectYourAccount() {
   const router = useRouter();
   return (
     <>
-      <Wrapper>
+      <Wrapper showBackButton={true}>
         <View className="flex flew-col flex-1 items-center justify-center gap-5 ">
           <View className="mb-16">
             <Text className="text-start w-full text-[36.41px] font-normal mb-4 max-w-80">
@@ -23,12 +23,12 @@ export default function SelectYourAccount() {
             <Button
               state="primary"
               title="Buyer Account"
-              onPress={() => router.push("/welcome")}
+              onPress={() => router.push("../welcome")}
             />
             <Button
               state="secondary"
               title="Seller Account"
-              onPress={() => router.push("/welcome")}
+              onPress={() => router.push("../home-screen")}
             />
           </View>
         </View>
