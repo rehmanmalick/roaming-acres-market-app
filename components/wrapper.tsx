@@ -4,7 +4,7 @@ import React from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 const Wrapper: React.FC<{ 
-    children: React.ReactNode; 
+    children?: React.ReactNode; 
     showBackButton?: boolean; 
     showMenuButton?: boolean;
     showSettingsButton?: boolean;

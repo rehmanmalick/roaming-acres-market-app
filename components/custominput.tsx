@@ -4,12 +4,18 @@ import {
   TextInput,
   TouchableOpacity,
   TextInputProps,
+  Text,
+  NativeSyntheticEvent,
+  TextInputFocusEventData,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 type CustomTextInputProps = {
+  cursorColor?: string;
+  selectionColor?: string;
   label?: string;
   iconRight?: keyof typeof Ionicons.glyphMap;
+  iconRightColor?: string;
   onIconRightPress?: () => void;
   validationIcon?: keyof typeof Ionicons.glyphMap;
   validationIconColor?: string;
@@ -18,6 +24,7 @@ type CustomTextInputProps = {
   focusedBorderColor?: string;
   defaultBorderColor?: string;
   showValidationIcon?: boolean;
+  errorMessage?: string;
 } & TextInputProps;
 
 const CustomTextInput = forwardRef<TextInput, CustomTextInputProps>(
@@ -25,6 +32,7 @@ const CustomTextInput = forwardRef<TextInput, CustomTextInputProps>(
     {
       label,
       iconRight,
+      iconRightColor = "#dadada",
       onIconRightPress,
       validationIcon,
       validationIconColor,
@@ -33,26 +41,27 @@ const CustomTextInput = forwardRef<TextInput, CustomTextInputProps>(
       focusedBorderColor = "border-[#008080]",
       defaultBorderColor = "border-gray-300",
       showValidationIcon = false,
+      errorMessage= "",
       ...props
     },
     ref
   ) => {
     const [isFocused, setIsFocused] = useState(false);
 
-    const handleFocus = () => {
+    const handleFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
       setIsFocused(true);
-      props.onFocus?.();
+      props.onFocus?.(e);
     };
 
-    const handleBlur = () => {
+    const handleBlur = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
       setIsFocused(false);
-      props.onBlur?.();
+      props.onBlur?.(e);
     };
 
     return (
       <View className={`mb-4 ${containerClassName}`}>
         {label && (
-          <Text className="text-sm text-gray-600 mb-1 font-medium">
+          <Text className="font-semibold text-start px-2 text-[#9796A1] mb-2">
             {label}
           </Text>
         )}
@@ -63,6 +72,8 @@ const CustomTextInput = forwardRef<TextInput, CustomTextInputProps>(
               isFocused ? focusedBorderColor : defaultBorderColor
             } ${iconRight || validationIcon ? "pr-12" : ""} ${inputClassName}`}
             placeholderTextColor="#9CA3AF"
+            cursorColor={props.cursorColor || "#008080"}
+            selectionColor={props.selectionColor || "#00808080"}
             onFocus={handleFocus}
             onBlur={handleBlur}
             {...props}
@@ -79,11 +90,14 @@ const CustomTextInput = forwardRef<TextInput, CustomTextInputProps>(
             )}
             {iconRight && (
               <TouchableOpacity onPress={onIconRightPress}>
-                <Ionicons name={iconRight} size={20} color="#666" />
+                <Ionicons name={iconRight} size={20} color={iconRightColor} />
               </TouchableOpacity>
             )}
           </View>
         </View>
+        {errorMessage && (
+      <Text className="text-red-500 text-xs mt-1 px-2">{errorMessage}</Text>
+       )}
       </View>
     );
   }
