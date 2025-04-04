@@ -1,13 +1,11 @@
 
 import { Image, StyleSheet, Platform, Text, View, TouchableOpacity } from 'react-native';
 
-interface TopSellersProps {
-  text: string;
-  price: number;
-  onPress: () => void;
+interface TopSellingProductComponentProps {
+  onPress?: () => void;
 }
 
-export default function TopSellingProduct({ text, price }: TopSellersProps) {
+export default function TopSellingProductComponent({onPress}: TopSellingProductComponentProps) {
   return (
     <>
     <View style={styles.container}>
@@ -28,9 +26,9 @@ export default function TopSellingProduct({ text, price }: TopSellersProps) {
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
+        flex: 1,
         paddingVertical:0,
-        paddingHorizontal: 0,
+        paddingHorizontal: 10,
         backgroundColor: "#fff",
         borderRadius:7,
         width:"30%"

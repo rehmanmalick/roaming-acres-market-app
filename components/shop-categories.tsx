@@ -14,7 +14,7 @@ export default function ShopCategory({ text, source, onPress }: ShopCategoryProp
         <TouchableOpacity onPress={onPress}>
     <Image
         source={source}
-        style={{height: 100 }}
+        style={{height: 75 , width: 75, marginBottom: 5, alignSelf:"center"}}
         resizeMode="contain"
         />
     <Text style={{fontSize: 14, fontWeight: 'bold', alignSelf:"center"}}>{text}</Text>

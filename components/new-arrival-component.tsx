@@ -2,12 +2,11 @@
 import { Image, StyleSheet, Platform, Text, View, TouchableOpacity } from 'react-native';
 
 interface NewArrivalProps {
-  text: string;
   price: number;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
-export default function NewArrival({ text, price }: NewArrivalProps) {
+export default function NewArrival({ price , onPress}: NewArrivalProps) {
   return (
     <>
     <View style={styles.container}>
@@ -17,7 +16,12 @@ export default function NewArrival({ text, price }: NewArrivalProps) {
         resizeMode="contain"
         />
     <Text style={styles.price}>Lorem Ipsum is simply dummy text printing and typesetting.</Text>
-    <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 15}}>$50.00{price}</Text>
+    <View className=" flex flex-row justify-between items-center mt-4">
+      <Text className="text-lg font-bold ">${price.toFixed(2)}</Text>
+      <TouchableOpacity onPress={onPress}>
+        <Text style={{color:'#008080', fontSize:11, fontWeight:"600"}}>ADD TO CART</Text>
+      </TouchableOpacity>
+    </View>
     </View>
     </>
   );
