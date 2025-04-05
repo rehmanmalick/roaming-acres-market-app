@@ -1,0 +1,83 @@
+import { useState } from "react";
+import {
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  View,
+} from "react-native";
+import {
+  
+  CreditCardInput,
+  LiteCreditCardInput,
+  CreditCardFormData,
+  CreditCardFormField,
+  ValidationState,
+} from "react-native-credit-card-input";
+
+const s = StyleSheet.create({
+  container: {
+    width: "100%",
+    maxWidth: 600,
+    marginHorizontal: "auto",
+    backgroundColor: "#f0f0f0",
+    borderRadius: 10,
+    marginTop: 60,
+  },
+  switch: {
+    alignSelf: "center",
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  cardView: {
+    alignSelf: "center",
+    marginTop: 15,
+  },
+  cardInput: {
+    paddingVertical: 0,
+    paddingHorizontal: 0,
+    borderColor: "#fff",
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+  },
+  infoContainer: {
+    margin: 20,
+    padding: 20,
+    backgroundColor: "#dfdfdf",
+    borderRadius: 5,
+  },
+  info: {
+    fontFamily: Platform.select({
+      ios: "Courier",
+      android: "monospace",
+      web: "monospace",
+    }),
+  },
+});
+
+const toStatusIcon = (status?: ValidationState) =>
+  status === "valid" ? "✅" : status === "invalid" ? "❌" : "❓";
+
+export default function Example() {
+  const [useLiteInput, setUseLiteInput] = useState(false);
+
+  const [focusedField, setFocusedField] = useState<CreditCardFormField>();
+
+  const [formData, setFormData] = useState<CreditCardFormData>();
+
+  return (
+    <ScrollView contentContainerStyle={s.container}>
+      {useLiteInput ? (
+       
+      ) : (
+        <CreditCardInput
+          autoFocus
+          style={s.cardInput}
+          onChange={setFormData}
+          onFocusField={setFocusedField}
+        />
+      )}
+    </ScrollView>
+  );
+}
