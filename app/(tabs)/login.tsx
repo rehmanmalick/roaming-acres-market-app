@@ -151,7 +151,7 @@ const LoginScreen = () => {
         </TouchableOpacity>
         
         <TouchableOpacity
-          className={`w-full py-4 rounded-[3px] bg-[${COLORS.primary}] flex items-center justify-center mt-2`}
+          className={`w-full py-4 rounded-[3px] bg-[#008080] flex items-center justify-center mt-2`}
           onPress={handleLogin}
           disabled={isLoading}
           accessibilityLabel="Login"

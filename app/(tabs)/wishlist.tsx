@@ -19,7 +19,7 @@ export default function WishList() {
         contentContainerStyle={{paddingBottom: 20}}
         >
           <Wrapper
-            showSettingsButton={true}
+            showFilterButton={true}
             showMenuButton={true}
           >
             <ProfileHeader/>
@@ -29,7 +29,7 @@ export default function WishList() {
             <TextInput
               className="border border-gray-300 rounded-full py-4 px-4 pl-10"
               placeholder="Search"
-              
+              placeholderTextColor={'#8391A1'}
             />
             <View className="absolute left-3 top-4">
               <Ionicons name="search" size={15} color={'#8391A1'}/>
@@ -70,12 +70,12 @@ export default function WishList() {
         <Text className="font-bold text-3xl">My Wish Lists</Text>
     </View>
     <View className='flex flex-row justify-between items-center mt-5 px-4'>
-        <WishlistComponent iconName={"add"} buttonText={"RE-ORDER"}/>
-        <WishlistComponent iconName={"add"} buttonText={"ADD TO CART"}/>
+        <WishlistComponent iconName={"shopping-bag"} buttonText={"RE-ORDER"}/>
+        <WishlistComponent onPress={()=> router.push('/(tabs)/inventory-product-details')} iconName={"plus"} buttonText={"ADD TO CART"}/>
     </View>
     <View className='flex flex-row justify-between items-center mt-5 px-4'>
-        <WishlistComponent iconName={"add"} buttonText={"RE-ORDER"}/>
-        <WishlistComponent iconName={"add"} buttonText={"ADD TO CART"}/>
+        <WishlistComponent iconName={"shopping-bag"} buttonText={"RE-ORDER"}/>
+        <WishlistComponent iconName={"plus"} buttonText={"ADD TO CART"}/>
     </View>
     </Wrapper>
       </ScrollView>

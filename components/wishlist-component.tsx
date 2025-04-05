@@ -1,14 +1,16 @@
-import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface WishlistComponentProps {
   iconName: string;
   buttonText: string;
+  onPress?: () => void;
+  showButton?: boolean;
 }
 
-export default function WishlistComponent({ iconName, buttonText }: WishlistComponentProps) {
+export default function WishlistComponent({ iconName, buttonText , onPress , showButton = true}: WishlistComponentProps) {
     return (
-        <View className="bg-white rounded-lg shadow-lg shadow-black/10 overflow-hidden m-2 w-[160px]">
+        <View style={{flex:1}} className="bg-white rounded-lg shadow-lg shadow-black/100 overflow-hidden m-2">
       
         <View className="h-32 items-center justify-center">
                     <View style={[
@@ -37,15 +39,18 @@ export default function WishlistComponent({ iconName, buttonText }: WishlistComp
           </View>
             <Text className="text-md">Save : $1000</Text>
           <View className="flex-row items-center py-2 mb-2">
-            <Text className="text-md mt-3 text-gray-400 line-through ml-2">4.7</Text>
+            <Ionicons name="star-outline" size={14} color="#E26D08" />
+            <Text className="text-md text-gray-400 line-through ml-2">4.7</Text>
           </View>
           
-          <TouchableOpacity className="bg-teal-600 py-2 rounded-md justify-center items-center mb-2 flex-row">
-            <View className="bg-white mx-2 p-1.5 rounded-full">
-            <Ionicons name={iconName} size={15} color="#008080" />
-            </View>
-            <Text className="text-white text-center px-2 text-md font-medium">{buttonText}</Text>
-          </TouchableOpacity>
+            {showButton && (
+            <TouchableOpacity onPress={onPress} className="bg-teal-600 py-2 rounded-md justify-center items-center mb-2 flex-row">
+              <View className="bg-white mx-2 p-1.5 rounded-full">
+              <FontAwesome5 name={iconName} size={15} color="#008080" />
+              </View>
+              <Text className="text-white text-center px-2 text-md font-medium">{buttonText}</Text>
+            </TouchableOpacity>
+            )}
         </View>
       </View>
     )

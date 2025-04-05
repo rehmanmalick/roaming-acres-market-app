@@ -21,11 +21,11 @@ const RoamingAcresMarket = () => {
         contentContainerStyle={{paddingBottom: 20}}
         >
           <Wrapper
-            showSettingsButton={true}
+            showFilterButton={true}
             showMenuButton={true}
           >
             <ProfileHeader/>
-        {/* Header Section */}
+
         <View className="p-4" style={{width:"100%"}}>
           <View className="flex flex-row justify-between items-center">
             <View>
@@ -45,7 +45,7 @@ const RoamingAcresMarket = () => {
             />
             </View>
           </View>
-          {/* Search Bar */}
+
           <View className="mt-4 relative" >
             <TextInput
               className="border border-gray-300 rounded-full py-2 px-4 pl-10"
@@ -58,7 +58,7 @@ const RoamingAcresMarket = () => {
           </View>
         </View>
 
-        {/* Categories Section */}
+
         <View className="mt-6 px-4">
           <View className="flex flex-row justify-between items-center pb-3">
             <Text className="text-xl font-bold">Categories</Text>
@@ -91,7 +91,6 @@ const RoamingAcresMarket = () => {
             </ScrollView>
         </View>
 </View>
-        {/* New Arrivals Section */}
         <View className="mt-10 px-4">
           <View className="flex flex-row justify-between items-center pb-3" style={{width:"100%"}}>
             <Text className="text-xl font-bold">New Arrivals</Text>
@@ -106,8 +105,6 @@ const RoamingAcresMarket = () => {
           </View>
         </View>
 
-
-        {/* Shop by Category Section */}
         <View className="mt-10 px-4">
         <View className="flex flex-row justify-between items-center pb-3" style={{width:"100%"}}>
             <Text className="text-xl font-bold" >Top Sellers </Text>

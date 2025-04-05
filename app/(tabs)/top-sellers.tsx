@@ -23,37 +23,49 @@ export default function TopSellers() {
                 source={require('../../assets/images/Top-selling-1.png')} 
                 name="Oliver Jake" 
                 rating={4.7} 
-                productCount={10} 
+                subText="10" 
+                showButton={true}
+                buttonText="View Profile"
                 />
                 <TopSellersComponent 
                 source={require('../../assets/images/Top-selling-2.png')} 
                 name="Jack Connor" 
                 rating={4.7} 
-                productCount={10} 
+                subText="10" 
+                showButton={true}
+                buttonText="View Profile"
                 />
                 <TopSellersComponent 
                 source={require('../../assets/images/Top-selling-3.png')} 
                 name="Harry Callum" 
                 rating={4.7} 
-                productCount={10} 
+                subText="10" 
+                showButton={true}
+                buttonText="View Profile"
                 />
                 <TopSellersComponent 
                 source={require('../../assets/images/Top-selling-4.png')} 
                 name="Jacob Michael" 
                 rating={4.7} 
-                productCount={10} 
+                subText="10" 
+                showButton={true}
+                buttonText="View Profile"
                 />
                 <TopSellersComponent 
                 source={require('../../assets/images/Top-selling-5.png')} 
                 name="Charlie Kyle" 
                 rating={4.7} 
-                productCount={10} 
+                subText="10" 
+                showButton={true}
+                buttonText="View Profile"
                 />
                 <TopSellersComponent 
                 source={require('../../assets/images/Top-selling-2.png')} 
                 name="Thomas Joe" 
                 rating={4.7} 
-                productCount={10} 
+                subText="10" 
+                showButton={true}
+                buttonText="View Profile"
                 />
               </View>
         </View>

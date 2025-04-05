@@ -1,19 +1,22 @@
+import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import {
   Image,
   StyleSheet,
   Platform,
   Text,
   TouchableOpacity,
+  View,
 } from "react-native";
 
 interface ButtonProps {
   state: "primary" | "secondary" | "disable";
   disabled?: boolean;
-  onPress: () => void;
+  onPress?: () => void;
   title: string;
+  iconName?: keyof typeof FontAwesome5.glyphMap;
 }
 
-export default function Button({ state, onPress, title }: ButtonProps) {
+export default function Button({ state, onPress, title, iconName, showIcon }: ButtonProps & { showIcon?: boolean }) {
   const buttonStyle =
     state === "primary"
       ? styles.primaryButton
@@ -22,7 +25,19 @@ export default function Button({ state, onPress, title }: ButtonProps) {
       : styles.disableButton;
 
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.button, buttonStyle]}>
+    <TouchableOpacity onPress={onPress} style={[styles.button, buttonStyle]} disabled={state === "disable"}>
+      {showIcon && iconName && (
+        <View
+          style={{
+            backgroundColor: "#ffffff",
+            padding: 4,
+            borderRadius: 50,
+            marginRight: 8,
+          }}
+        >
+          <FontAwesome5 name={iconName} size={14} color={"#008080"} />
+        </View>
+      )}
       <Text
         style={[
           state === "primary"
@@ -48,6 +63,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 10,
     flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
   },
   primaryButton: {
     backgroundColor: "#008080",

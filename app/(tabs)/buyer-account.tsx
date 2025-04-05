@@ -66,7 +66,7 @@ export default function BuyerAccount() {
                 <Text className="text-base font-semibold text-gray-800">Wishlist</Text>
                 <Ionicons name="chevron-forward" size={12} color="#6b7280"/>
             </TouchableOpacity>
-            <TouchableOpacity className="flex flex-row justify-between items-center py-5 px-4 ">
+            <TouchableOpacity onPress={()=> router.push('/(tabs)/buyer-orders')} className="flex flex-row justify-between items-center py-5 px-4 ">
                 <Text className="text-base font-semibold text-gray-800">Orders</Text>
                 <Ionicons name="chevron-forward" size={12} color="#6b7280"/>
             </TouchableOpacity>

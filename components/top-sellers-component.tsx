@@ -4,41 +4,48 @@ import { Ionicons } from '@expo/vector-icons';
 
 interface TopSellersComponentProps {
   name: string;
-  rating: number;
-  productCount: number;
+  rating?: number;
+  subText: string;
   source?: {uri : string};
   onViewProfile?: () => void;
+  showIcon?: boolean;
+  showButton?: boolean;
+  buttonText?: string;
 }
 
-const TopSellersComponent = ({ name, rating, source, productCount, onViewProfile }: TopSellersComponentProps) => {
+const TopSellersComponent = ({ name, rating, source, subText, onViewProfile, showIcon , showButton , buttonText}: TopSellersComponentProps) => {
   return (
-    <View style={{paddingVertical:10}} className="flex-row items-center bg-white rounded-lg p-3 my-2 shadow-sm shadow-black/10">
+    <View  className="flex-row items-center bg-white rounded-lg p-3 my-2">
       <View className="w-12 h-12 rounded-full bg-teal-50 justify-center items-center mr-3">
         <Image 
             source={source}
-            className="w-full h-full rounded-full"
+            className="w-full h-full rounded-full py-3 pl-7"
             style={{height: 90 , width: 90}}
             resizeMode="contain"
         />
       </View>
       
-      <View className="flex-1 px-4">
+      <View className="flex-1 pl-6">
         <Text className="text-xl font-bold mb-1">{name}</Text>
         
-        <View className="flex-row items-center mb-1">
-          <Ionicons name="star-outline" size={14} color="#E26D08" />
-          <Text className="text-sm text-gray-600 ml-1">{rating}</Text>
-        </View>
+        {showIcon && (
+          <View className="flex-row items-center mb-1">
+            <Ionicons name="star-outline" size={14} color="#E26D08" />
+            <Text className="text-sm text-gray-600 ml-1">{rating}</Text>
+          </View>
+        )}
         
-        <Text className="text-sm text-gray-600">Total Product: {productCount}</Text>
+        <Text className="text-sm text-gray-600">{subText}</Text>
       </View>
       
-      <TouchableOpacity 
-        className="bg-teal-600 px-3 py-1.5 rounded"
-        onPress={onViewProfile}
-      >
-        <Text style={{backgroundColor:"#008080" , padding:10 , borderRadius:90}} className="text-white text-sm font-bold px-6">View Profile</Text>
-      </TouchableOpacity>
+      {showButton && (
+        <TouchableOpacity 
+          className="pl-3 py-1.5 rounded"
+          onPress={onViewProfile}
+        >
+          <Text style={{backgroundColor:"#008080" , padding:10 , borderRadius:90}} className="text-white text-sm font-bold px-6">{buttonText}</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
