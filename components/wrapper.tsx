@@ -95,19 +95,23 @@ const Wrapper: React.FC<{
               <Text className="text-base font-semibold mb-2">Categories</Text>
               <View className="flex-row flex-wrap gap-2">
                 {['All', 'Birds', 'Eggs', 'Chicks', 'Ducks', 'Herbs', 'Livestock'].map(item => (
-                  <TouchableOpacity
+                    <TouchableOpacity
                     key={`category-${item}`}
                     className={`px-4 py-2 rounded-lg border border-teal-600 ${
                       selectedCategories.includes(item) ? 'bg-teal-600' : 'bg-white'
                     }`}
-                    onPress={() => toggleFilter('category', item)}
-                  >
+                    onPress={() => {
+                      toggleFilter('category', item);
+                      setModalState(null);
+                      router.push('/search');
+                    }}
+                    >
                     <Text className={`text-sm ${
                       selectedCategories.includes(item) ? 'text-white' : 'text-gray-800'
                     }`}>
                       {item}
                     </Text>
-                  </TouchableOpacity>
+                    </TouchableOpacity>
                 ))}
               </View>
             </View>
@@ -121,7 +125,10 @@ const Wrapper: React.FC<{
                     className={`px-4 py-2 rounded-lg border border-teal-600 ${
                       selectedSales.includes(item) ? 'bg-teal-600' : 'bg-white'
                     }`}
-                    onPress={() => toggleFilter('sale', item)}
+                    onPress={() => {
+                      toggleFilter('sale', item);
+                      setModalState(null);
+                      router.push('/search')}}
                   >
                     <Text className={`text-sm ${
                       selectedSales.includes(item) ? 'text-white' : 'text-gray-800'
@@ -142,7 +149,10 @@ const Wrapper: React.FC<{
                     className={`px-4 py-2 rounded-lg border border-teal-600 ${
                       selectedLocations.includes(item) ? 'bg-teal-600' : 'bg-white'
                     }`}
-                    onPress={() => toggleFilter('location', item)}
+                    onPress={() => {
+                      toggleFilter('location', item);
+                      setModalState(null);
+                      router.push('/search')}}
                   >
                     <Text className={`text-sm ${
                       selectedLocations.includes(item) ? 'text-white' : 'text-gray-800'
@@ -164,6 +174,7 @@ const Wrapper: React.FC<{
                   locations: selectedLocations
                 });
                 setModalState(null);
+                router.push('/search');
               }}
             />
           </View>
@@ -281,24 +292,23 @@ const Wrapper: React.FC<{
 
   return (
     <View className="flex-1 bg-white">
-      {/* Left side button (back or menu) */}
+
       {(showBackButton || showMenuButton) && (
         <TouchableOpacity
-          onPress={() => (showBackButton ? router.back() : console.log('Menu button pressed'))}
+          onPress={() => (showBackButton ? router.back() : router.push('/(tabs)/buyer-account'))}
           className="absolute top-6 left-4 z-10"
         >
-          <View className="w-9 h-9 bg-white rounded-xl justify-center items-center">
-            <Ionicons name={showBackButton ? "arrow-back" : "menu"} size={16} color="#000" />
+          <View className="w-9 h-9 bg-white rounded-xl mt-3 justify-center items-center">
+            <Ionicons name={showBackButton ? "chevron-back-outline" : "menu"} size={16} color="#000" />
           </View>
         </TouchableOpacity>
       )}
-      
-      {/* Right side button (only one appears) */}
+
       <View className="absolute top-6 right-4 z-10">
         {showFilterButton && (
           <TouchableOpacity
             onPress={() => setModalState('filter')}
-            className="w-9 h-9 bg-white rounded-xl justify-center items-center"
+            className="w-9 h-9 bg-white mt-3 rounded-xl justify-center items-center"
           >
             <Ionicons name="options" size={16} color="#000" />
           </TouchableOpacity>
@@ -306,7 +316,7 @@ const Wrapper: React.FC<{
         {showPeriodButton && (
           <TouchableOpacity
             onPress={() => setModalState('period')}
-            className="w-9 h-9 bg-white rounded-xl justify-center items-center"
+            className="w-9 h-9 bg-white mt-3 rounded-xl justify-center items-center"
           >
             <Ionicons name="options" size={16} color="#000" />
           </TouchableOpacity>

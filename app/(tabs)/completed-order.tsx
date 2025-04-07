@@ -8,7 +8,7 @@ import { View, Text, Image, ScrollView, TextInput, TouchableOpacity } from 'reac
 
 export default function BuyerOrders() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState('Active'); 
+  const [activeTab, setActiveTab] = useState('Completed'); 
 
   return (
     <ScrollView 
@@ -65,40 +65,40 @@ export default function BuyerOrders() {
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
-            buttonText='TRACK ORDER'
-            onPress={() => router.push('/active-order')}
+            buttonText='LEAVE REVIEW'
+            onPress={() => router.push('/reviews')}
             />
          <OrderComponent 
             source={require('../../assets/images/chicken.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
-            buttonText='TRACK ORDER'
-            onPress={() => router.push('/active-order')}
+            buttonText='LEAVE REVIEW'
+            onPress={() => router.push('/reviews')}
             />
          <OrderComponent 
             source={require('../../assets/images/chicken.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
-            buttonText='TRACK ORDER'
-            onPress={() => router.push('/active-order')}
+            buttonText='LEAVE REVIEW'
+            onPress={() => router.push('/reviews')}
             />
          <OrderComponent 
             source={require('../../assets/images/chicken.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
-            buttonText='TRACK ORDER'
-            onPress={() => router.push('/active-order')}
+            buttonText='LEAVE REVIEW'
+            onPress={() => router.push('/reviews')}
             />
          <OrderComponent 
             source={require('../../assets/images/chicken.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
-            buttonText='TRACK ORDER'
-            onPress={() => router.push('/active-order')}
+            buttonText='LEAVE REVIEW'
+            onPress={() => router.push('/reviews')}
          />
         </View>
       </Wrapper>

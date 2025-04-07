@@ -8,7 +8,7 @@ import { View, Text, Image, ScrollView, TextInput, TouchableOpacity } from 'reac
 
 export default function BuyerOrders() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState('Active'); 
+  const [activeTab, setActiveTab] = useState('Cancelled'); 
 
   return (
     <ScrollView 
@@ -35,29 +35,29 @@ export default function BuyerOrders() {
         </View>
         
         <View className="bg-white py-2 flex flex-row justify-between px-7 items-center">
-                  {['Active', 'Completed', 'Cancelled'].map((status, index) => (
-                    <TouchableOpacity 
-                      key={index} 
-                      onPress={() => {
-                    setActiveTab(status);
-                    if (status === 'Active') router.push('/buyer-orders');
-                    if (status === 'Completed') router.push('/completed-order');
-                    if (status === 'Cancelled') router.push('/cancelled-order');
-                      }}
-                      className="flex-1 items-center"
-                    >
-                      <View className="flex items-center">
-                    <Text
-                      className={`font-bold text-xl ${
-                        activeTab === status ? 'text-teal-600 border-b-2 border-teal-600 p-1' : 'text-black'
-                      }`}
-                    >
-                      {status}
-                    </Text>
-                      </View>
-                    </TouchableOpacity>
-                  ))}
-                </View>
+          {['Active', 'Completed', 'Cancelled'].map((status, index) => (
+            <TouchableOpacity 
+              key={index} 
+              onPress={() => {
+            setActiveTab(status);
+            if (status === 'Active') router.push('/buyer-orders');
+            if (status === 'Completed') router.push('/completed-order');
+            if (status === 'Cancelled') router.push('/cancelled-order');
+              }}
+              className="flex-1 items-center"
+            >
+              <View className="flex items-center">
+            <Text
+              className={`font-bold text-xl ${
+                activeTab === status ? 'text-teal-600 border-b-2 border-teal-600 p-1' : 'text-black'
+              }`}
+            >
+              {status}
+            </Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
 
         <View className="p-4">
          <OrderComponent 
@@ -65,40 +65,40 @@ export default function BuyerOrders() {
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
-            buttonText='TRACK ORDER'
-            onPress={() => router.push('/active-order')}
+            buttonText='RE-ORDER'
+            onPress={() => router.push('/home-screen')}
             />
          <OrderComponent 
             source={require('../../assets/images/chicken.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
-            buttonText='TRACK ORDER'
-            onPress={() => router.push('/active-order')}
+            buttonText='RE-ORDER'
+            onPress={() => router.push('/home-screen')}
             />
          <OrderComponent 
             source={require('../../assets/images/chicken.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
-            buttonText='TRACK ORDER'
-            onPress={() => router.push('/active-order')}
+            buttonText='RE-ORDER'
+            onPress={() => router.push('/home-screen')}
             />
          <OrderComponent 
             source={require('../../assets/images/chicken.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
-            buttonText='TRACK ORDER'
-            onPress={() => router.push('/active-order')}
+            buttonText='RE-ORDER'
+            onPress={() => router.push('/home-screen')}
             />
          <OrderComponent 
             source={require('../../assets/images/chicken.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
-            buttonText='TRACK ORDER'
-            onPress={() => router.push('/active-order')}
+            buttonText='RE-ORDER'
+            onPress={() => router.push('/home-screen')}
          />
         </View>
       </Wrapper>

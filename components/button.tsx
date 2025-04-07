@@ -9,14 +9,17 @@ import {
 } from "react-native";
 
 interface ButtonProps {
-  state: "primary" | "secondary" | "disable";
+  state: "primary" | "secondary" | "disable" ;
   disabled?: boolean;
   onPress?: () => void;
   title: string;
   iconName?: keyof typeof FontAwesome5.glyphMap;
+  iconBackground?: string;
+  iconColor?: string;
+  style?: object;
 }
 
-export default function Button({ state, onPress, title, iconName, showIcon }: ButtonProps & { showIcon?: boolean }) {
+export default function Button({ state, onPress, title, iconName, showIcon ,iconBackground, iconColor }: ButtonProps & { showIcon?: boolean }) {
   const buttonStyle =
     state === "primary"
       ? styles.primaryButton
@@ -29,13 +32,13 @@ export default function Button({ state, onPress, title, iconName, showIcon }: Bu
       {showIcon && iconName && (
         <View
           style={{
-            backgroundColor: "#ffffff",
-            padding: 4,
+            backgroundColor: iconBackground,
+            padding: 5,
             borderRadius: 50,
             marginRight: 8,
           }}
         >
-          <FontAwesome5 name={iconName} size={14} color={"#008080"} />
+          <FontAwesome5 name={iconName} size={14} color={iconColor} />
         </View>
       )}
       <Text
@@ -59,7 +62,7 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 3,
     paddingVertical: 14,
-    paddingHorizontal: 16,
+    paddingHorizontal: 15,
     alignItems: "center",
     marginHorizontal: 10,
     flex: 1,
@@ -68,6 +71,8 @@ const styles = StyleSheet.create({
   },
   primaryButton: {
     backgroundColor: "#008080",
+    borderWidth: 1,
+    borderColor: "#008080",
   },
   secondaryButton: {
     backgroundColor: "#ffffff",
@@ -76,13 +81,13 @@ const styles = StyleSheet.create({
   },
   primaryText: {
     color: "#ffffff",
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: "bold",
   },
   secondaryText: {
     color: "#000000",
     fontWeight: "bold",
-    fontSize: 17,
+    fontSize: 16,
   },
   disableButton: {
     backgroundColor: "#B5B5B5",
@@ -90,6 +95,6 @@ const styles = StyleSheet.create({
   disableText: {
     fontWeight: "bold",
     color: "#ffffff",
-    fontSize: 17,
+    fontSize: 16,
   },
 });

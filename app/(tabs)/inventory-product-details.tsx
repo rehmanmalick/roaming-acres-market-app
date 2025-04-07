@@ -32,7 +32,7 @@ export default function WishList() {
           >
             <ProfileHeader/>
            <View className="items-center justify-center mt-9">
-               <Text className="font-bold text-3xl">My Wish</Text>
+               {/* <Text className="font-bold text-3xl">My Wish</Text> */}
            </View>
                 <View className='flex flex-row justify-between items-center mt-5 px-4'>
                        <WishlistComponent onPress={()=> router.push('/(tabs)/inventory-product-details')} showButton={false} iconName={"plus"} buttonText={"ADD TO CART"}/>
@@ -65,7 +65,7 @@ export default function WishList() {
                <Text className="font-bold text-2xl my-4 ">Product Overview</Text>
                <Text>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</Text>
            </View>
-         {/* <View className="border-b border-gray-300 mx-9 py-3" >
+         <View className="border-b border-gray-300 mx-9 py-3" >
             <TopSellersComponent
                 source={require('../../assets/images/Top-selling-1.png')}
                 name='Oliver Jake'
@@ -73,13 +73,13 @@ export default function WishList() {
                 showButton={true}
                 buttonText='Connect With Seller '
             />
-               </View> */}
+               </View>
          <View className="mx-9 pb-6" >
                <Text className="font-bold text-2xl my-4 ">Product Reviews</Text>
                <ProductReviewComponent name='Haylie Aminoff' source={require('../../assets/images/product-reviews2.png')}/>
                <ProductReviewComponent name='Carla Septimus' source={require('../../assets/images/product-reviews1.png')}/>
           </View>
-          <Button showIcon={true} iconName='shopping-bag' state='primary' title='ADD TO CART' onPress={()=> router.push('/(tabs)/place-order')}/>
+          <Button showIcon={true} iconName='shopping-bag' state='primary' iconColor='#008080' iconBackground='#ffffff' title='ADD TO CART' onPress={()=> router.push('/(tabs)/place-order')}/>
     </Wrapper>
       </ScrollView>
   );

@@ -12,7 +12,7 @@ export default function WishlistComponent({ iconName, buttonText , onPress , sho
     return (
         <View style={{flex:1}} className="bg-white rounded-lg shadow-lg shadow-black/100 overflow-hidden m-2">
       
-        <View className="h-32 items-center justify-center">
+        <View className="h-40 items-center justify-center">
                     <View style={[
                       styles.iconContainer,
                      

@@ -17,7 +17,7 @@ export default function NewArrival({ price , onPress}: NewArrivalProps) {
         />
     <Text style={styles.price}>Lorem Ipsum is simply dummy text printing and typesetting.</Text>
     <View className=" flex flex-row justify-between items-center mt-4">
-      <Text className="text-lg font-bold ">${price.toFixed(2)}</Text>
+      <Text className="text-md font-bold mr-2">${price.toFixed(2)}</Text>
       <TouchableOpacity onPress={onPress}>
         <Text style={{color:'#008080', fontSize:11, fontWeight:"600"}}>ADD TO CART</Text>
       </TouchableOpacity>
@@ -29,12 +29,13 @@ export default function NewArrival({ price , onPress}: NewArrivalProps) {
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
-        paddingVertical:0,
-        paddingHorizontal: 0,
+        flex: 1,
+        marginLeft:7,
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: "#fff",
         borderRadius:7,
-        width:"30%"
+        width:120
     },
     price:{
         fontSize: 16,

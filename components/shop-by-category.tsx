@@ -1,20 +1,22 @@
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 interface ShopByCategoryProps {
   text: string;
   price: number;
-  onPress: () => void;
   iconState?: 'primary' | 'secondary';
+  source?: {uri : string};
 }
 
-export default function ShopByCategory({ text, price, onPress, iconState = 'primary' }: ShopByCategoryProps) {
+export default function ShopByCategory({ text, price, iconState = 'primary', source }: ShopByCategoryProps) {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       {/* Image with icon container */}
       <View style={styles.imageContainer}>
         <Image
-          source={require("../assets/images/new-arrival.png")}
+          source={source || require("../assets/images/chicken.jpg")}
           style={styles.image}
           resizeMode="cover"
         />
@@ -24,16 +26,16 @@ export default function ShopByCategory({ text, price, onPress, iconState = 'prim
           iconState === 'primary' ? styles.primaryIcon : styles.secondaryIcon
         ]}>
           <Ionicons 
-            name="heart-outline" 
-            size={20}
-            color={iconState === 'primary' ? 'white' : '#008080'}
+        name="heart-outline" 
+        size={20}
+        color={iconState === 'primary' ? 'white' : '#008080'}
           />
         </View>
       </View>
       
       <Text style={styles.title}>{text}</Text>
       <Text style={styles.price}>Price: ${price}</Text>
-      <TouchableOpacity style={styles.button} onPress={onPress}>
+      <TouchableOpacity style={styles.button} onPress={()=> router.push('/inventory-product-details')}>
         <Text style={styles.buttonText}>ADD TO CART</Text>
       </TouchableOpacity>
     </View>

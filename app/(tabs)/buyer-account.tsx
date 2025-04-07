@@ -71,8 +71,7 @@ export default function BuyerAccount() {
                 <Ionicons name="chevron-forward" size={12} color="#6b7280"/>
             </TouchableOpacity>
           </AccordionItem>
-          
-          <TouchableOpacity className="flex flex-row justify-between items-center py-5 px-4 mb-4 mx-4 shadow-lg shadow-gray-500/15 bg-white rounded-lg">
+          <TouchableOpacity onPress={()=> router.push('/notifications')} className="flex flex-row justify-between items-center py-5 px-4 mb-4 mx-4 shadow-lg shadow-gray-500/15 bg-white rounded-lg">
                 <Text className="text-base font-semibold text-gray-800">Notifications</Text>
                 <Ionicons name="notifications" size={12} color="#ffffff" style={{backgroundColor:"#008080" , padding:3, borderRadius:2}}/>
             </TouchableOpacity>
