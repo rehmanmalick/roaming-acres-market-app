@@ -48,13 +48,13 @@ export default function CheckoutDisable() {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            className="bg-white rounded-lg p-3 mb-6 flex flex-row relative"
+            className="bg-white rounded-lg p-3 py-10 mb-6 flex flex-row relative"
           >
             {paymentMethods.map((method) => (
               <View>
                 <TouchableOpacity
                   key={method.id}
-                  className={`items-center justify-center border-2 px-4 py-5 mx-3 rounded-lg  ${
+                  className={`items-center justify-center border-2 p-4 mx-2 rounded-lg  ${
                     selectedMethod === method.id
                       ? " border-[#FF7622] "
                       : " border-[#F0F5FA] bg-[#F0F5FA]"

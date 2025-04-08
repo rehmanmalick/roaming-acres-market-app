@@ -78,7 +78,7 @@ export default function WishList() {
         <View className="border-b border-gray-300 mx-9 pb-6">
           <Text className="font-bold text-2xl my-4 ">Product Overview</Text>
           <Text>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
+            porem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book.
@@ -87,7 +87,6 @@ export default function WishList() {
         <View className="border-b border-gray-300 mx-9 py-3">
           <TopSellersComponent
             source={require("../../assets/images/Top-selling-1.png")}
-      
             name="Oliver Jake"
             subText={"Top Seller"}
             showButton={true}

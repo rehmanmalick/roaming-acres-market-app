@@ -35,7 +35,7 @@ export default function CheckoutDisable() {
 
   return (
     <ScrollView
-      className="bg-white flex-1 "
+      className="bg-white flex-1"
       bounces={false}
       contentContainerStyle={{ paddingBottom: 20 }}
     >
@@ -48,46 +48,47 @@ export default function CheckoutDisable() {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            className="bg-white rounded-lg p-3 mb-6 flex flex-row relative"
+            className="bg-white rounded-lg shadow-sm mb-6 flex flex-row"
           >
             {paymentMethods.map((method) => (
-              <View>
-                <TouchableOpacity
-                  key={method.id}
-                  className={`items-center justify-center border-2 px-4 py-5 mx-3 rounded-lg  ${
-                    selectedMethod === method.id
-                      ? " border-[#FF7622] "
-                      : " border-[#F0F5FA] bg-[#F0F5FA]"
-                  }`}
-                  onPress={() => setSelectedMethod(method.id)}
-                >
-                  <View className="">
-                    <Image
-                      source={method.icon}
-                      className={` w-16 h-10 `}
-                      resizeMode="contain"
+              <View></View>
+              <TouchableOpacity
+                key={method.id}
+                className={`items-center justify-center p-4 mx-2 rounded-lg  ${
+                  selectedMethod === method.id
+                    ? "border border-teal-600"
+                    : "border-gray-200"
+                }`}
+                onPress={() => setSelectedMethod(method.id)}
+              >
+                <View className="relative">
+                  <Image
+                    source={method.icon}
+                    className={`w-16 h-10 mb-2${
+                      selectedMethod === method.id
+                        ? "border border-teal-600"
+                        : "border-gray-200"
+                    }`}
+                    resizeMode="contain"
+                  />
+                  {selectedMethod === method.id && (
+                    <Ionicons
+                      name="checkmark-circle"
+                      size={20}
+                      color="#008080"
+                      style={{
+                        position: "absolute",
+                        top: -17,
+                        right: -17,
+                        zIndex: 10,
+                      }}
                     />
-                    {selectedMethod === method.id && (
-                      <Ionicons
-                        name="checkmark-circle"
-                        size={23}
-                        color="#FF7622"
-                        style={{
-                          backgroundColor: "white",
-                          borderRadius: 20,
-                          position: "absolute",
-                          top: -24,
-                          right: -16,
-                          zIndex: 10,
-                        }}
-                      />
-                    )}
-                  </View>
-                </TouchableOpacity>
-                <Text className="text-base mt-2 font-medium text-center">
+                  )}
+                </View>
+                <Text className="text-base font-medium text-center">
                   {method.name}
                 </Text>
-              </View>
+              </TouchableOpacity>
             ))}
           </ScrollView>
         </View>

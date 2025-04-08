@@ -124,6 +124,7 @@ export default function CheckoutDisable() {
             state="primary"
             onPress={() => router.push("/(tabs)/checkout-enable")}
           />
+          
         </View>
       </Wrapper>
     </ScrollView>

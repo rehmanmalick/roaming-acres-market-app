@@ -87,7 +87,7 @@ export default function WishList() {
         <View className="border-b border-gray-300 mx-9 py-3">
           <TopSellersComponent
             source={require("../../assets/images/Top-selling-1.png")}
-      
+            
             name="Oliver Jake"
             subText={"Top Seller"}
             showButton={true}

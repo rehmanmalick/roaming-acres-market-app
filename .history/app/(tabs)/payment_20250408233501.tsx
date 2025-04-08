@@ -124,6 +124,30 @@ export default function CheckoutDisable() {
             state="primary"
             onPress={() => router.push("/(tabs)/checkout-enable")}
           />
+          <View style={styles.container}>
+            <TouchableOpacity
+              onPress={() => setShowEmojiPicker(!showEmojiPicker)}
+            >
+              <FontAwesome
+                name="smile-o"
+                size={24}
+                color="black"
+                style={styles.icon}
+              />
+            </TouchableOpacity>
+
+            <TextInput
+              placeholder="Write somethings"
+              placeholderTextColor="#000"
+              style={styles.input}
+              value={message}
+              onChangeText={setMessage}
+            />
+
+            <TouchableOpacity style={styles.sendButton}>
+              <Feather name="send" size={20} color="#f97316" />
+            </TouchableOpacity>
+          </View>
         </View>
       </Wrapper>
     </ScrollView>

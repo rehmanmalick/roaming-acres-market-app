@@ -54,7 +54,7 @@ export default function CheckoutDisable() {
               <View>
                 <TouchableOpacity
                   key={method.id}
-                  className={`items-center justify-center border-2 px-4 py-5 mx-3 rounded-lg  ${
+                  className={`items-center justify-center border-2 px-3 py-4 mx-3 rounded-lg  ${
                     selectedMethod === method.id
                       ? " border-[#FF7622] "
                       : " border-[#F0F5FA] bg-[#F0F5FA]"

@@ -44,7 +44,7 @@ export default function CheckoutDisable() {
           <Text className="font-bold text-3xl">Payment</Text>
         </View>
 
-        <View className="flex-1 p-4">
+        <View className="flex-1 p-6">
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -54,17 +54,17 @@ export default function CheckoutDisable() {
               <View>
                 <TouchableOpacity
                   key={method.id}
-                  className={`items-center justify-center border-2 px-4 py-5 mx-3 rounded-lg  ${
+                  className={`items-center justify-center p-4 mx-2 rounded-lg bg-[#F0F5FA] ${
                     selectedMethod === method.id
-                      ? " border-[#FF7622] "
-                      : " border-[#F0F5FA] bg-[#F0F5FA]"
+                      ? "border-2 border-[#FF7622]"
+                      : "border-gray-200"
                   }`}
                   onPress={() => setSelectedMethod(method.id)}
                 >
                   <View className="">
                     <Image
                       source={method.icon}
-                      className={` w-16 h-10 `}
+                      className={` w-16 h-10 mb-2`}
                       resizeMode="contain"
                     />
                     {selectedMethod === method.id && (
@@ -84,7 +84,7 @@ export default function CheckoutDisable() {
                     )}
                   </View>
                 </TouchableOpacity>
-                <Text className="text-base mt-2 font-medium text-center">
+                <Text className="text-base font-medium text-center">
                   {method.name}
                 </Text>
               </View>
