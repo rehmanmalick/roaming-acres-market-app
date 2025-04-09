@@ -1,30 +1,50 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
-const TransactionComponent = () => {
+interface TransactionProps {
+  text?: string;
+  subText?: string;
+  transactionId?: string;
+  price?: number;
+  status?: string;
+  time?: string;
+  date?: string;
+}
+
+const TransactionComponent: React.FC<TransactionProps> = ({text, subText, transactionId, price, status, time, date}) => {
   return (
-    <View className="bg-white flex flex-row justify-between items-center rounded-lg p-4 my-2 shadow-md">
-      {/* Left Section - Icon and Transaction Info */}
+    <View className="bg-white flex mx-4 flex-row justify-between items-center rounded-lg p-4 my-2 shadow-sm">
       <View className="flex flex-row items-center flex-1">
-        <View className='bg-teal-600 p-4 rounded mr-3'>
-          <MaterialCommunityIcons name='credit-card' size={30} color={'#ffffff'}/>
+        <View className='rounded mr-3'>
+          <Image
+            source={require('../assets/images/card.png')}
+            style={{width:60, height:60}}
+          />
         </View>
         
         <View className="flex-1">
-          <Text className="text-lg font-semibold text-gray-800">Cash-in</Text>
-          <Text className="text-sm text-gray-500 mt-1">From ABC Bank ATM</Text>
+          <Text className="text-lg font-semibold text-gray-800">{text}</Text>
+            {subText && <Text className="text-sm text-gray-500 mt-1">{subText}</Text>}
             <Text className="text-sm text-gray-500">Transaction ID</Text>
-            <Text className="text-sm font-medium text-gray-800">698094554320</Text>
+            <Text className="text-sm font-medium text-gray-800">{transactionId}</Text>
         </View>
       </View>
 
       <View className="ml-4 items-end">
-        <Text className="text-xl text-right font-bold text-gray-800">$ 100.00</Text>
+        <Text className="text-xl text-right font-bold text-gray-800">$ {price?.toFixed(2)}</Text>
         <View className="flex-row justify-end items-center mt-1">
-          <Text style={{backgroundColor:"#CCFFEA", color:'#5DC486'}} className="text-sm bg-teal-400 p-1 text-green-500 ml-1">confirmed</Text>
+            <Text
+            style={{
+              backgroundColor: status === 'confirmed' ? '#CCFFEA' : status === 'pending' ? '#FFF4CC' : '#FFCCCC',
+              color: status === 'confirmed' ? '#5DC486' : status === 'pending' ? '#D4A017' : '#D9534F',
+            }}
+            className="text-sm p-1 ml-1"
+            >
+            {status}
+            </Text>
         </View>
-        <Text className="text-xs text-gray-400 mt-2">17 Jan 2025  11:21 AM</Text>
+        <Text className="text-xs text-gray-400 mt-2">{date} {time}</Text>
       </View>
     </View>
   );

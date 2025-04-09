@@ -33,7 +33,49 @@ export default function AllTransactions() {
                 </View>
             </View>
         </View>
-            <TransactionComponent/>
+            <TransactionComponent
+              text='Transfer to card'
+              transactionId='698094554317'
+              price={100}
+              status='pending'
+              date='17 Jan 2025'
+              time='11:21 AM'
+            />
+            <TransactionComponent
+              text='Cash-in'
+              subText='From ABC Bank ATM'
+              transactionId='698094554317'
+              price={100}
+              status='confirmed'
+              date='17 Jan 2025'
+              time='11:21 AM'
+            />
+            <TransactionComponent
+              text='Cashback from purchase'
+              subText='Purchase from Apps'
+              transactionId='698094554317'
+              price={3.21}
+              status='cancelled'
+              date='17 Jan 2025'
+              time='11:21 AM'
+            />
+            <TransactionComponent
+              text='Transfer to card'
+              transactionId='698094554317'
+              price={100}
+              status='confirmed'
+              date='17 Jan 2025'
+              time='11:21 AM'
+            />
+            <TransactionComponent
+              text='Transfer to card'
+              subText='Not enough funds'
+              transactionId='698094554317'
+              price={100}
+              status='pending'
+              date='17 Jan 2025'
+              time='11:21 AM'
+            />
 
       </Wrapper>
     </ScrollView>

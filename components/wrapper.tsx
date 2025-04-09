@@ -253,19 +253,23 @@ const Wrapper: React.FC<{
               <Text className="text-base font-semibold mb-2">Status</Text>
               <View className="flex-row flex-wrap gap-2">
                 {['Confirmed', 'Pending', 'Canceled'].map(item => (
-                  <TouchableOpacity
+                    <TouchableOpacity
                     key={`status-${item}`}
                     className={`px-4 py-2 rounded-lg border border-teal-600 ${
                       selectedStatuses.includes(item) ? 'bg-teal-600' : 'bg-white'
                     }`}
-                    onPress={() => toggleStatus(item)}
-                  >
+                    onPress={() => {
+                      toggleStatus(item);
+                      setModalState(null);
+                      router.push('/(tabs)/all-transactions');
+                    }}
+                    >
                     <Text className={`text-sm ${
                       selectedStatuses.includes(item) ? 'text-white' : 'text-gray-800'
                     }`}>
                       {item}
                     </Text>
-                  </TouchableOpacity>
+                    </TouchableOpacity>
                 ))}
               </View>
             </View>
