@@ -28,6 +28,7 @@ export default function SelectYourAccount() {
               state="secondary"
               title="Seller Account"
               onPress={() => router.push("../home-screen")}
+              // onPress={() => router.push("/product")}
             />
           </View>
         </View>

@@ -64,7 +64,7 @@ export default function CheckoutEnable() {
                     </View>
                     </View>
                     <View className="mt-9">
-                    <Button state='primary' title='PLACE ORDER'/>
+                    <Button state='primary' onPress={()=> router.push('/order-placed')} title='PLACE ORDER'/>
                     </View>
     </Wrapper>
       </ScrollView>

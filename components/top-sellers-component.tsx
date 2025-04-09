@@ -19,13 +19,13 @@ const TopSellersComponent = ({ name, rating, source, subText, onViewProfile, sho
       <View className="w-12 h-12 rounded-full bg-teal-50 justify-center items-center mr-3">
         <Image 
             source={source}
-            className="w-full h-full rounded-full py-3 pl-7"
-            style={{height: 90 , width: 90}}
+            className="w-full h-full rounded-full py-3 pl-3"
+            style={{height: 80 , width: 80}}
             resizeMode="contain"
         />
       </View>
       
-      <View className="flex-1 pl-6">
+      <View className="flex-1 pl-4">
         <Text className="text-xl font-bold mb-1">{name}</Text>
         
         {showIcon && (
@@ -34,7 +34,12 @@ const TopSellersComponent = ({ name, rating, source, subText, onViewProfile, sho
             <Text className="text-sm text-gray-600 ml-1">{rating}</Text>
           </View>
         )}
-        
+        {rating !== undefined && (
+          <View className="flex-row items-center mb-1">
+            <Ionicons name="star-outline" size={14} color="#E26D08" />
+            <Text className="text-sm text-gray-600 ml-1">{rating.toFixed(1)}</Text>
+          </View>
+        )}
         <Text className="text-sm text-gray-600">{subText}</Text>
       </View>
       

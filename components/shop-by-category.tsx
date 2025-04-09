@@ -21,7 +21,7 @@ export default function ShopByCategory({ text, price, iconState = 'primary', sou
           resizeMode="cover"
         />
         {/* Top-right icon positioned within image */}
-        <View style={[
+        <TouchableOpacity onPress={()=> router.push('/wishlist')} style={[
           styles.iconContainer,
           iconState === 'primary' ? styles.primaryIcon : styles.secondaryIcon
         ]}>
@@ -30,7 +30,7 @@ export default function ShopByCategory({ text, price, iconState = 'primary', sou
         size={20}
         color={iconState === 'primary' ? 'white' : '#008080'}
           />
-        </View>
+        </TouchableOpacity>
       </View>
       
       <Text style={styles.title}>{text}</Text>

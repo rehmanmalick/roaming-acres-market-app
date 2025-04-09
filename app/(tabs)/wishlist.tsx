@@ -70,12 +70,12 @@ export default function WishList() {
         <Text className="font-bold text-3xl">My Wish Lists</Text>
     </View>
     <View className='flex flex-row justify-between items-center mt-5 px-4'>
-        <WishlistComponent iconName={"shopping-bag"} buttonText={"RE-ORDER"}/>
+        <WishlistComponent iconName={"shopping-bag"} onPress={()=> router.push('/(tabs)/active-order')} buttonText={"RE-ORDER"}/>
         <WishlistComponent onPress={()=> router.push('/(tabs)/inventory-product-details')} iconName={"plus"} buttonText={"ADD TO CART"}/>
     </View>
     <View className='flex flex-row justify-between items-center mt-5 px-4'>
-        <WishlistComponent iconName={"shopping-bag"} buttonText={"RE-ORDER"}/>
-        <WishlistComponent iconName={"plus"} buttonText={"ADD TO CART"}/>
+        <WishlistComponent onPress={()=> router.push('/(tabs)/active-order')} iconName={"shopping-bag"} buttonText={"RE-ORDER"}/>
+        <WishlistComponent onPress={()=> router.push('/(tabs)/inventory-product-details')} iconName={"plus"} buttonText={"ADD TO CART"}/>
     </View>
     </Wrapper>
       </ScrollView>
