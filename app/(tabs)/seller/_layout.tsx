@@ -11,15 +11,7 @@ export default function TabLayout() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="/" />
-        <Stack.Screen name="welcome" />
-        <Stack.Screen name="signup" />
-        <Stack.Screen name="login" />
-        <Stack.Screen name="resetpassword" />
-        <Stack.Screen name="verificationcode" />
-        <Stack.Screen name="verifycode" />
-        <Stack.Screen name="otp" />
-        <Stack.Screen name="seller" />
+       
       </Stack>
       <StatusBar style="auto" />
     </GestureHandlerRootView>

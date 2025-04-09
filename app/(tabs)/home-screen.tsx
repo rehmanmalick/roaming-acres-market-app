@@ -275,7 +275,7 @@ const RoamingAcresMarket = () => {
               </TouchableOpacity>
             </View>
 
-            <View className="flex-row space-x-4">
+            <View className="flex-row justify-center item-center space-x-4">
               <TopSelling
                 source={require("../../assets/images/Top-selling-1.png")}
                 text="Oliver"

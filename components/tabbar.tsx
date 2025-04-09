@@ -1,17 +1,30 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 const TabBar = () => {
   const [activeTab, setActiveTab] = React.useState('Home');
+  const router = useRouter();
 
-  const tabs: { id: string; icon: 'home' | 'heart' | 'grid' | 'cart' | 'chatbubbles'; label: string }[] = [
-    { id: 'Home', icon: 'home', label: 'Home' },
-    { id: 'Wishlist', icon: 'heart', label: 'Wishlist' },
-    { id: 'Products', icon: 'grid', label: 'Products' },
-    { id: 'MyOrders', icon: 'cart', label: 'My Orders' },
-    { id: 'Message', icon: 'chatbubbles', label: 'Message' },
+  const tabs: { id: string; icon: 'home' | 'heart' | 'grid' | 'cart' | 'chatbubbles'; label: string; route: string }[] = [
+    { id: 'Home', icon: 'home', label: 'Home', route: '/home-screen' },
+    { id: 'Wishlist', icon: 'heart', label: 'Wishlist', route: '/wishlist' },
+    { id: 'Products', icon: 'grid', label: 'Products', route: '/top-selling-products' },
+    { id: 'MyOrders', icon: 'cart', label: 'My Orders', route: '/search' },
+    { id: 'Message', icon: 'chatbubbles', label: 'Message', route: '/chatting' },
   ];
+
+  const handleTabPress = (tabId: string, route: string) => {
+    setActiveTab(tabId);
+    router.push(route);
+    // Assuming you're using a navigation library like React Navigation
+    // Replace `navigateToRoute` with your actual navigation function
+    // Example: navigation.navigate(route);
+    // if (typeof window !== 'undefined') {
+    //   window.location.href = route; // For web-based navigation
+    // }
+  };
 
   return (
     <View style={styles.container}>
@@ -22,7 +35,7 @@ const TabBar = () => {
             styles.tab,
             activeTab === tab.id && { borderBottomWidth: 2, borderBottomColor: '#008080' } 
           ]}
-          onPress={() => setActiveTab(tab.id)}
+          onPress={() => handleTabPress(tab.id, tab.route)}
         >
           <Ionicons
             name={tab.icon}
