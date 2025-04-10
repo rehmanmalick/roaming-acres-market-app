@@ -2,16 +2,20 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-const ProfileHeader = () => {
+interface ProfileHeaderProps {
+  route?: string;
+}
+
+const ProfileHeader: React.FC<ProfileHeaderProps> = ({ route }) => {
   const router = useRouter();
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=> router.push('/(tabs)/buyer-account')}>
+      <TouchableOpacity onPress={() => router.push((route || '/(tabs)/buyer-account') as any)}>
         <Image
           source={require('../assets/images/profile.png')}
           style={styles.img}
-          />
-          </TouchableOpacity>
+        />
+      </TouchableOpacity>
           <View style={{flexDirection:'column', marginLeft: 10, justifyContent:'center', }}>
             <Text style={{fontSize: 24, fontWeight: 'bold',}}>Try Temp</Text>
             <Text style={{fontSize: 18,}}>Buyer Account</Text>

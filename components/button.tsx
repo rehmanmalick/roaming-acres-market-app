@@ -38,7 +38,7 @@ export default function Button({ state, onPress, title, iconName, showIcon ,icon
             marginRight: 8,
           }}
         >
-          <FontAwesome5 name={iconName} size={14} color={iconColor} />
+          <FontAwesome5 name={iconName} size={10} color={iconColor} />
         </View>
       )}
       <Text

@@ -7,7 +7,7 @@ const TabBar = () => {
   const [activeTab, setActiveTab] = React.useState('Home');
   const router = useRouter();
 
-  const tabs: { id: string; icon: 'home' | 'heart' | 'grid' | 'cart' | 'chatbubbles'; label: string; route: string }[] = [
+  const tabs: { id: string; icon: 'home' | 'heart' | 'grid' | 'cart' | 'chatbubbles'; label: string; route: '/home-screen' | '/wishlist' | '/top-selling-products' | '/search' | '/chatting' }[] = [
     { id: 'Home', icon: 'home', label: 'Home', route: '/home-screen' },
     { id: 'Wishlist', icon: 'heart', label: 'Wishlist', route: '/wishlist' },
     { id: 'Products', icon: 'grid', label: 'Products', route: '/top-selling-products' },
@@ -17,7 +17,7 @@ const TabBar = () => {
 
   const handleTabPress = (tabId: string, route: string) => {
     setActiveTab(tabId);
-    router.push(route);
+    router.push(route as any);
     // Assuming you're using a navigation library like React Navigation
     // Replace `navigateToRoute` with your actual navigation function
     // Example: navigation.navigate(route);
