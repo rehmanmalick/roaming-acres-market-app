@@ -27,8 +27,8 @@ export default function SelectYourAccount() {
             <Button
               state="secondary"
               title="Seller Account"
-              // onPress={() => router.push('/seller/welcome')}
-              onPress={() => router.push("/order-completed-detail")}
+              onPress={() => router.push('/seller/welcome')}
+              // onPress={() => router.push("/order-completed-detail")}
             />
           </View>
         </View>

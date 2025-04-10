@@ -21,7 +21,7 @@ const SignupScreen = () => {
   return (
     <>
       <SignupComponent
-        verificationPath={"/verificationcode"}
+        verificationPath={"/verification-code"}
         loginPath={"/login"}
       />
     </>

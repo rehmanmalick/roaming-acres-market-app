@@ -24,7 +24,9 @@ export default function SellerAccount() {
         <Button state="primary" title="Orders"/>
         <Button state="secondary" title="Inventory"/>
     </View>
-        <OrderCard directionButton={true}/>
+        <OrderCard status={"Pending"}/>
+        <OrderCard status={"Completed"}/>
+        <OrderCard status={"Cancelled"}/>
         
 
     </Wrapper>
