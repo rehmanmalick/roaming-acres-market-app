@@ -20,7 +20,7 @@ const LoginScreen = () => {
       <LoginComponent
         ResetpasswordPath={"/resetpassword"}
         buttonPath={"/home-screen"}
-        SigninPath={"/signup"}
+        SigninPath={"/(tabs)/signup"}
       />
     </>
   );
