@@ -17,7 +17,7 @@ export default function SellerAccount() {
         contentContainerStyle={{ paddingBottom: 20 }}
       >
     <Wrapper showBackButton={true}>
-    <ProfileHeader route="/(tabs)/seller/seller-account"/>
+    <ProfileHeader account="buyer" route="/(tabs)/seller/seller-account"/>
         
         <View style={{paddingTop:120}}>
             <TouchableOpacity onPress={()=> router.push('/(tabs)/profile')} className="flex flex-row justify-between items-center py-5 px-4 mb-4 mx-4 shadow-lg shadow-gray-500/15 bg-white rounded-lg">

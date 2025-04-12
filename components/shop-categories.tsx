@@ -25,17 +25,14 @@ export default function ShopCategory({
           <View
             style={{
               marginBottom: 5,
-              paddingVertical: 10,
-              paddingHorizontal: 10,
-              backgroundColor: "#E8ECF4",
               borderRadius: 15,
             }}
           >
             <Image
               source={source}
               style={{
-                height: 55,
-                width: 55,
+                height: 75,
+                width: 75,
                 alignSelf: "center",
               }}
               resizeMode="contain"
