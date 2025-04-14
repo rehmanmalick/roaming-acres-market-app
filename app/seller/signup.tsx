@@ -12,7 +12,7 @@ import {
   TextInput,
 } from "react-native";
 import { useRouter } from "expo-router";
-import SignupComponent from "../../../components/signup-component";
+import SignupComponent from "../../components/signup-component";
 
 const SignupScreen = () => {
   const router = useRouter();

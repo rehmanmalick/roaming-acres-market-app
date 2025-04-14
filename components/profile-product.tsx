@@ -17,7 +17,7 @@ const ProfileProduct = ({
   onAddToCart,
 }: ProfileProductProps) => {
   return (
-    <View className="bg-white p-2 rounded-xl">
+    <View className="bg-white  rounded-xl">
       <View className="rounded-xl overflow-hidden mb-2">
         <Image source={postImage} className="w-full h-24" resizeMode="cover" />
       </View>

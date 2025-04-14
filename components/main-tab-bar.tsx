@@ -5,7 +5,7 @@ import { useRouter } from 'expo-router';
 
 type TabIcon = 'home' | 'heart' | 'grid' | 'cart' | 'chatbubbles' | string;
 
-interface TabBarProps {
+interface MainTabBarProps {
   // IDs
   id1?: string;
   id2?: string;
@@ -35,7 +35,7 @@ interface TabBarProps {
   route5?: string;
 }
 
-const TabBar = ({
+const MainTabBar = ({
   // Default IDs
   id1 = '1',
   id2 = '2',
@@ -63,7 +63,7 @@ const TabBar = ({
   route3 = '/top-selling-products',
   route4 = '/search',
   route5 = '/chatting',
-}: TabBarProps) => {
+}: MainTabBarProps) => {
   const [activeTab, setActiveTab] = React.useState(id1);
   const router = useRouter();
 
@@ -136,4 +136,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TabBar;
+export default MainTabBar;

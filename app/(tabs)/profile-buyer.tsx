@@ -145,9 +145,9 @@ export default function EditProfile() {
             {activeTab === "Product" && (
               <View>
                 <Text className="text-lg font-bold mb-2">Product Section</Text>
-                <View className="flex flex-row flex-wrap justify-between px-1">
+                <View className="flex flex-row flex-wrap justify-between ">
                   {product.map((item) => (
-                    <View className="flex flex-row flex-wrap justify-between px-2">
+                    <View className="flex flex-row flex-wrap justify-between ">
                       {product.map((item) => (
                         <View key={item.id} className="w-[30%] m-[1.5%]">
                           <ProfileProduct

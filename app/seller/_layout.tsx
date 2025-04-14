@@ -3,6 +3,7 @@ import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 
+
 export default function TabLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -13,6 +14,7 @@ export default function TabLayout() {
       >
        
       </Stack>
+      
       <StatusBar style="auto" />
     </GestureHandlerRootView>
   );

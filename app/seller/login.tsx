@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import Wrapper from "@/components/wrapper";
-import LoginComponent from "../../../components/login-component";
+import LoginComponent from "../../components/login-component";
 
 const LoginScreen = () => {
   return (

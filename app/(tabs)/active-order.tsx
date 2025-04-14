@@ -27,14 +27,14 @@ export default function ActiveOrder() {
             <Text className="font-bold text-3xl">Active Order</Text>
           </View>
           
-          <View className='flex flex-row justify-between items-center mt-5 px-4'>
-            <WishlistComponent 
-              onPress={()=> router.push('/(tabs)/inventory-product-details')} 
-              showButton={false} 
-              iconName={"plus"} 
-              buttonText={"ADD TO CART"}
-            />
-          </View>
+           <View className="flex  mt-5 px-4 pb-6">
+                    <WishlistComponent
+                      onPress={() => router.push("/(tabs)/inventory-product-details")}
+                      showButton={false}
+                      iconName={"plus"}
+                      buttonText={"ADD TO CART"}
+                    />
+                  </View>
           
           <View className="border-b border-gray-300 mx-9 pb-6">
             <Text className="font-bold text-2xl my-4">Product Overview</Text>

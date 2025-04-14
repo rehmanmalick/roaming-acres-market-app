@@ -2,7 +2,7 @@ import NewArrival from "@/components/new-arrival-component";
 import ProfileHeader from "@/components/profile-header";
 import ShopByCategory from "@/components/shop-by-category";
 import ShopCategory from "@/components/shop-categories";
-import TabBar from "@/components/tabbar";
+
 import TopSelling from "@/components/top-selling";
 import TopSellingProductComponent from "@/components/top-selling-product-component";
 import Wrapper from "@/components/wrapper";
@@ -203,6 +203,7 @@ const SellerHomeScreen = () => {
             </View>
             <View className="flex flex-row mt-2">
               <Button
+
                 state="secondary"
                 title="ADD TO CART"
                 showIcon={true}
@@ -265,19 +266,7 @@ const SellerHomeScreen = () => {
         </Wrapper>
       </ScrollView>
 
-      <TabBar
-        route1="/seller/home-screen"
-        label2="Orders"
-        icon2="bag-check-sharp"
-        route2="/seller/favorites"
-        label3="Inventory"
-        icon3="add-circle"
-        route3="/seller/items"
-        label4="Earnings"
-        icon4="newspaper"
-        route4="/seller/register-your-business"
-        route5="/seller/conversations"
-      />
+      
     </>
   );
 };

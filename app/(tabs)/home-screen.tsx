@@ -2,7 +2,7 @@ import NewArrival from "@/components/new-arrival-component";
 import ProfileHeader from "@/components/profile-header";
 import ShopByCategory from "@/components/shop-by-category";
 import ShopCategory from "@/components/shop-categories";
-import TabBar from "@/components/tabbar";
+// import TabBar from "@/components/main-tab-bar";
 import TopSelling from "@/components/top-selling";
 import TopSellingProductComponent from "@/components/top-selling-product-component";
 import Wrapper from "@/components/wrapper";
@@ -315,7 +315,7 @@ const RoamingAcresMarket = () => {
         </Wrapper>
       </ScrollView>
 
-      <TabBar />
+      {/* <TabBar /> */}
     </>
   );
 };

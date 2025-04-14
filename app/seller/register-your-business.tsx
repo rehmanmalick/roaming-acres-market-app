@@ -13,7 +13,7 @@ import {
 import { useRouter } from "expo-router";
 
 import Wrapper from "@/components/wrapper";
-import CustomTextInput from "./../../../components/custom-input";
+import CustomTextInput from "../../components/custom-input";
 import Dropdown from "@/components/dropdown-component";
 
 // Define a type for your form data
