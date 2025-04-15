@@ -15,28 +15,46 @@ export default function BuyerOrders() {
         <View className="p-4">
           {/* Directly render PendingOrderInnerComponent */}
           <PendingOrderInnerComponent
-            order={{
-              id: "9865",
-              status: "Completed",
-              date: "14 Apr 2025",
-              amount: 59.99,
-              addressLine1: "-ABC 00000",
-              deliveryStatus: "Delivered",
-            }}
-            productDetails="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
-          />
+  order={{
+    id: "12345",
+    status: "Pending",
+    date: "Mar 02 2025",
+    amount: 59.99,
+    addressLine1: "123 Main St",
+    deliveryStatus: "Out for delivery",
+  }}
+  productDetails="2x Termite Gel, 1x Ant Spray"
+  itemCount={3}
+  progressSteps={[
+    { label: "Payment received", date: "Mar 02 2025", color: "#008080" },
+    { label: "Order placed", date: "Mar 02 2025", color: "#008080" },
+    { label: "Order confirmed", date: "Mar 02 2025", color: "#008080" },
+    { label: "Order shipped", date: "Mar 06 2025", color: "#008080" },
+    { label: "Out for delivery", date: "pending", color: "#008080" },
+    { label: "Order delivered", date: "pending", color: "#008080" },
+  ]}
+/>
+
           {/* You can add as many PendingOrderInnerComponent as you want here */}
           <PendingOrderInnerComponent
-            order={{
-              id: "9865",
-              status: "Completed",
-              date: "14 Apr 2025",
-              amount: 59.99,
-              addressLine1: "-ABC 00000",
-              deliveryStatus: "Delivered",
-            }}
-            productDetails="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
-          />
+  order={{
+    id: "12345",
+    status: "Pending",
+    date: "Mar 02 2025",
+    amount: 59.99,
+    addressLine1: "123 Main St",
+    deliveryStatus: "Out for delivery",
+  }}
+  productDetails="2x Termite Gel, 1x Ant Spray"
+  itemCount={3}
+  progressSteps={[
+    { label: "Order placed", date: "Mar 02 2025", color: "#008080" },
+    { label: "Order confirmed", date: "Mar 02 2025", color: "#008080" },
+    { label: "Order shipped", date: "Mar 06 2025", color: "#008080" },
+    { label: "Out for delivery", date: "pending", color: "#cccccc" },
+    { label: "Order delivered", date: "pending", color: "#cccccc" },
+  ]}
+/>
         </View>
       </Wrapper>
     </ScrollView>
