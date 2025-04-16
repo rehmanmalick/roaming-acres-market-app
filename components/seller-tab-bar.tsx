@@ -59,9 +59,9 @@ const SellerTabBar = ({
 
   // Default Routes
   route1 = "/seller/home-screen",
-  route2 = "/seller/wishlist",
+  route2 = "/seller/seller-orders",
   route3 = "/seller/seller-inventory",
-  route4 = "/seller/search",
+  route4 = "/seller/earning",
   route5 = "/seller/chatting",
 }: SellerTabBarProps) => {
   const [activeTab, setActiveTab] = React.useState(id1);

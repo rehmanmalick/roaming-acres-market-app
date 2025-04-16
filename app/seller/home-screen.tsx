@@ -224,13 +224,24 @@ const SellerHomeScreen = () => {
                 title="ADD A NEW"
                 showIcon={true}
                 iconName={"plus"}
-                onPress={() => router.push("/seller/new-product-uploading")}
+                onPress={() =>
+                  router.push({
+                    pathname: "/seller/new-product-uploading",
+                    params: { tab: "Add New Product" },
+                  })
+                }
               />
               <Button
                 state="secondary"
                 title="BULK UPLOAD"
                 showIcon={true}
                 iconName={"plus"}
+                onPress={() =>
+                  router.push({
+                    pathname: "/seller/new-product-uploading",
+                    params: { tab: "Bulk Upload Products" },
+                  })
+                }
               />
             </View>
             <View className="py-4">
