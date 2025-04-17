@@ -90,7 +90,7 @@ export default function BuyerOrders() {
           <View className="flex-row justify-end items-center pb-3">
             <TouchableOpacity
               className="bg-white  "
-              onPress={() => router.push("/seller/earning")}
+              onPress={() => router.push("/seller/view-product")}
             >
               <Text className="text-primary text-[#8B8B8B] font-semibold">
                 View All

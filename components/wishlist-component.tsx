@@ -6,6 +6,7 @@ interface WishlistComponentProps {
   buttonText: string;
   onPress?: () => void;
   showButton?: boolean;
+  showHeartIcon?: boolean; // <-- New prop added
 }
 
 export default function WishlistComponent({
@@ -13,16 +14,16 @@ export default function WishlistComponent({
   buttonText,
   onPress,
   showButton = true,
+  showHeartIcon = true, // <-- Default true
 }: WishlistComponentProps) {
   return (
-    <View
-      // style={{ width: 160 }}
-      className=" rounded-lg shadow-sm bg-white  "
-    >
+    <View className="rounded-lg shadow-sm bg-white">
       <View className="w-full p-4 relative items-center justify-center">
-        <View style={[styles.iconContainer]}>
-          <Ionicons name="heart-outline" size={20} color={"#008080"} />
-        </View>
+        {showHeartIcon && ( // <-- Conditional rendering
+          <View style={[styles.iconContainer]}>
+            <Ionicons name="heart-outline" size={20} color={"#008080"} />
+          </View>
+        )}
         <View>
           <Image
             source={require("../assets/images/top-selling.png")}
@@ -33,7 +34,7 @@ export default function WishlistComponent({
       </View>
 
       <View className="p-3">
-        <Text className="text-[16px] font-bold ">
+        <Text className="text-[16px] font-bold">
           Roaming Acres Limited Acres Gold
         </Text>
 
@@ -52,10 +53,10 @@ export default function WishlistComponent({
             onPress={onPress}
             className="bg-teal-600 py-2 px-2 rounded-md justify-center items-center mb-2 flex-row"
           >
-            <View className="bg-white  p-2 rounded-[100%]">
+            <View className="bg-white p-2 rounded-[100%]">
               <FontAwesome5 name={iconName} size={14} color="#008080" />
             </View>
-            <Text className="text-white text-center px-2  text-[14px] font-medium">
+            <Text className="text-white text-center px-2 text-[14px] font-medium">
               {buttonText}
             </Text>
           </TouchableOpacity>

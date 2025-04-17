@@ -22,7 +22,11 @@ export default function SellerAccount() {
         <ProfileHeader route="/(tabs)/seller/seller-account" />
         <View className="flex pt-9 flex-row">
           <Button state="primary" title="Orders" />
-          <Button state="secondary" title="Inventory" onPress={() => router.push("/seller/seller-inventory")}  />
+          <Button
+            state="secondary"
+            title="Inventory"
+            onPress={() => router.push("/seller/seller-inventory")}
+          />
         </View>
         <View className="flex p-4 mx-3 mt-6 rounded-xl  bg-[#008080]">
           <View className="flex flex-row justify-between">
@@ -49,7 +53,7 @@ export default function SellerAccount() {
           <View className="flex-row justify-between items-center pb-3">
             <Text className="text-xl font-bold">All Orders</Text>
             <TouchableOpacity
-              onPress={() => router.push("/(tabs)/top-sellers")}
+              onPress={() => router.push("/seller/pending-order-view-details")}
               className="bg-white py-1 "
             >
               <Text className="text-primary text-[#8B8B8B]">VIEW ALL</Text>

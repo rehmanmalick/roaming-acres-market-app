@@ -36,10 +36,8 @@ export default function WishList() {
     >
       <Wrapper showFilterButton={true} showBackButton={true}>
         <ProfileHeader />
-        <View className="items-center justify-center mt-9">
-          <Text className="font-bold text-3xl">My Wish</Text>
-        </View>
-        <View className="flex  mt-5 px-4 pb-6">
+
+        <View className="flex  mt-8 px-4 pb-6">
           <WishlistComponent
             onPress={() => router.push("/(tabs)/inventory-product-details")}
             showButton={false}
@@ -90,6 +88,7 @@ export default function WishList() {
             name="Oliver Jake"
             showButton={true}
             buttonText="Connect With Seller "
+            onViewProfile={() => router.push("/(tabs)/chatting")}
           />
         </View>
         <View className="mx-4 pb-6">

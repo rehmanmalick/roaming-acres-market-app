@@ -31,14 +31,13 @@ export default function WelcomeComponent({
         <Text className="text-yellow-400 text-[30px] font-bold">
           Roaming Acres Market
         </Text>
-
-        <Text className="text-white text-[18px] mt-56 font-normal">
-          Make easy farming with fast delivery at your door.
-        </Text>
       </View>
 
       {/* email and phone btn */}
       <View className="absolute bottom-56 w-full">
+        <Text className="text-white text-[18px] mb-8 font-normal">
+          Make easy farming with fast delivery at your door.
+        </Text>
         {/* email btn */}
         <TouchableOpacity
           className="border border-white bg-[#fefefe4b] py-3 rounded-[3px] items-center mb-4"
@@ -50,9 +49,7 @@ export default function WelcomeComponent({
         <View className="flex-row justify-center mt-4">
           <Text className="text-white">Already have an Account?</Text>
           <TouchableOpacity onPress={onSignInPress}>
-            <Text className="text-white underline font-bold ml-1">
-              Sign In
-            </Text>
+            <Text className="text-white underline font-bold ml-1">Sign In</Text>
           </TouchableOpacity>
         </View>
       </View>

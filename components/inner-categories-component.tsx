@@ -21,11 +21,13 @@ export default function InnerCategoriesComponent({
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image
-          source={require("../assets/images/eggs.png")}
-          style={styles.image}
-          resizeMode="contain"
-        />
+        <TouchableOpacity onPress={handlePress}>
+          <Image
+            source={require("../assets/images/eggs.png")}
+            style={styles.image}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
       </View>
 
       <Text style={styles.price}>${price.toFixed(2)}</Text>

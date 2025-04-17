@@ -45,7 +45,7 @@ const ChattingComponent = () => {
   ]);
 
   const [newMessage, setNewMessage] = useState<string>("");
-  const [currentUser, setCurrentUser] = useState<"1" | "2">("2");
+  const [currentUser, setCurrentUser] = useState<"1" | "2">("1");
   const flatListRef = useRef<RNFlatList<MessageType>>(null);
   const router = useRouter();
 

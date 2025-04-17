@@ -68,7 +68,7 @@ export default function BuyerOrders() {
                 amount={4500}
                 timeRequired="15mins"
                 onPress={() =>
-                  router.push("/seller/pending-order-inner-screen")
+                  router.push("/seller/order-received-notification")
                 }
                 testID="pending-order-standard"
                 accessibilityLabel="Standard pending order"
@@ -78,7 +78,7 @@ export default function BuyerOrders() {
                 amount={125000}
                 timeRequired="45mins"
                 onPress={() =>
-                  router.push("/seller/pending-order-inner-screen")
+                  router.push("/seller/order-received-notification")
                 }
                 testID="pending-order-large"
                 accessibilityLabel="Large amount pending order"
@@ -88,7 +88,7 @@ export default function BuyerOrders() {
                 amount={1200}
                 timeRequired="5mins"
                 onPress={() =>
-                  router.push("/seller/pending-order-inner-screen")
+                  router.push("/seller/order-received-notification")
                 }
                 testID="pending-order-quick"
                 accessibilityLabel="Quick delivery pending order"
@@ -98,7 +98,7 @@ export default function BuyerOrders() {
                 amount={1}
                 timeRequired="1min"
                 onPress={() =>
-                  router.push("/seller/pending-order-inner-screen")
+                  router.push("/seller/order-received-notification")
                 }
                 testID="pending-order-min"
                 accessibilityLabel="Minimum values pending order"
@@ -108,7 +108,7 @@ export default function BuyerOrders() {
                 amount={7890}
                 timeRequired="30mins"
                 onPress={() =>
-                  router.push("/seller/pending-order-inner-screen")
+                  router.push("/seller/order-received-notification")
                 }
                 testID="pending-order-long-id"
                 accessibilityLabel="Long order ID pending order"

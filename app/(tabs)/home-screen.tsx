@@ -1,15 +1,4 @@
-import NewArrival from "@/components/new-arrival-component";
-import ProfileHeader from "@/components/profile-header";
-import ShopByCategory from "@/components/shop-by-category";
-import ShopCategory from "@/components/shop-categories";
-// import TabBar from "@/components/main-tab-bar";
-import TopSelling from "@/components/top-selling";
-import TopSellingProductComponent from "@/components/top-selling-product-component";
-import Wrapper from "@/components/wrapper";
-import Button from "@/components/button";
-import { FontAwesome6, Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -20,31 +9,38 @@ import {
   Platform,
 } from "react-native";
 import MapView from "react-native-maps";
+import { useRouter, useLocalSearchParams } from "expo-router";
+import { FontAwesome6, Ionicons } from "@expo/vector-icons";
+
+import Wrapper from "@/components/wrapper";
+import ProfileHeader from "@/components/profile-header";
+import ShopCategory from "@/components/shop-categories";
+import NewArrival from "@/components/new-arrival-component";
+import TopSelling from "@/components/top-selling";
+import TopSellingProductComponent from "@/components/top-selling-product-component";
+import Button from "@/components/button";
 
 const RoamingAcresMarket = () => {
   const router = useRouter();
-  const [showLocationModal, setShowLocationModal] = useState(true);
+  const { showLocationModal: showModalParam } = useLocalSearchParams();
+
+  const [showLocationModal, setShowLocationModal] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check for saved location preference
-    // const savedLocation = await AsyncStorage.getItem('userLocation');
-    // if (savedLocation) {
-    //   setSelectedLocation(savedLocation);
-    //   setShowLocationModal(false);
-    // }
-  }, []);
+    if (showModalParam === "true") {
+      setShowLocationModal(true);
+    }
+  }, [showModalParam]);
 
   const handleConfirmLocation = () => {
-    // Save location preference
-    // await AsyncStorage.setItem('userLocation', selectedLocation);
     setShowLocationModal(false);
   };
 
   const LocationModal = () => (
     <Modal
       visible={showLocationModal}
-      transparent={true}
+      transparent
       animationType="slide"
       onRequestClose={() => setShowLocationModal(false)}
     >
@@ -54,7 +50,7 @@ const RoamingAcresMarket = () => {
           style={{ maxHeight: "80%" }}
         >
           <View className="flex-row justify-between items-center mb-4">
-            <Text className="text-xl font-bold">Select Delivery Location</Text>
+            <Text className="text-xl font-bold">Select Your Location</Text>
             <TouchableOpacity
               onPress={() => setShowLocationModal(false)}
               className="p-2"
@@ -211,12 +207,13 @@ const RoamingAcresMarket = () => {
             </View>
           </View>
 
+          {/* --- Categories --- */}
           <View className="mt-6 px-3">
             <View className="flex-row justify-between items-center pb-3">
               <Text className="text-xl font-bold">Categories</Text>
               <TouchableOpacity
                 onPress={() => router.push("/categories")}
-                className="bg-white py-1 px-3 "
+                className="bg-white py-1 px-3"
               >
                 <Text className="text-primary text-[#8B8B8B]">See All</Text>
               </TouchableOpacity>
@@ -246,6 +243,7 @@ const RoamingAcresMarket = () => {
             </View>
           </View>
 
+          {/* --- New Arrivals --- */}
           <View className="mt-8 px-3">
             <View className="flex-row justify-between items-center pb-3">
               <Text className="text-xl font-bold">New Arrivals</Text>
@@ -256,7 +254,6 @@ const RoamingAcresMarket = () => {
                 <Text className="text-primary text-[#8B8B8B]">See All</Text>
               </TouchableOpacity>
             </View>
-
             <View className="flex-row item-center justify-between space-x-6 ">
               <NewArrival price={50} />
               <NewArrival price={50} />
@@ -264,6 +261,7 @@ const RoamingAcresMarket = () => {
             </View>
           </View>
 
+          {/* --- Top Sellers --- */}
           <View className="mt-8 px-3">
             <View className="flex-row justify-between items-center pb-3">
               <Text className="text-xl font-bold">Top Sellers</Text>
@@ -274,27 +272,27 @@ const RoamingAcresMarket = () => {
                 <Text className="text-primary text-[#8B8B8B]">See All</Text>
               </TouchableOpacity>
             </View>
-
             <View className="flex-row justify-center item-center space-x-4">
               <TopSelling
-                source={require("../../assets/images/Top-selling-1.png")}
+                source={require("@/assets/images/Top-selling-1.png")}
                 text="Oliver"
               />
               <TopSelling
-                source={require("../../assets/images/Top-selling-2.png")}
+                source={require("@/assets/images/Top-selling-2.png")}
                 text="Jack"
               />
               <TopSelling
-                source={require("../../assets/images/Top-selling-3.png")}
+                source={require("@/assets/images/Top-selling-3.png")}
                 text="Jacob"
               />
               <TopSelling
-                source={require("../../assets/images/Top-selling-4.png")}
+                source={require("@/assets/images/Top-selling-4.png")}
                 text="Charlie"
               />
             </View>
           </View>
 
+          {/* --- Top-Selling Products --- */}
           <View className="mt-8 px-3">
             <View className="flex-row justify-between items-center pb-3">
               <Text className="text-xl font-bold">Top-Selling Products</Text>
@@ -305,7 +303,6 @@ const RoamingAcresMarket = () => {
                 <Text className="text-primary text-[#8B8B8B]">See All</Text>
               </TouchableOpacity>
             </View>
-
             <View className="flex-row space-x-4">
               <TopSellingProductComponent />
               <TopSellingProductComponent />
@@ -314,8 +311,6 @@ const RoamingAcresMarket = () => {
           </View>
         </Wrapper>
       </ScrollView>
-
-      {/* <TabBar /> */}
     </>
   );
 };

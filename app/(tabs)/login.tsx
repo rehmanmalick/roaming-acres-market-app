@@ -19,7 +19,10 @@ const LoginScreen = () => {
     <>
       <LoginComponent
         ResetpasswordPath={"/resetpassword"}
-        buttonPath={"/home-screen"}
+        buttonPath={{
+          pathname: "/home-screen",
+          params: { showLocationModal: "true" },
+        }}
         SigninPath={"/(tabs)/signup"}
       />
     </>

@@ -40,7 +40,7 @@ const PendingOrderInnerComponent: React.FC<PendingOrderInnerComponentProps> = ({
   progressSteps,
 }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const spinValue = useRef(new Animated.Value(0)).current;
+  const spinValue = useRef(new Animated.Value(1)).current;
 
   const spin = spinValue.interpolate({
     inputRange: [0, 1],
@@ -48,9 +48,10 @@ const PendingOrderInnerComponent: React.FC<PendingOrderInnerComponentProps> = ({
   });
 
   const toggleDetails = () => {
-    setIsExpanded((prev) => !prev);
+    const newValue = isExpanded ? 0 : 1;
+    setIsExpanded(!isExpanded);
     Animated.timing(spinValue, {
-      toValue: isExpanded ? 0 : 1,
+      toValue: newValue,
       duration: 300,
       easing: Easing.linear,
       useNativeDriver: true,
@@ -88,11 +89,14 @@ const PendingOrderInnerComponent: React.FC<PendingOrderInnerComponentProps> = ({
         </View>
         <View className="flex items-center justify-center">
           <TouchableOpacity
-            onPress={toggleDetails}
+            // onPress={toggleDetails}
             className="flex-row items-center justify-center"
             activeOpacity={0.7}
           >
-            <Animated.View style={{ transform: [{ rotate: spin }] }}>
+            <Animated.View
+              // style={{ transform: [{ rotate: spin }] }}
+              style={{ transform: [{ rotate: "-90deg" }] }}
+            >
               <MaterialCommunityIcons
                 name="arrow-down-drop-circle-outline"
                 size={26}
@@ -103,7 +107,7 @@ const PendingOrderInnerComponent: React.FC<PendingOrderInnerComponentProps> = ({
         </View>
       </View>
 
-      {isExpanded && (
+      {/* {isExpanded && (
         <View className="mt-3 pt-3 border-t border-gray-100">
           <Text className="font-medium text-gray-800 mb-2">
             Product Order Details
@@ -139,7 +143,7 @@ const PendingOrderInnerComponent: React.FC<PendingOrderInnerComponentProps> = ({
             ))}
           </View>
         </View>
-      )}
+      )} */}
     </View>
   );
 };

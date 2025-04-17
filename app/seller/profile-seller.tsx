@@ -6,6 +6,7 @@ import {
   Image,
   ImageBackground,
   ScrollView,
+  Pressable,
   ImageSourcePropType,
 } from "react-native";
 import {
@@ -104,11 +105,9 @@ export default function EditProfile() {
         >
           <TouchableOpacity
             onPress={() => router.back()}
-            className="absolute top-6 left-4 z-10"
+            className="absolute left-5 top-2 bg-white p-3 rounded-md mt-5"
           >
-            <View className="w-9 h-9 bg-white rounded-xl mt-3 justify-center items-center">
-              <Ionicons name="chevron-back-outline" size={16} color="black" />
-            </View>
+            <Ionicons name="chevron-back-outline" size={16} color="black" />
           </TouchableOpacity>
           <View className="items-center">
             <Image
@@ -122,16 +121,31 @@ export default function EditProfile() {
             <Text className="text-sm text-gray-500">00+ Active Listings</Text>
           </View>
         </ImageBackground>
-
-        <View className="flex flex-row justify-center items-center mt-10">
-          <Button
-            state="primary"
-            title="Message"
-            onPress={() => router.push("/seller/chatting")}
-          />
+        <View className="px-4 flex flex-row justify-center items-center mt-10">
+          <Pressable
+            onPress={() => router.push("/seller/select-uploading")}
+            className="bg-[#008080] px-6 py-3 rounded-md flex-1 flex-row justify-center items-center mr-2"
+          >
+            <Text className="text-white text-center font-semibold">Add</Text>
+            <Ionicons
+              name="add-outline"
+              size={18}
+              color="white"
+              className="pl-2"
+            />
+          </Pressable>
+          <Pressable
+            onPress={() => router.push("/(tabs)/profile")}
+            className="bg-[#008080] px-6 py-3 rounded-md flex-1 flex-row justify-center items-center mr-2"
+          >
+            <Text className="text-white text-center font-semibold">
+              Edit Profile
+            </Text>
+          </Pressable>
         </View>
+
         <View className="px-4 py-6 w-full bg-white  mx-4 my-2">
-          <Text className="text-xl font-semibold mb-4">About Seller</Text>
+          <Text className="text-xl font-semibold mb-4">About Me</Text>
 
           <View className="flex-row items-center mb-3">
             <Entypo name="location-pin" size={18} color="#4B5563" />
@@ -190,7 +204,7 @@ export default function EditProfile() {
           <View className="p-2">
             {activeTab === "Product" && (
               <View>
-                <Text className="text-lg font-bold mb-2">Product Listing</Text>
+                <Text className="text-lg font-bold mb-2">Product Section</Text>
                 <View className="flex flex-row flex-wrap justify-between ">
                   {product.map((item) => (
                     <View className="flex flex-row flex-wrap justify-between ">
@@ -201,9 +215,6 @@ export default function EditProfile() {
                             price={item.price}
                             caption="Lorem ipsum is simply dummy text printing and typesetting."
                             postImage={require("../../assets/images/post-chicken.png")}
-                            OnPress={() =>
-                              router.push("/(tabs)/inventory-product-details")
-                            }
                           />
                         </View>
                       ))}
@@ -222,7 +233,7 @@ export default function EditProfile() {
                     profileImage={profileImage}
                     name={item.name}
                     time={item.subText}
-                    caption="Lorem ipsum is simply dummy text printing and typesetting."
+                    caption="Lorem Ipsum is simply dummy text printing and typesetting. Lorem Ipsum is simply dummy text printing  Lorem Ipsum is simply dummy text printing "
                     postImage={postImage}
                   />
                 ))}

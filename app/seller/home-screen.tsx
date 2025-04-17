@@ -42,7 +42,7 @@ const SellerHomeScreen = () => {
           showMenuButton={true}
           menuLink="/seller/seller-account"
         >
-          <ProfileHeader account="Seller" route="/seller/seller-account" />
+          <ProfileHeader account="Seller" route="/seller/profile-seller" />
           <View className="mt-8 px-3">
             <View className="flex-row justify-between ">
               <View>
@@ -163,9 +163,7 @@ const SellerHomeScreen = () => {
                 <Text className="text-2xl font-extrabold">Orders</Text>
                 <TouchableOpacity
                   className="bg-white py-1 "
-                  onPress={() =>
-                    router.push("/seller/pending-order-view-details")
-                  }
+                  onPress={() => router.push("/seller/seller-orders")}
                 >
                   <Text className="text-primary text-[#8B8B8B] font-semibold">
                     View All
@@ -245,7 +243,11 @@ const SellerHomeScreen = () => {
               />
             </View>
             <View className="py-4">
-              <Button state="secondary" title="VIEW ALL" />
+              <Button
+                state="secondary"
+                title="VIEW ALL"
+                onPress={() => router.push("/seller/view-product")}
+              />
             </View>
 
             {/* earnings */}

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { router, useRouter } from "expo-router";
 
 interface TopSellersComponentProps {
   name: string;
@@ -25,6 +26,12 @@ const TopSellersComponent = ({
   buttonText,
   showtotalProduct,
 }: TopSellersComponentProps) => {
+  const router = useRouter();
+  const defaultOnPress = () => {
+    router.push("/(tabs)/profile-buyer");
+  };
+  const handlePress = onViewProfile || defaultOnPress;
+
   return (
     <View className="flex-row items-center bg-white rounded-lg p-3 my-2">
       <View className="w-12 h-12 rounded-full bg-teal-50 justify-center items-center mr-3">
@@ -60,7 +67,7 @@ const TopSellersComponent = ({
       </View>
 
       {showButton && (
-        <TouchableOpacity className="rounded" onPress={onViewProfile}>
+        <TouchableOpacity className="rounded" onPress={handlePress}>
           <Text
             style={{
               backgroundColor: "#008080",
