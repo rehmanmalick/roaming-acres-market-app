@@ -77,3 +77,21 @@ export default function RootLayout() {
     </ThemeProvider>
   );
 }
+
+
+//import { Text } from "react-native";
+// import "../global.css";
+// import Wrapper from "@/components/common/wrapper";
+// export default function App() {
+//   return (
+//     <Wrapper>
+//       {/* Safe Area Content */}
+//       <Text className="text-lg font-semibold text-gray-800">
+//         Your content starts here
+//       </Text>
+//       <Text className="text-gray-600 mt-2">
+//         This content is padded and safe on all devices.
+//       </Text>
+//     </Wrapper>
+//   );
+// }
