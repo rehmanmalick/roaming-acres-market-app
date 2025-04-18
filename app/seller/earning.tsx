@@ -36,7 +36,7 @@ export default function BuyerOrders() {
       contentContainerStyle={{ paddingBottom: 20 }}
     >
       <Wrapper showFilterButton={true} showMenuButton={true}>
-        <ProfileHeader />
+        <ProfileHeader account="Seller" route="/seller/profile-seller" />
         <View className="p-4  flex-row justify-between items-center">
           <View className="mt-4 relative  w-[40%]">
             <Text className="text-xl  font-bold">All Earnings</Text>

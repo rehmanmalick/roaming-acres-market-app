@@ -30,8 +30,8 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           justifyContent: "center",
         }}
       >
-        <Text style={{ fontSize: 24, fontWeight: "bold" }}>Try Temp</Text>
-        <Text style={{ fontSize: 18 }}>{account} Account</Text>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Try Temp</Text>
+        <Text style={{ fontSize: 14 }}>{account} Account</Text>
       </View>
     </View>
   );
@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 26,
-    paddingVertical: 12,
+    paddingVertical: 18,
     alignSelf: "center",
     position: "absolute",
   },
   img: {
-    width: 90,
-    height: 90,
+    width: 80,
+    height: 80,
     borderRadius: 45,
     borderWidth: 7,
     borderColor: "#ffffff",

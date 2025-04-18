@@ -26,12 +26,14 @@ const HIDE_TAB_BAR_ROUTES = [
   "/resetpassword",
   "/verification-code",
   "/verify-code",
+  "/chatting",
   "/seller/login",
   "/seller/signup",
   "/seller/welcome",
   "/seller/reset-password",
   "/seller/verification-code",
   "/seller/verify-code",
+  "/seller/chatting",
 ];
 
 SplashScreen.preventAutoHideAsync();

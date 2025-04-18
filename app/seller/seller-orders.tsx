@@ -19,7 +19,7 @@ export default function SellerAccount() {
       contentContainerStyle={{ paddingBottom: 20 }}
     >
       <Wrapper showBackButton={true}>
-        <ProfileHeader route="/(tabs)/seller/seller-account" />
+        <ProfileHeader account="Seller" route="/seller/profile-seller" />
         <View className="flex pt-9 flex-row">
           <Button state="primary" title="Orders" />
           <Button

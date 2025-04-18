@@ -35,7 +35,7 @@ export default function BuyerOrders() {
       contentContainerStyle={{ paddingBottom: 20 }}
     >
       <Wrapper showFilterButton={true} showMenuButton={true}>
-        <ProfileHeader />
+        <ProfileHeader account="Seller" route="/seller/profile-seller" />
         <View className="p-4" style={{ width: "100%" }}></View>
 
         <View className="bg-white py-2 flex-1 flex-row justify-between px-7 items-center">

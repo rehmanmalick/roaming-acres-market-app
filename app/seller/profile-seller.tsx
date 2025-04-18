@@ -105,9 +105,11 @@ export default function EditProfile() {
         >
           <TouchableOpacity
             onPress={() => router.back()}
-            className="absolute left-5 top-2 bg-white p-3 rounded-md mt-5"
+            className="absolute top-6 left-4 z-10"
           >
-            <Ionicons name="chevron-back-outline" size={16} color="black" />
+            <View className="w-9 h-9 bg-white rounded-xl mt-7 justify-center items-center">
+              <Ionicons name="chevron-back-outline" size={16} color="black" />
+            </View>
           </TouchableOpacity>
           <View className="items-center">
             <Image

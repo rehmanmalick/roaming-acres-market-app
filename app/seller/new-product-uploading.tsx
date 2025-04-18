@@ -17,17 +17,16 @@ const TAB_NAMES = ["Add New Product", "Bulk Upload Products"];
 
 const ProductUploadScreen = () => {
   const { tab } = useLocalSearchParams();
- 
 
-   const [activeTab, setActiveTab] = useState("Add New Product");
-  
-    useEffect(() => {
-      if (tab === "Bulk Upload Products") {
-        setActiveTab("Bulk Upload Products");
-      } else {
-        setActiveTab("Add New Product");
-      }
-    }, [tab]);
+  const [activeTab, setActiveTab] = useState("Add New Product");
+
+  useEffect(() => {
+    if (tab === "Bulk Upload Products") {
+      setActiveTab("Bulk Upload Products");
+    } else {
+      setActiveTab("Add New Product");
+    }
+  }, [tab]);
   return (
     <ScrollView
       className="bg-white"
@@ -37,7 +36,7 @@ const ProductUploadScreen = () => {
       }}
     >
       <Wrapper>
-        <ProfileHeader />
+        <ProfileHeader account="Seller" route="/seller/profile-seller" />
         <View className="px-3 py-8">
           {/* Tabs */}
           <View className="flex-row justify-between mb-4">

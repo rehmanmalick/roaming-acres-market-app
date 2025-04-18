@@ -379,7 +379,7 @@ const Wrapper: React.FC<{
           }
           className="absolute top-6 left-4 z-10"
         >
-          <View className="w-9 h-9 bg-white rounded-xl mt-3 justify-center items-center">
+          <View className="w-9 h-9 bg-white rounded-xl mt-7 shadow-sm justify-center items-center">
             <Ionicons
               name={showBackButton ? "chevron-back-outline" : "menu"}
               size={16}
@@ -393,7 +393,7 @@ const Wrapper: React.FC<{
         {showFilterButton && (
           <TouchableOpacity
             onPress={() => setModalState("filter")}
-            className="w-9 h-9 bg-white mt-3 rounded-xl justify-center items-center"
+            className="w-9 h-9 bg-white mt-7 shadow-sm  rounded-xl justify-center items-center"
           >
             <Ionicons name="options" size={16} color="#000" />
           </TouchableOpacity>
@@ -401,7 +401,7 @@ const Wrapper: React.FC<{
         {showPeriodButton && (
           <TouchableOpacity
             onPress={() => setModalState("period")}
-            className="w-9 h-9 bg-white mt-3 rounded-xl justify-center items-center"
+            className="w-9 h-9 bg-white mt-7 shadow-sm  rounded-xl justify-center items-center"
           >
             <Ionicons name="options" size={16} color="#000" />
           </TouchableOpacity>
@@ -409,8 +409,9 @@ const Wrapper: React.FC<{
       </View>
 
       <Image
-        className="w-full"
+        className="w-full mt-[-5px]"
         source={require("../assets/images/wrapper-top.png")}
+        resizeMode="contain"
       />
 
       {children}
