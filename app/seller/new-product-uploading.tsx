@@ -32,10 +32,10 @@ const ProductUploadScreen = () => {
       className="bg-white"
       bounces={false}
       contentContainerStyle={{
-        paddingBottom: Platform.OS === "ios" ? 100 : 80,
+        paddingBottom: Platform.OS === "ios" ? 0 : 0,
       }}
     >
-      <Wrapper>
+      <Wrapper showBackButton={true}>
         <ProfileHeader account="Seller" route="/seller/profile-seller" />
         <View className="px-3 py-8">
           {/* Tabs */}

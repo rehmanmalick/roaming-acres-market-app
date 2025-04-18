@@ -21,7 +21,7 @@ import ProfileProduct from "@/components/profile-product";
 import { useRouter } from "expo-router";
 
 export default function EditProfile() {
-  const [activeTab, setActiveTab] = useState("Post");
+  const [activeTab, setActiveTab] = useState("Posts");
   const router = useRouter();
 
   const profileImage: ImageSourcePropType = require("../../assets/images/profile.png");
@@ -168,7 +168,7 @@ export default function EditProfile() {
 
         <View className="bg-white mt-4 w-full">
           <View className="bg-white py-2 flex flex-row justify-between px-7 items-center">
-            {["Post", "Product"].map((status, index) => (
+            {["Posts", "Products"].map((status, index) => (
               <TouchableOpacity
                 key={index}
                 onPress={() => setActiveTab(status)}
@@ -188,7 +188,7 @@ export default function EditProfile() {
           </View>
 
           <View className="p-2">
-            {activeTab === "Product" && (
+            {activeTab === "Products" && (
               <View>
                 <Text className="text-lg font-bold mb-2">Product Listing</Text>
                 <View className="flex flex-row flex-wrap justify-between ">
@@ -213,7 +213,7 @@ export default function EditProfile() {
               </View>
             )}
 
-            {activeTab === "Post" && (
+            {activeTab === "Posts" && (
               <View>
                 <Text className="text-lg font-bold mb-2">Post Section</Text>
                 {post.map((item) => (

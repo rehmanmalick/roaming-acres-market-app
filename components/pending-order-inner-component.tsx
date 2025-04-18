@@ -1,5 +1,6 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { router } from "expo-router";
 import React, { useState, useRef } from "react";
 import {
   View,
@@ -60,52 +61,57 @@ const PendingOrderInnerComponent: React.FC<PendingOrderInnerComponentProps> = ({
 
   return (
     <View className="p-4 bg-white mt-4 rounded-lg shadow-md">
-      <View className="flex-row justify-between items-center">
-        <View className="flex flex-row">
-          <View className="w-20 h-20 rounded-full flex justify-center items-center bg-[#A1DDDD] mr-3">
-            <Image
-              source={require("../assets/images/box.png")}
-              resizeMode="cover"
-            />
-          </View>
-          <View>
-            <Text className="text-xl font-bold">Order ID #{order.id}</Text>
-            <Text className="text-bold text-[#868889]">
-              Placed on {order.date}
-            </Text>
-            <View className="flex flex-row gap-2 mt-1">
-              <View className="flex flex-row items-center justify-center">
-                <Text>Items: </Text>
-                <Text className="text-base font-semibold">{itemCount}</Text>
-              </View>
-              <View className="flex flex-row">
-                <Text>Amount: </Text>
-                <Text className="text-base font-semibold">
-                  ${order.amount.toFixed(2)}
-                </Text>
+      <TouchableOpacity
+        className="p-2"
+        onPress={() => router.push("/seller/order-completed-detail")}
+      >
+        <View className="flex-row justify-between items-center">
+          <View className="flex flex-row">
+            <View className="w-20 h-20 rounded-full flex justify-center items-center bg-[#A1DDDD] mr-3">
+              <Image
+                source={require("../assets/images/box.png")}
+                resizeMode="cover"
+              />
+            </View>
+            <View>
+              <Text className="text-xl font-bold">Order ID #{order.id}</Text>
+              <Text className="text-bold text-[#868889]">
+                Placed on {order.date}
+              </Text>
+              <View className="flex flex-row gap-2 mt-1">
+                <View className="flex flex-row items-center justify-center">
+                  <Text>Items: </Text>
+                  <Text className="text-base font-semibold">{itemCount}</Text>
+                </View>
+                <View className="flex flex-row">
+                  <Text>Amount: </Text>
+                  <Text className="text-base font-semibold">
+                    ${order.amount.toFixed(2)}
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
-        </View>
-        <View className="flex items-center justify-center">
-          <TouchableOpacity
-            // onPress={toggleDetails}
-            className="flex-row items-center justify-center"
-            activeOpacity={0.7}
-          >
-            <Animated.View
-              // style={{ transform: [{ rotate: spin }] }}
-              style={{ transform: [{ rotate: "-90deg" }] }}
+          <View className="flex items-center justify-center">
+            <TouchableOpacity
+              // onPress={toggleDetails}
+              className="flex-row items-center justify-center"
+              activeOpacity={0.7}
             >
-              <MaterialCommunityIcons
-                name="arrow-down-drop-circle-outline"
-                size={26}
-                color="#008080"
-              />
-            </Animated.View>
-          </TouchableOpacity>
+              <Animated.View
+                // style={{ transform: [{ rotate: spin }] }}
+                style={{ transform: [{ rotate: "-90deg" }] }}
+              >
+                <MaterialCommunityIcons
+                  name="arrow-down-drop-circle-outline"
+                  size={26}
+                  color="#008080"
+                />
+              </Animated.View>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
 
       {/* {isExpanded && (
         <View className="mt-3 pt-3 border-t border-gray-100">

@@ -15,7 +15,11 @@ import Dropdown from "@/components/dropdown-component";
 import Button from "@/components/button";
 import { router } from "expo-router";
 import { useRouter } from "expo-router";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import {
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 
 export default function BuyerOrders() {
   const router = useRouter();
@@ -40,6 +44,7 @@ export default function BuyerOrders() {
         <Wrapper showBackButton={true}>
           <View className="flex-1 p-4">
             {/* Directly render PendingOrderInnerComponent */}
+
             <PendingOrderInnerComponent
               order={{
                 id: "12345",
@@ -77,9 +82,14 @@ export default function BuyerOrders() {
                   date: "pending",
                   color: "#cccccc",
                 },
-                { label: "Order delivered", date: "pending", color: "#cccccc" },
+                {
+                  label: "Order delivered",
+                  date: "pending",
+                  color: "#cccccc",
+                },
               ]}
             />
+
             <View className="mt-6">
               <Dropdown
                 label="Pickup Location"
@@ -102,18 +112,22 @@ export default function BuyerOrders() {
                 <Text className="text-base font-semibold">Try Temp</Text>
                 <Text className="text-sm text-gray-500">Buyer Account</Text>
               </View>
-              <Pressable className="p-2">
-                <MaterialIcons
-                  name="chat-bubble-outline"
+
+              <TouchableOpacity
+                onPress={() => router.push("/seller/chatting")}
+                className="p-2"
+              >
+                <MaterialCommunityIcons
+                  name="message-text-outline"
                   size={24}
                   color="#26837c"
                 />
-              </Pressable>
+              </TouchableOpacity>
             </View>
           </View>
           <View className="flex-row items-center mt-16">
             <Button
-              title="Ready to Deliver"
+              title="READY TO DELIVER"
               state="primary"
               onPress={handleUpload}
             />

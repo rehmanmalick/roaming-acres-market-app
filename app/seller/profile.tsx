@@ -89,7 +89,7 @@ export default function EditProfile() {
           </View>
 
           <TouchableOpacity
-            onPress={() => router.push("/home-screen")}
+            onPress={() => router.push("/seller/home-screen")}
             className="mt-8 bg-teal-600 py-3 px-20 rounded-full "
           >
             <Text className="text-white text-xl font-bold">Save</Text>

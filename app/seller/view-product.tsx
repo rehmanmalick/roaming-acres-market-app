@@ -18,8 +18,8 @@ export default function ViewProduct() {
       bounces={false}
       contentContainerStyle={{ paddingBottom: 20 }}
     >
-      <Wrapper showFilterButton={true} showMenuButton={true}>
-        <ProfileHeader />
+      <Wrapper showBackButton={true}>
+        <ProfileHeader account="Seller" route="/seller/profile-seller" />
 
         <View className="p-4">
           {/* Product listing card */}

@@ -8,7 +8,7 @@ export default function SelectYourAccount() {
   return (
     <>
       <Wrapper>
-        <View className="flex flew-col flex-1 items-center justify-center gap-5 ">
+        <View className="flex flew-col px-4 flex-1 items-center justify-center gap-5 ">
           <View className="mb-16">
             <Text className="text-start w-full text-[36.41px] font-normal mb-4 max-w-80">
               Select Your Account{" "}

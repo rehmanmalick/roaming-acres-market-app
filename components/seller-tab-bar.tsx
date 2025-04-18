@@ -33,51 +33,60 @@ interface SellerTabBarProps {
   route3?: string;
   route4?: string;
   route5?: string;
+
+  // Optional Params
+  params1?: object;
+  params2?: object;
+  params3?: object;
+  params4?: object;
+  params5?: object;
 }
 
 const SellerTabBar = ({
-  // Default IDs
   id1 = "1",
   id2 = "2",
   id3 = "3",
   id4 = "4",
   id5 = "5",
-
-  // Default Icons
   icon1 = "home",
   icon2 = "bag-check-sharp",
   icon3 = "add-circle",
   icon4 = "newspaper",
   icon5 = "chatbubbles",
-
-  // Default Labels
   label1 = "Home",
   label2 = "Orders",
   label3 = "Inventory",
   label4 = "Earnings",
   label5 = "Message",
-
-  // Default Routes
   route1 = "/seller/home-screen",
   route2 = "/seller/seller-orders",
   route3 = "/seller/seller-inventory",
   route4 = "/seller/earning",
-  route5 = "/seller/chatting",
+  route5 = "/seller/notification",
+  params1,
+  params2,
+  params3,
+  params4,
+  params5,
 }: SellerTabBarProps) => {
   const [activeTab, setActiveTab] = React.useState(id1);
   const router = useRouter();
 
   const tabs = [
-    { id: id1, icon: icon1, label: label1, route: route1 },
-    { id: id2, icon: icon2, label: label2, route: route2 },
-    { id: id3, icon: icon3, label: label3, route: route3 },
-    { id: id4, icon: icon4, label: label4, route: route4 },
-    { id: id5, icon: icon5, label: label5, route: route5 },
+    { id: id1, icon: icon1, label: label1, route: route1, params: params1 },
+    { id: id2, icon: icon2, label: label2, route: route2, params: params2 },
+    { id: id3, icon: icon3, label: label3, route: route3, params: params3 },
+    { id: id4, icon: icon4, label: label4, route: route4, params: params4 },
+    { id: id5, icon: icon5, label: label5, route: route5, params: params5 },
   ];
 
-  const handleTabPress = (tabId: string, route: string) => {
+  const handleTabPress = (tabId: string, route: string, params?: object) => {
     setActiveTab(tabId);
-    router.push(route as any);
+    if (params) {
+      router.push({ pathname: route, params });
+    } else {
+      router.push(route as any);
+    }
   };
 
   return (
@@ -92,7 +101,7 @@ const SellerTabBar = ({
               borderBottomColor: "#008080",
             },
           ]}
-          onPress={() => handleTabPress(tab.id, tab.route)}
+          onPress={() => handleTabPress(tab.id, tab.route, tab.params)}
         >
           <Ionicons
             name={tab.icon as any}

@@ -15,13 +15,8 @@ import Message from "../../components/chat-message";
 import Wrapper from "@/components/wrapper";
 import ChattingComponent from "@/components/chatting-component";
 
-
 const ChatScreen = () => {
-
-
-  return (
-    <ChattingComponent/>
-    );
+  return <ChattingComponent />;
 };
 
 export default ChatScreen;

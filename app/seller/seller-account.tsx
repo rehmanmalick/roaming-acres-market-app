@@ -28,7 +28,7 @@ export default function SellerAccount() {
 
           <View style={{ paddingTop: 120 }}>
             <TouchableOpacity
-              onPress={() => router.push("/(tabs)/profile")}
+              onPress={() => router.push("/seller/profile")}
               className="flex flex-row justify-between items-center py-5 px-4 mb-4 mx-4 shadow-lg shadow-gray-500/15 bg-white rounded-lg"
             >
               <Text className="text-base font-semibold text-gray-800">
@@ -84,7 +84,10 @@ export default function SellerAccount() {
               />
             </TouchableOpacity>
 
-            <TouchableOpacity className="flex flex-row justify-between items-center py-5 px-4 mb-4 mx-4 shadow-lg shadow-gray-500/15 bg-white rounded-lg">
+            <TouchableOpacity
+              onPress={() => router.push("/(tabs)/notification-setting")}
+              className="flex flex-row justify-between items-center py-5 px-4 mb-4 mx-4 shadow-lg shadow-gray-500/15 bg-white rounded-lg"
+            >
               <Text className="text-base font-semibold text-gray-800">
                 Setting
               </Text>
@@ -160,7 +163,7 @@ export default function SellerAccount() {
               <Button
                 state="primary"
                 title="LOGOUT"
-                onPress={() => router.push("../welcome")}
+                onPress={() => router.push("/")}
               />
               <Button
                 state="secondary"
@@ -195,7 +198,7 @@ export default function SellerAccount() {
                 onPress={() => {
                   // Add delete logic here
                   setDeleteAccountModalVisible(false);
-                  router.push("../welcome");
+                  router.push("/");
                 }}
               />
               <Button

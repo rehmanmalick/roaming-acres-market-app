@@ -4,6 +4,7 @@ import {
   Ionicons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+import { router } from "expo-router";
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
@@ -27,7 +28,10 @@ const MessageComponent = ({
   active,
 }: MessageComponentProps) => {
   return (
-    <TouchableOpacity className="flex-row bg-white rounded-lg p-2 my-2">
+    <TouchableOpacity
+      onPress={() => router.push("/seller/chatting")}
+      className="flex-row bg-white rounded-lg p-2 my-2"
+    >
       <View style={{ position: "relative" }}>
         <Image
           source={source}

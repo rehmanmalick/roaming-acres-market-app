@@ -35,7 +35,7 @@ export default function BuyerOrders() {
         subText: "Daily Egg Supply",
         price: 250,
         buttonText: "TRACK ORDER",
-        onPress: () => router.push("/active-order"),
+        onPress: () => router.push("/order-recived"),
       },
       {
         id: 2,
@@ -43,7 +43,7 @@ export default function BuyerOrders() {
         subText: "Broiler Batch",
         price: 180,
         buttonText: "TRACK ORDER",
-        onPress: () => router.push("/active-order"),
+        onPress: () => router.push("/order-recived"),
       },
       {
         id: 3,
@@ -51,7 +51,7 @@ export default function BuyerOrders() {
         subText: "20 Chicks Order",
         price: 320,
         buttonText: "TRACK ORDER",
-        onPress: () => router.push("/active-order"),
+        onPress: () => router.push("/order-recived"),
       },
       {
         id: 4,
@@ -59,7 +59,7 @@ export default function BuyerOrders() {
         subText: "Layer Birds",
         price: 500,
         buttonText: "TRACK ORDER",
-        onPress: () => router.push("/active-order"),
+        onPress: () => router.push("/order-recived"),
       },
       {
         id: 5,
@@ -67,7 +67,7 @@ export default function BuyerOrders() {
         subText: "Egg Cartons Bulk",
         price: 420,
         buttonText: "TRACK ORDER",
-        onPress: () => router.push("/active-order"),
+        onPress: () => router.push("/order-recived"),
       },
     ],
     Completed: [
@@ -118,15 +118,15 @@ export default function BuyerOrders() {
         name: "Cancelled Order #1",
         subText: "Refund processed",
         price: 200,
-        buttonText: "ORDER AGAIN",
-        onPress: () => console.log("Order again"),
+        buttonText: "RE-ORDER",
+        onPress: () => router.push("/re-order"),
       },
       {
         id: 12,
         name: "Cancelled Order #2",
         subText: "Refunded",
         price: 180,
-        buttonText: "ORDER AGAIN",
+        buttonText: "RE-ORDER",
         onPress: () => console.log("Order again"),
       },
       {
@@ -134,7 +134,7 @@ export default function BuyerOrders() {
         name: "Missed Delivery",
         subText: "Auto-cancelled",
         price: 250,
-        buttonText: "ORDER AGAIN",
+        buttonText: "RE-ORDER",
         onPress: () => console.log("Order again"),
       },
       {
@@ -142,7 +142,7 @@ export default function BuyerOrders() {
         name: "Wrong Address",
         subText: "Cancelled by user",
         price: 260,
-        buttonText: "ORDER AGAIN",
+        buttonText: "RE-ORDER",
         onPress: () => console.log("Order again"),
       },
       {
@@ -150,7 +150,7 @@ export default function BuyerOrders() {
         name: "No Contact",
         subText: "Couldn’t reach buyer",
         price: 220,
-        buttonText: "ORDER AGAIN",
+        buttonText: "RE-ORDER",
         onPress: () => console.log("Order again"),
       },
       {
@@ -158,7 +158,7 @@ export default function BuyerOrders() {
         name: "Late Payment",
         subText: "System cancelled",
         price: 310,
-        buttonText: "ORDER AGAIN",
+        buttonText: "RE-ORDER",
         onPress: () => console.log("Order again"),
       },
     ],

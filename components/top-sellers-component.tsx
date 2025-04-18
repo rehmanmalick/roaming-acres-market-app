@@ -36,11 +36,15 @@ const TopSellersComponent = ({
     <View className="flex-row items-center bg-white rounded-lg p-3 my-2">
       <View className="w-12 h-12 rounded-full bg-teal-50 justify-center items-center mr-3">
         <View className="bg-[#ECE8E8] p-2 rounded-full">
-          <Image
-            source={source}
-            style={{ height: 60, width: 60 }}
-            resizeMode="contain"
-          />
+          <TouchableOpacity
+            onPress={() => router.push("/(tabs)/profile-buyer")}
+          >
+            <Image
+              source={source}
+              style={{ height: 60, width: 60 }}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
         </View>
       </View>
 

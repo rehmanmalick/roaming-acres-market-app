@@ -411,7 +411,7 @@ const Wrapper: React.FC<{
       <Image
         className="w-full mt-[-5px]"
         source={require("../assets/images/wrapper-top.png")}
-        resizeMode="contain"
+        resizeMode="cover"
       />
 
       {children}

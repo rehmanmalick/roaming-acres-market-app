@@ -34,7 +34,7 @@ export default function BuyerOrders() {
       bounces={false}
       contentContainerStyle={{ paddingBottom: 20 }}
     >
-      <Wrapper showFilterButton={true} showMenuButton={true}>
+      <Wrapper showBackButton={true}>
         <ProfileHeader account="Seller" route="/seller/profile-seller" />
         <View className="p-4" style={{ width: "100%" }}></View>
 

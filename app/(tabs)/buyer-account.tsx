@@ -54,7 +54,8 @@ const AccordionItem = ({
 export default function BuyerAccount() {
   const router = useRouter();
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
-  const [deleteAccountModalVisible, setDeleteAccountModalVisible] = useState(false);
+  const [deleteAccountModalVisible, setDeleteAccountModalVisible] =
+    useState(false);
 
   return (
     <>
@@ -123,7 +124,10 @@ export default function BuyerAccount() {
                 }}
               />
             </TouchableOpacity>
-            <TouchableOpacity className="flex flex-row justify-between items-center py-5 px-4 mb-4 mx-4 shadow-lg shadow-gray-500/15 bg-white rounded-lg">
+            <TouchableOpacity
+              onPress={() => router.push("/notification-setting")}
+              className="flex flex-row justify-between items-center py-5 px-4 mb-4 mx-4 shadow-lg shadow-gray-500/15 bg-white rounded-lg"
+            >
               <Text className="text-base font-semibold text-gray-800">
                 Setting
               </Text>
@@ -156,7 +160,7 @@ export default function BuyerAccount() {
                 }}
               />
             </TouchableOpacity>
-            <TouchableOpacity 
+            <TouchableOpacity
               onPress={() => setDeleteAccountModalVisible(true)}
               className="flex flex-row justify-between items-center py-5 px-4 mb-4 mx-4 shadow-lg shadow-gray-500/15 bg-white rounded-lg"
             >
@@ -199,7 +203,7 @@ export default function BuyerAccount() {
               <Button
                 state="primary"
                 title="LOGOUT"
-                onPress={() => router.push("../welcome")}
+                onPress={() => router.push("/")}
               />
               <Button
                 state="secondary"
@@ -226,7 +230,8 @@ export default function BuyerAccount() {
               Are you sure you want to delete your account?
             </Text>
             <Text className="text-gray-600 mb-12 text-center">
-              This action is permanent and cannot be undone. All your data will be lost.
+              This action is permanent and cannot be undone. All your data will
+              be lost.
             </Text>
             <View className="flex flex-row justify-center items-center space-x-4">
               <Button
@@ -235,7 +240,7 @@ export default function BuyerAccount() {
                 onPress={() => {
                   // Add your delete account logic here
                   setDeleteAccountModalVisible(false);
-                  router.push("../welcome");
+                  router.push("/");
                 }}
               />
               <Button

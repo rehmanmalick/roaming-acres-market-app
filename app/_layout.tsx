@@ -72,14 +72,17 @@ export default function RootLayout() {
 
         {/* Show tab bars on all routes EXCEPT the specified ones */}
         {!shouldHideTabBar &&
-          (pathname?.startsWith("/seller") ? <SellerTabBar /> : <MainTabBar />)}
+          (pathname?.startsWith("/seller") ? (
+            <SellerTabBar params5={{ tab: "Messages" }} />
+          ) : (
+            <MainTabBar params5={{ tab: "Messages" }} />
+          ))}
 
         <StatusBar style="auto" />
       </View>
     </ThemeProvider>
   );
 }
-
 
 //import { Text } from "react-native";
 // import "../global.css";

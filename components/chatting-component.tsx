@@ -7,6 +7,10 @@ import {
   Text,
   Image,
   FlatList as RNFlatList,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
@@ -82,70 +86,77 @@ const ChattingComponent = () => {
   };
 
   return (
-    <Wrapper>
-      <View className="flex-1 p-3 pb-6 bg-white">
-        {/* Header */}
-        <View className="flex-row items-center p-2 pb-6 border-b border-[#E26D08] mt-[-30]">
-          <Image
-            source={
-              currentUser === "1"
-                ? require("@/assets/images/profile.png")
-                : require("@/assets/images/profile.png")
-            }
-            className="w-16 h-16 rounded-full mr-2"
-          />
-          <View className="flex-1">
-            <Text className="font-semibold text-base">
-              Chat as {currentUser === "1" ? "You" : "Expert"}
-            </Text>
-            <Text className="text-xs text-blue-500">Online Now</Text>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      style={{ flex: 1 }}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0} // Adjust this offset as needed
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Wrapper>
+          <View className="flex-1 p-3 pb-6 bg-white">
+            {/* Header */}
+            <View className="flex-row items-center p-2 pb-6 border-b border-[#E26D08] mt-[-30]">
+              <Image
+                source={
+                  currentUser === "1"
+                    ? require("@/assets/images/profile.png")
+                    : require("@/assets/images/profile.png")
+                }
+                className="w-16 h-16 rounded-full mr-2"
+              />
+              <View className="flex-1">
+                <Text className="font-semibold text-base">
+                  Chat as {currentUser === "1" ? "You" : "Expert"}
+                </Text>
+              </View>
+              {/* Back Button */}
+              <TouchableOpacity
+                className="bg-white rounded-[6px] shadow-lg p-1"
+                onPress={() => router.back()}
+              >
+                <Entypo name="cross" size={24} color="black" />
+              </TouchableOpacity>
+            </View>
+
+            {/* Messages */}
+            <FlatList
+              ref={flatListRef}
+              data={messages}
+              keyExtractor={(item) => item.id}
+              renderItem={renderMessage}
+              contentContainerStyle={{
+                justifyContent: "flex-end",
+                paddingVertical: 12,
+              }}
+              onContentSizeChange={() =>
+                flatListRef.current?.scrollToEnd({ animated: true })
+              }
+              showsVerticalScrollIndicator={false}
+            />
+
+            {/* Input Box */}
+            <View className="flex-row items-center p-3 rounded-[10px] bg-[#F0F5FA]">
+              <TextInput
+                value={newMessage}
+                onChangeText={setNewMessage}
+                placeholder={`Message as ${
+                  currentUser === "1" ? "You" : "Expert"
+                }...`}
+                placeholderTextColor="#9ca3af"
+                className="flex-1 px-4 py-2 text-gray-900 mr-2"
+              />
+              <TouchableOpacity
+                onPress={handleSend}
+                disabled={!newMessage.trim()}
+                className={`p-2 mr-4 rounded-full bg-white`}
+              >
+                <Feather name="send" size={24} color="#FF7622" />
+              </TouchableOpacity>
+            </View>
           </View>
-          {/* Back Button */}
-          <TouchableOpacity
-            className="bg-white rounded-[6px] shadow-lg p-1"
-            onPress={() => router.back()}
-          >
-            <Entypo name="cross" size={24} color="black" />
-          </TouchableOpacity>
-        </View>
-
-        {/* Messages */}
-        <FlatList
-          ref={flatListRef}
-          data={messages}
-          keyExtractor={(item) => item.id}
-          renderItem={renderMessage}
-          contentContainerStyle={{
-            justifyContent: "flex-end",
-            paddingVertical: 12,
-          }}
-          onContentSizeChange={() =>
-            flatListRef.current?.scrollToEnd({ animated: true })
-          }
-          showsVerticalScrollIndicator={false}
-        />
-
-        {/* Input Box */}
-        <View className="flex-row items-center p-3 rounded-[10px] bg-[#F0F5FA]">
-          <TextInput
-            value={newMessage}
-            onChangeText={setNewMessage}
-            placeholder={`Message as ${
-              currentUser === "1" ? "You" : "Expert"
-            }...`}
-            placeholderTextColor="#9ca3af"
-            className="flex-1 px-4 py-2 text-gray-900 mr-2"
-          />
-          <TouchableOpacity
-            onPress={handleSend}
-            disabled={!newMessage.trim()}
-            className={`p-2 mr-4 rounded-full bg-white`}
-          >
-            <Feather name="send" size={24} color="#FF7622" />
-          </TouchableOpacity>
-        </View>
-      </View>
-    </Wrapper>
+        </Wrapper>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 

@@ -30,10 +30,20 @@ export default function ActiveOrder() {
         bounces={false}
         contentContainerStyle={{ paddingBottom: 20 }}
       >
-        <Wrapper showFilterButton={true} showBackButton={true}>
-          <ProfileHeader />
+        <Wrapper showBackButton={true}>
+          <ProfileHeader account="Seller" route="/seller/profile-seller" />
           <View className="items-center justify-center mt-9 pb-4 mx-6 border-b border-[#E26D08]">
             <Text className="font-bold text-3xl ">Reviews</Text>
+          </View>
+
+          <View className="flex  mt-5 px-4 pb-6">
+            <WishlistComponent
+              onPress={() => router.push("/(tabs)/inventory-product-details")}
+              showButton={false}
+              iconName={"plus"}
+              showHeartIcon={false}
+              buttonText={"ADD TO CART"}
+            />
           </View>
 
           <View className="border-b border-[#BCBCBC] mx-6 pb-6">
