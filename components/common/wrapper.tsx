@@ -20,7 +20,7 @@ interface IWrapper {
  */
 const Wrapper:FC<IWrapper> = ({ children }) => {
   return (
-    <SafeAreaView className="flex-1 px-6">
+    <SafeAreaView className="flex-1 px-6 bg-white">
       {/* Top Image absolutely positioned */}
       <Image
         source={require("../../assets/images/wrapper-top.png")}

@@ -1,12 +1,6 @@
-import { FontAwesome5, Ionicons } from "@expo/vector-icons";
-import {
-  Image,
-  StyleSheet,
-  Platform,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { Text, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
 
 interface ButtonProps {
   state: "primary" | "secondary" | "disable";
@@ -17,6 +11,7 @@ interface ButtonProps {
   iconBackground?: string;
   iconColor?: string;
   style?: object;
+  showIcon?: boolean;
 }
 
 export default function Button({
@@ -27,86 +22,68 @@ export default function Button({
   showIcon,
   iconBackground,
   iconColor,
-}: ButtonProps & { showIcon?: boolean }) {
-  const buttonStyle =
-    state === "primary"
-      ? styles.primaryButton
-      : state === "secondary"
-      ? styles.secondaryButton
-      : styles.disableButton;
+}: ButtonProps) {
+  const [isPressed, setIsPressed] = useState(false);
+
+  const getButtonClasses = () => {
+    if (state === "primary") {
+      return isPressed
+        ? "bg-white border border-teal-800"
+        : "bg-teal-700 border border-teal-700";
+    } else if (state === "secondary") {
+      return isPressed
+        ? "bg-teal-100 border border-teal-700"
+        : "bg-white border border-teal-700";
+    } else if (state === "disable") {
+      return "bg-gray-400";
+    }
+    return "";
+  };
+
+  const getTextClasses = () => {
+    if (state === "primary") {
+      return isPressed
+        ? "text-teal-800 font-bold text-[16px]"
+        : "text-white font-bold text-[16px]";
+    } else if (state === "secondary") {
+      return isPressed
+        ? "text-teal-700 font-bold text-[16px]"
+        : "text-black font-bold text-[16px]";
+    } else if (state === "disable") {
+      return "text-white font-bold text-[16px]";
+    }
+    return "";
+  };
+
+  const getIconColor = () => {
+    if (state === "primary") {
+      return isPressed ? "#E0E0E0" : iconColor || "#FFFFFF"; 
+    } else if (state === "secondary") {
+      return isPressed ? "#0F766E" : iconColor || "#000000"; 
+    } else if (state === "disable") {
+      return "#FFFFFF";
+    }
+    return iconColor || "#000000";
+  };
 
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.button, buttonStyle]}
       disabled={state === "disable"}
+      activeOpacity={1}
+      onPressIn={() => setIsPressed(true)}
+      onPressOut={() => setIsPressed(false)}
+      className={`rounded-md py-3 px-4 flex-row items-center justify-center ${getButtonClasses()}`}
     >
       {showIcon && iconName && (
         <View
-          style={{
-            backgroundColor: iconBackground,
-            padding: 2,
-            borderRadius: 50,
-            marginRight: 8,
-          }}
+          className="p-1 rounded-full mr-2"
+          style={{ backgroundColor: iconBackground }}
         >
-          <FontAwesome5 name={iconName} size={10} color={iconColor} />
+          <FontAwesome5 name={iconName} size={10} color={getIconColor()} />
         </View>
       )}
-      <Text
-        style={[
-          state === "primary"
-            ? styles.primaryText
-            : state === "secondary"
-            ? styles.secondaryText
-            : state === "disable"
-            ? styles.disableText
-            : {},
-        ]}
-      >
-        {title}
-      </Text>
+      <Text className={getTextClasses()}>{title}</Text>
     </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  button: {
-    borderRadius: 3,
-    paddingVertical: 14,
-    paddingHorizontal: 15,
-    alignItems: "center",
-    marginHorizontal: 10,
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  primaryButton: {
-    backgroundColor: "#008080",
-    borderWidth: 1,
-    borderColor: "#008080",
-  },
-  secondaryButton: {
-    backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderColor: "#008080",
-  },
-  primaryText: {
-    color: "#ffffff",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  secondaryText: {
-    color: "#000000",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  disableButton: {
-    backgroundColor: "#B5B5B5",
-  },
-  disableText: {
-    fontWeight: "bold",
-    color: "#ffffff",
-    fontSize: 16,
-  },
-});
