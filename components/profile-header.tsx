@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 
 interface ProfileHeaderProps {
   route?: string;
@@ -14,46 +14,23 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   const router = useRouter();
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => router.push((route || "/(tabs)/buyer-account") as any)}
-      >
-        <Image
-          source={require("../assets/images/profile.png")}
-          style={styles.img}
-        />
-      </TouchableOpacity>
-      <View
-        style={{
-          flexDirection: "column",
-          marginLeft: 10,
-          justifyContent: "center",
-        }}
-      >
-        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Try Temp</Text>
-        <Text style={{ fontSize: 14 }}>{account} Account</Text>
+    <View className="relative flex items-center ml-4  justify-center mb-12">
+      <View className="flex-row justify-center absolute top-0 ">
+        <TouchableOpacity
+          onPress={() => router.push((route || "/(tabs)/buyer-account") as any)}
+        >
+          <Image
+            source={require("../assets/images/profile.png")}
+            className="w-20 h-20 rounded-full border-[7px] border-white"
+          />
+        </TouchableOpacity>
+        <View className="flex-col justify-center ml-2.5">
+          <Text className="text-xl font-bold">Try Temp</Text>
+          <Text className="text-md text-[#9796A1]">{account} Account</Text>
+        </View>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 26,
-    paddingVertical: 18,
-    alignSelf: "center",
-    position: "absolute",
-  },
-  img: {
-    width: 80,
-    height: 80,
-    borderRadius: 45,
-    borderWidth: 7,
-    borderColor: "#ffffff",
-  },
-});
 
 export default ProfileHeader;

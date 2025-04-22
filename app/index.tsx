@@ -9,35 +9,34 @@ export default function SelectYourAccount() {
     <>
       <Wrapper>
         <View className="flex flex-col flex-1 justify-start ">
-       
-            <View className="mt-[60%]">
-            <Text className="text-start w-full text-5xl font-normal mb-4 max-w-80">
+          <View className="mt-[60%]">
+            <Text className="text-start w-full text-5xl font-medium mb-4 max-w-80">
               Select Your Account{" "}
             </Text>
-            <Text className="text-[#737373] text-lg">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
+            <Text className="text-[#737373] text-xl font-medium ">
+              Lorem Ipsum is simply dummy text of the printing and typesettin
               industry.
             </Text>
-            </View>
-         
+          </View>
+
           <View className="flex flex-row justify-between items-center  mt-[20%] gap-5 ">
             <View className="flex-1">
-            <Button
-              state="primary"
-              title="Buyer Account"
-              onPress={() => router.push("../welcome")}
-            />
+              <Button
+                state="primary"
+                title="Buyer Account"
+                onPress={() => router.push("../welcome")}
+              />
             </View>
             <View className="flex-1">
-            <Button
-              state="primary"
-              title="Seller Account"
-              onPress={() => router.push("/seller/welcome")}
-              // onPress={() => router.push("/order-completed-detail")}
-            />
+              <Button
+                state="primary"
+                title="Seller Account"
+                onPress={() => router.push("/(seller)/home")}
+                // onPress={() => router.push("/seller/welcome")}
+                // onPress={() => router.push("/order-completed-detail")}
+              />
             </View>
           </View>
-         
         </View>
       </Wrapper>
     </>

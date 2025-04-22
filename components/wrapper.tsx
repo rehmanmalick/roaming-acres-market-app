@@ -8,6 +8,7 @@ import {
   Modal,
   ScrollView,
   Image,
+  SafeAreaView,
 } from "react-native";
 import Button from "./button";
 
@@ -369,7 +370,7 @@ const Wrapper: React.FC<{
   );
 
   return (
-    <View className="flex-1 bg-white">
+    <SafeAreaView className="flex-1 px-6 bg-white">
       {(showBackButton || showMenuButton) && (
         <TouchableOpacity
           onPress={() =>
@@ -409,16 +410,16 @@ const Wrapper: React.FC<{
       </View>
 
       <Image
-        className="w-full mt-[-5px]"
         source={require("../assets/images/wrapper-top.png")}
         resizeMode="cover"
+        className="w-screen absolute top-0 right-0"
       />
 
       {children}
 
       <FilterModal />
       <PeriodModal />
-    </View>
+    </SafeAreaView>
   );
 };
 

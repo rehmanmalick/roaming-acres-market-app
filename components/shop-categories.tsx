@@ -31,8 +31,8 @@ export default function ShopCategory({
             <Image
               source={source}
               style={{
-                height: 75,
-                width: 75,
+                height: 65,
+                width: 65,
                 alignSelf: "center",
               }}
               resizeMode="contain"

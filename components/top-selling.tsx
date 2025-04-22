@@ -26,7 +26,7 @@ export default function TopSelling({ text, source, onPress }: TopSellingProps) {
           <View className="bg-[#ECE8E8] p-2 rounded-full">
             <Image
               source={source}
-              style={{ height: 60, width: 60 }}
+              style={{ height: 55, width: 55 }}
               resizeMode="contain"
             />
           </View>

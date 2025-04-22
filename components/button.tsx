@@ -28,8 +28,8 @@ export default function Button({
   const getButtonClasses = () => {
     if (state === "primary") {
       return isPressed
-        ? "bg-white border border-teal-800"
-        : "bg-teal-700 border border-teal-700";
+        ? "bg-white border border-[#008080]"
+        : "bg-[#008080] border border-[#008080]";
     } else if (state === "secondary") {
       return isPressed
         ? "bg-teal-100 border border-teal-700"
@@ -43,8 +43,8 @@ export default function Button({
   const getTextClasses = () => {
     if (state === "primary") {
       return isPressed
-        ? "text-teal-800 font-bold text-[16px]"
-        : "text-white font-bold text-[16px]";
+        ? "text-[#008080] font-bold text-xl"
+        : "text-white font-bold text-xl";
     } else if (state === "secondary") {
       return isPressed
         ? "text-teal-700 font-bold text-[16px]"
@@ -57,9 +57,9 @@ export default function Button({
 
   const getIconColor = () => {
     if (state === "primary") {
-      return isPressed ? "#E0E0E0" : iconColor || "#FFFFFF"; 
+      return isPressed ? "#E0E0E0" : iconColor || "#FFFFFF";
     } else if (state === "secondary") {
-      return isPressed ? "#0F766E" : iconColor || "#000000"; 
+      return isPressed ? "#0F766E" : iconColor || "#000000";
     } else if (state === "disable") {
       return "#FFFFFF";
     }

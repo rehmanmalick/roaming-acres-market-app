@@ -46,10 +46,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 0,
-    paddingHorizontal: 10,
+    // paddingHorizontal: 10,
     backgroundColor: "#fff",
     borderRadius: 7,
-    width: "30%",
+    width: "25%",
   },
   price: {
     fontSize: 12,

@@ -25,36 +25,37 @@ export default function WelcomeComponent({
           <Text className="text-green-600 font-bold">Skip</Text>
         </TouchableOpacity>
       </View>
-      
+
       <View className="flex flex-1 justify-around">
-
-      <View className="">
-        <Text className="text-white text-5xl font-bold">Welcome to</Text>
-        <Text className="text-yellow-400 text-3xl font-bold">
-          Roaming Acres Market
-        </Text>
-      </View>
-
-      {/* email and phone btn */}
-      <View className="">
-        <Text className="text-white text-lg font-normal">
-          Make easy farming with fast delivery at your door.
-        </Text>
-        {/* email btn */}
-        <TouchableOpacity
-          className="border border-white bg-[#fefefe4b] py-3 mt-8  rounded-[3px] items-center "
-          onPress={onEmailPress}
-        >
-          <Text className="text-white">Start with Email</Text>
-        </TouchableOpacity>
-
-        <View className="flex-row justify-center mt-8">
-          <Text className="text-white">Already have an Account?</Text>
-          <TouchableOpacity onPress={onSignInPress}>
-            <Text className="text-white underline font-bold ml-1">Sign In</Text>
-          </TouchableOpacity>
+        <View className="">
+          <Text className="text-white text-5xl font-bold">Welcome to</Text>
+          <Text className="text-yellow-400 text-3xl font-bold">
+            Roaming Acres Market
+          </Text>
         </View>
-      </View>
+
+        {/* email and phone btn */}
+        <View className="">
+          <Text className="text-white text-xl font-normal">
+            Make easy farming with fast delivery at your door.
+          </Text>
+          {/* email btn */}
+          <TouchableOpacity
+            className="border border-white bg-[#fefefe4b] py-3 mt-[20%]   rounded-[3px] items-center "
+            onPress={onEmailPress}
+          >
+            <Text className="text-white text-lg">Start with Email</Text>
+          </TouchableOpacity>
+
+          <View className="flex-row justify-center mt-[10%] ">
+            <Text className="text-white text-lg">Already have an Account?</Text>
+            <TouchableOpacity onPress={onSignInPress}>
+              <Text className="text-white text-lg underline font-bold ml-1">
+                Sign In
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </ImageBackground>
   );

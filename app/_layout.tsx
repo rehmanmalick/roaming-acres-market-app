@@ -37,8 +37,6 @@ export default function RootLayout() {
     PoppinsRegular: require("../assets/fonts/Poppins-Regular.ttf"),
   });
 
-
-
   useEffect(() => {
     if (loaded) SplashScreen.hideAsync();
   }, [loaded]);
@@ -46,24 +44,18 @@ export default function RootLayout() {
   if (!loaded) return null;
 
   return (
+    <View style={{ flex: 1 }}>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="(buyer)" options={{ headerShown: false }} />
+        <Stack.Screen name="(seller)" options={{ headerShown: false }} />
+        <Stack.Screen name="+not-found" />
+      </Stack>
 
-      <View style={{ flex: 1 }}>
-        <Stack
-          screenOptions={{
-            headerShown: false,
-
-          }}
-        >
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="seller" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-
-        
-        <StatusBar style="auto" />
-      </View>
-  
+      <StatusBar style="auto" />
+    </View>
   );
 }
-
-

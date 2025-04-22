@@ -164,7 +164,11 @@ const RoamingAcresMarket = () => {
           paddingBottom: Platform.OS === "ios" ? 100 : 80,
         }}
       >
-        <Wrapper showProfileHeader={true}>
+        <Wrapper
+          showFilterButton={true}
+          showMenuButton={true}
+          showProfileHeader={true}
+        >
           <View className=" flex-1 -mt-4">
             {/* <ProfileHeader /> */}
             <View className="">
