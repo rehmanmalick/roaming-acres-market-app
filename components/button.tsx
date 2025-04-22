@@ -32,8 +32,8 @@ export default function Button({
         : "bg-[#008080] border border-[#008080]";
     } else if (state === "secondary") {
       return isPressed
-        ? "bg-teal-100 border border-teal-700"
-        : "bg-white border border-teal-700";
+        ? "bg-[#008080] border border-[#008080]"
+        : "bg-white border border-[#008080]";
     } else if (state === "disable") {
       return "bg-gray-400";
     }
@@ -47,8 +47,8 @@ export default function Button({
         : "text-white font-bold text-xl";
     } else if (state === "secondary") {
       return isPressed
-        ? "text-teal-700 font-bold text-[16px]"
-        : "text-black font-bold text-[16px]";
+        ? "text-white font-bold text-lg"
+        : "text-black font-bold text-lg";
     } else if (state === "disable") {
       return "text-white font-bold text-[16px]";
     }
@@ -59,7 +59,7 @@ export default function Button({
     if (state === "primary") {
       return isPressed ? "#E0E0E0" : iconColor || "#FFFFFF";
     } else if (state === "secondary") {
-      return isPressed ? "#0F766E" : iconColor || "#000000";
+      return isPressed ? "#FFFFFF" : iconColor || "#000000";
     } else if (state === "disable") {
       return "#FFFFFF";
     }

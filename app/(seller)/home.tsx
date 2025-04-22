@@ -1,4 +1,20 @@
-import React, { useEffect, useState } from "react";
+import NewArrival from "@/components/new-arrival-component";
+import ProfileHeader from "@/components/profile-header";
+import ShopByCategory from "@/components/shop-by-category";
+import ShopCategory from "@/components/shop-categories";
+
+import TopSelling from "@/components/top-selling";
+import TopSellingProductComponent from "@/components/top-selling-product-component";
+import Wrapper from "@/components/common/wrapper";
+import Button from "@/components/button";
+
+import {
+  FontAwesome6,
+  Ionicons,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,157 +24,14 @@ import {
   Modal,
   Platform,
 } from "react-native";
-import MapView from "react-native-maps";
-import { useRouter, useLocalSearchParams } from "expo-router";
-import { FontAwesome6, Ionicons } from "@expo/vector-icons";
 
-import Wrapper from "@/components/common/wrapper";
-import ProfileHeader from "@/components/profile-header";
-import ShopCategory from "@/components/shop-categories";
-import NewArrival from "@/components/new-arrival-component";
-import TopSelling from "@/components/top-selling";
-import TopSellingProductComponent from "@/components/top-selling-product-component";
-import Button from "@/components/button";
-
-const RoamingAcresMarket = () => {
+const SellerHomeScreen = () => {
   const router = useRouter();
-  const { showLocationModal: showModalParam } = useLocalSearchParams();
-
-  const [showLocationModal, setShowLocationModal] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (showModalParam === "true") {
-      setShowLocationModal(true);
-    }
-  }, [showModalParam]);
-
-  const handleConfirmLocation = () => {
-    setShowLocationModal(false);
-  };
-
-  const LocationModal = () => (
-    <Modal
-      visible={showLocationModal}
-      transparent
-      animationType="slide"
-      onRequestClose={() => setShowLocationModal(false)}
-    >
-      <View className="flex-1 justify-end bg-black/50">
-        <View
-          className="bg-white rounded-t-3xl p-6"
-          style={{ maxHeight: "80%" }}
-        >
-          <View className="flex-row justify-between items-center mb-4">
-            <Text className="text-xl font-bold">Select Your Location</Text>
-            <TouchableOpacity
-              onPress={() => setShowLocationModal(false)}
-              className="p-2"
-            >
-              <Ionicons name="close" size={24} color="#666" />
-            </TouchableOpacity>
-          </View>
-
-          <TouchableOpacity
-            className="flex-row items-center py-3"
-            onPress={() => setSelectedLocation("current")}
-          >
-            <View
-              className={`p-2 rounded-full ${
-                selectedLocation === "current" ? "bg-teal-100" : "bg-gray-100"
-              }`}
-            >
-              <Ionicons
-                name="navigate-circle"
-                size={20}
-                color={selectedLocation === "current" ? "#008080" : "#666"}
-              />
-            </View>
-            <View className="ml-3">
-              <Text
-                className={`text-base ${
-                  selectedLocation === "current"
-                    ? "font-semibold text-teal-600"
-                    : ""
-                }`}
-              >
-                Use my current location
-              </Text>
-              <Text className="text-xs text-gray-500">
-                Using GPS to find your exact location
-              </Text>
-            </View>
-          </TouchableOpacity>
-
-          <View className="my-4 rounded-lg overflow-hidden border border-gray-200">
-            <MapView
-              style={{ width: "100%", height: 150 }}
-              initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}
-              scrollEnabled={false}
-              zoomEnabled={false}
-            />
-          </View>
-
-          <Text className="text-gray-500 text-sm mb-2">SAVED ADDRESSES</Text>
-          {[1, 2, 3].map((item) => (
-            <TouchableOpacity
-              key={item}
-              className="flex-row items-center py-3"
-              onPress={() => setSelectedLocation(`home${item}`)}
-            >
-              <View
-                className={`p-2 rounded-full ${
-                  selectedLocation === `home${item}`
-                    ? "bg-teal-100"
-                    : "bg-gray-100"
-                }`}
-              >
-                <FontAwesome6
-                  name="house"
-                  size={16}
-                  color={
-                    selectedLocation === `home${item}` ? "#008080" : "#666"
-                  }
-                />
-              </View>
-              <View className="ml-3">
-                <Text
-                  className={`text-base ${
-                    selectedLocation === `home${item}`
-                      ? "font-semibold text-teal-600"
-                      : ""
-                  }`}
-                >
-                  Home - 123 Main St, Apt 4B
-                </Text>
-                <Text className="text-xs text-gray-500">Default address</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
-
-          <View className="mt-6 flex-row">
-            <Button
-              title="CONFIRM LOCATION"
-              state={selectedLocation ? "primary" : "disable"}
-              onPress={handleConfirmLocation}
-            />
-          </View>
-        </View>
-      </View>
-    </Modal>
-  );
 
   return (
     <>
-      {showLocationModal && <LocationModal />}
-
       <ScrollView
-        className="bg-white flex-1"
+        className="bg-white"
         bounces={false}
         contentContainerStyle={{
           paddingBottom: Platform.OS === "ios" ? 100 : 80,
@@ -169,149 +42,267 @@ const RoamingAcresMarket = () => {
           showMenuButton={true}
           showProfileHeader={true}
         >
-          <View className=" flex-1 -mt-4">
-            {/* <ProfileHeader /> */}
-            <View className="">
-              <View className="flex-row justify-between items-center">
+          <View className=" flex-1 flex-col mt-14 ">
+            {/* <ProfileHeader account="Seller" route="/seller/profile-seller" /> */}
+            <View className="mt-8 ">
+              <View className="flex-row justify-between ">
                 <View>
                   <Text className="text-2xl font-bold">Welcome</Text>
-                  <Text className="text-3xl font-bold mt-1">
+                  <Text className="text-3xl font-bold mt-2">
                     Roaming Acres Market
                   </Text>
                 </View>
-                <TouchableOpacity
-                  onPress={() => router.push("/notifications")}
-                  className="relative"
-                >
-                  <Ionicons
-                    name="notifications"
-                    size={24}
-                    color="white"
-                    style={{
-                      backgroundColor: "#008080",
-                      borderRadius: 6,
-                      padding: 4,
-                    }}
-                  />
-                  <View
-                    className="absolute bg-orange-500 rounded-full"
-                    style={{ width: 10, height: 10, top: -2, right: -2 }}
-                  />
-                </TouchableOpacity>
-              </View>
 
-              <View className="mt-4 relative">
-                <TextInput
-                  className="border bg-[#F7F8F9] border-[#E8ECF4] rounded-[10px] py-4 px-4 pl-12"
-                  placeholder="Search"
-                  placeholderTextColor="#999"
-                />
-                <View className="absolute left-4 top-4">
-                  <Ionicons name="search" size={18} color="#999" />
+                <View className="flex-row absolute right-0 top-0 gap-1">
+                  <TouchableOpacity
+                    onPress={() =>
+                      router.push({
+                        pathname: "/seller/notification",
+                        params: { tab: "Messages" },
+                      })
+                    }
+                    className="relative"
+                  >
+                    <MaterialCommunityIcons
+                      name="message-text-outline"
+                      size={24}
+                      color="#008080"
+                      style={{
+                        borderWidth: 1,
+                        borderColor: "#008080",
+                        borderRadius: 6,
+                        padding: 4,
+                      }}
+                    />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    onPress={() =>
+                      router.push({
+                        pathname: "/seller/notification",
+                        params: { tab: "All Notifications" },
+                      })
+                    }
+                    className="relative"
+                  >
+                    <Ionicons
+                      name="notifications"
+                      size={24}
+                      color="white"
+                      style={{
+                        borderWidth: 1,
+                        borderColor: "#008080",
+                        backgroundColor: "#008080",
+                        borderRadius: 6,
+                        padding: 4,
+                      }}
+                    />
+                    <View
+                      className="absolute bg-orange-500 rounded-full"
+                      style={{ width: 10, height: 10, top: -2, right: -2 }}
+                    />
+                  </TouchableOpacity>
                 </View>
               </View>
-            </View>
-
-            {/* --- Categories --- */}
-            <View className="mt-6 ">
-              <View className="flex-row justify-between items-center pb-3">
-                <Text className="text-xl font-bold">Categories</Text>
-                <TouchableOpacity
-                  onPress={() => router.push("/categories")}
-                  className="bg-white py-1 px-3"
-                >
-                  <Text className="text-primary text-[#8B8B8B]">See All</Text>
-                </TouchableOpacity>
+              <View className="bg-[#008080] px-4 py-7 my-4 rounded-xl">
+                <View className="flex flex-row justify-between mb-6 gap-2">
+                  <View>
+                    <Text className="text-yellow-300 text-md font-semibold mb-2">
+                      0.0
+                    </Text>
+                    <Text className="text-white text-sm font-semibold">
+                      Completed Orders
+                    </Text>
+                  </View>
+                  <View>
+                    <Text className="text-yellow-300 text-md font-semibold mb-2">
+                      0.0
+                    </Text>
+                    <Text className="text-white text-sm font-semibold">
+                      Cancel Orders
+                    </Text>
+                  </View>
+                  <View>
+                    <Text className="text-yellow-300 text-md font-semibold mb-2">
+                      0.0
+                    </Text>
+                    <Text className="text-white text-sm font-semibold">
+                      Total Orders
+                    </Text>
+                  </View>
+                </View>
+                <View className="flex flex-row justify-between gap-1">
+                  <View>
+                    <Text className="text-yellow-300 text-md font-semibold mb-2">
+                      0.0
+                    </Text>
+                    <Text className="text-white text-sm font-semibold">
+                      Ship On Time
+                    </Text>
+                  </View>
+                  <View>
+                    <Text className="text-yellow-300 text-md font-semibold mb-2">
+                      0.0
+                    </Text>
+                    <Text className="text-white text-sm font-semibold">
+                      Positive Feedback
+                    </Text>
+                  </View>
+                  <View>
+                    <Text className="text-yellow-300 text-md font-semibold mb-2">
+                      0.0
+                    </Text>
+                    <Text className="text-white text-sm font-semibold">
+                      Chat Response
+                    </Text>
+                  </View>
+                </View>
               </View>
 
-              <View className="flex flex-row justify-between items-center">
-                <ShopCategory
-                  source={require("@/assets/images/cow.png")}
-                  text="Cattle"
-                  onPress={() => router.push("/categories")}
-                />
-                <ShopCategory
-                  source={require("@/assets/images/pig.png")}
-                  text="Pigs"
-                  onPress={() => router.push("/categories")}
-                />
-                <ShopCategory
-                  source={require("@/assets/images/sheep.png")}
-                  text="Sheep"
-                  onPress={() => router.push("/categories")}
-                />
-                <ShopCategory
-                  source={require("@/assets/images/goat.png")}
-                  text="Goats"
-                  onPress={() => router.push("/categories")}
-                />
+              {/* order */}
+              <View className="mt-4 ">
+                <View className="flex-row justify-between items-center pb-3">
+                  <Text className="text-2xl font-extrabold">Orders</Text>
+                  <TouchableOpacity
+                    className="bg-white py-1 "
+                    onPress={() => router.push("/seller/seller-orders")}
+                  >
+                    <Text className="text-primary text-[#8B8B8B] font-semibold">
+                      View All
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
 
-            {/* --- New Arrivals --- */}
-            <View className="mt-8 ">
-              <View className="flex-row justify-between items-center pb-3">
-                <Text className="text-xl font-bold">New Arrivals</Text>
-                <TouchableOpacity
-                  onPress={() => router.push("/new-arrivals")}
-                  className="bg-white py-1 px-3"
-                >
-                  <Text className="text-primary text-[#8B8B8B]">See All</Text>
-                </TouchableOpacity>
+              <View className="flex-row items-center justify-between ">
+                <View className="">
+                  <View className="bg-[#008080] items-center justify-center py-6 px-8 rounded-md">
+                    <Text className="text-white text-3xl">0</Text>
+                  </View>
+                  <View>
+                    <Text className="text-center mt-2">New</Text>
+                  </View>
+                </View>
+                <View className="">
+                  <View className="bg-orange-500 items-center justify-center py-6 px-8 rounded-md">
+                    <Text className="text-white text-3xl">0</Text>
+                  </View>
+                  <View>
+                    <Text className="text-center mt-2">Confirmed</Text>
+                  </View>
+                </View>
+                <View className="">
+                  <View className="bg-yellow-300 items-center justify-center py-6 px-8 rounded-md">
+                    <Text className="text-white text-3xl">0</Text>
+                  </View>
+                  <View>
+                    <Text className="text-center mt-2">Delivered</Text>
+                  </View>
+                </View>
+                <View className="">
+                  <View className="bg-black items-center justify-center py-6 px-8 rounded-md">
+                    <Text className="text-white text-3xl">0</Text>
+                  </View>
+                  <View>
+                    <Text className="text-center mt-2">Cancelled</Text>
+                  </View>
+                </View>
               </View>
-              <View className="flex-row item-center justify-between space-x-6 ">
-                <NewArrival price={50} />
-                <NewArrival price={50} />
-                <NewArrival price={50} />
-              </View>
-            </View>
 
-            {/* --- Top Sellers --- */}
-            <View className="mt-8 ">
-              <View className="flex-row justify-between items-center pb-3">
-                <Text className="text-xl font-bold">Top Sellers</Text>
-                <TouchableOpacity
-                  onPress={() => router.push("/(tabs)/top-sellers")}
-                  className="bg-white py-1 px-3"
-                >
-                  <Text className="text-primary text-[#8B8B8B]">See All</Text>
-                </TouchableOpacity>
+              {/* product */}
+              <View className="mt-8 ">
+                <View className="pb-3">
+                  <Text className="text-2xl font-extrabold">Products</Text>
+                  <TouchableOpacity className="bg-white py-2">
+                    <Text className="text-primary ">Bulk Upload Template</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-              <View className="flex-row justify-center item-center space-x-4">
-                <TopSelling
-                  source={require("@/assets/images/Top-selling-1.png")}
-                  text="Oliver"
-                />
-                <TopSelling
-                  source={require("@/assets/images/Top-selling-2.png")}
-                  text="Jack"
-                />
-                <TopSelling
-                  source={require("@/assets/images/Top-selling-3.png")}
-                  text="Jacob"
-                />
-                <TopSelling
-                  source={require("@/assets/images/Top-selling-4.png")}
-                  text="Charlie"
+              <View className="flex flex-row mt-2 gap-4">
+                <View className="flex-1">
+                  <Button
+                    state="secondary"
+                    title="ADD A NEW"
+                    showIcon={true}
+                    iconName={"plus"}
+                    onPress={() =>
+                      router.push({
+                        pathname: "/seller/new-product-uploading",
+                        params: { tab: "Add New Product" },
+                      })
+                    }
+                  />
+                </View>
+                <View className="flex-1">
+                  <Button
+                    state="secondary"
+                    title="BULK UPLOAD"
+                    showIcon={true}
+                    iconName={"plus"}
+                    onPress={() =>
+                      router.push({
+                        pathname: "/seller/new-product-uploading",
+                        params: { tab: "Bulk Upload Products" },
+                      })
+                    }
+                  />
+                </View>
+              </View>
+              <View className="py-4">
+                <Button
+                  state="secondary"
+                  title="VIEW ALL"
+                  onPress={() => router.push("/seller/view-product")}
                 />
               </View>
-            </View>
 
-            {/* --- Top-Selling Products --- */}
-            <View className="mt-8 ">
-              <View className="flex-row justify-between items-center pb-3">
-                <Text className="text-xl font-bold">Top-Selling Products</Text>
-                <TouchableOpacity
-                  onPress={() => router.push("/(tabs)/top-selling-products")}
-                  className="bg-white py-1 px-3"
-                >
-                  <Text className="text-primary text-[#8B8B8B]">See All</Text>
-                </TouchableOpacity>
+              {/* earnings */}
+              <View className="mt-4 py-2  border-b border-[#EBEBEB]">
+                <View className="flex-row justify-between items-center pb-3">
+                  <Text className="text-2xl font-extrabold">Earnings</Text>
+                  <TouchableOpacity
+                    className="bg-white py-1 "
+                    onPress={() => router.push("/seller/earning")}
+                  >
+                    <Text className="text-primary text-[#8B8B8B] font-semibold">
+                      View Details
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-              <View className="flex-row gap-3">
-                <TopSellingProductComponent />
-                <TopSellingProductComponent />
-                <TopSellingProductComponent />
+              <View className="flex flex-row  py-2 justify-between mt-2">
+                <View>
+                  <Text className="mb-1 font-semibold text-lg">
+                    Total Earning
+                  </Text>
+                  <Text className="text-teal-600 font-bold text-xl">$200</Text>
+                  <Text className="mb-1 font-semibold text-lg mt-3">
+                    Avg. Selling Price
+                  </Text>
+                  <Text className="text-teal-600 font-bold text-xl">
+                    $87.55
+                  </Text>
+                  <Text className="mb-1 font-semibold text-lg mt-3">
+                    Pending Clearance
+                  </Text>
+                  <Text className="text-teal-600 font-bold text-xl">
+                    $350.66
+                  </Text>
+                </View>
+                <View>
+                  <Text className="mb-1 font-semibold text-lg">
+                    Earning in January
+                  </Text>
+                  <Text className="text-teal-600 font-bold text-xl">$500</Text>
+                  <Text className="mb-1 font-semibold text-lg mt-3">
+                    Active Orders
+                  </Text>
+                  <Text className="text-teal-600 font-bold text-xl">05</Text>
+                  <Text className="mb-1 font-semibold text-lg mt-3">
+                    Cancelled Orders
+                  </Text>
+                  <Text className="text-teal-600 font-bold text-xl">02</Text>
+                </View>
               </View>
             </View>
           </View>
@@ -321,4 +312,4 @@ const RoamingAcresMarket = () => {
   );
 };
 
-export default RoamingAcresMarket;
+export default SellerHomeScreen;

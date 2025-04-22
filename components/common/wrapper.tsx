@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ProfileHeader from "../profile-header";
+import { View } from "lucide-react-native";
 
 interface IWrapper {
   children?: React.ReactNode;
