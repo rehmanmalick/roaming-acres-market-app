@@ -13,6 +13,8 @@ interface IWrapper {
   menuLink?: string;
   className?: string;
   showProfileHeader?: boolean;
+  account?: string; // Add account prop
+  profileHeaderRoute?: string; // Add profileHeaderRoute prop
 }
 
 /**
@@ -29,6 +31,8 @@ interface IWrapper {
  * @param {boolean} [props.showPeriodButton] - Whether to show a period button.
  * @param {string} [props.menuLink] - Link for the menu button.
  * @param {string} [props.className] - Additional CSS classes for styling.
+ * @param {string} [props.account] - Account type (e.g., "Seller").
+ * @param {string} [props.profileHeaderRoute] - The route for ProfileHeader.
  *
  * @returns {JSX.Element} The rendered Wrapper component.
  */
@@ -41,6 +45,8 @@ const Wrapper: FC<IWrapper> = ({
   menuLink = "/(tabs)/buyer-account",
   className = "",
   showProfileHeader = false,
+  account,
+  profileHeaderRoute,
 }) => {
   return (
     <SafeAreaView className="flex-1 px-6 bg-white">
@@ -52,7 +58,9 @@ const Wrapper: FC<IWrapper> = ({
       />
 
       {/* Conditionally render ProfileHeader */}
-      {showProfileHeader && <ProfileHeader />}
+      {showProfileHeader && (
+        <ProfileHeader account={account} route={profileHeaderRoute} />
+      )}
 
       {children}
     </SafeAreaView>

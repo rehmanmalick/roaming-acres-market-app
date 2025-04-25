@@ -1,4 +1,4 @@
-import { FontAwesome5 } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
 
@@ -7,7 +7,7 @@ interface ButtonProps {
   disabled?: boolean;
   onPress?: () => void;
   title: string;
-  iconName?: keyof typeof FontAwesome5.glyphMap;
+  iconName?: keyof typeof Ionicons.glyphMap;
   iconBackground?: string;
   iconColor?: string;
   style?: object;
@@ -43,12 +43,12 @@ export default function Button({
   const getTextClasses = () => {
     if (state === "primary") {
       return isPressed
-        ? "text-[#008080] font-bold text-xl"
-        : "text-white font-bold text-xl";
+        ? "text-[#008080] font-bold text-lg"
+        : "text-white font-bold text-lg";
     } else if (state === "secondary") {
       return isPressed
         ? "text-white font-bold text-lg"
-        : "text-black font-bold text-lg";
+        : "text-[#008080] font-bold text-lg";
     } else if (state === "disable") {
       return "text-white font-bold text-[16px]";
     }
@@ -59,7 +59,7 @@ export default function Button({
     if (state === "primary") {
       return isPressed ? "#E0E0E0" : iconColor || "#FFFFFF";
     } else if (state === "secondary") {
-      return isPressed ? "#FFFFFF" : iconColor || "#000000";
+      return isPressed ? "#FFFFFF" : iconColor || "#008080";
     } else if (state === "disable") {
       return "#FFFFFF";
     }
@@ -77,10 +77,10 @@ export default function Button({
     >
       {showIcon && iconName && (
         <View
-          className="p-1 rounded-full mr-2"
+          className=" rounded-full mr-1"
           style={{ backgroundColor: iconBackground }}
         >
-          <FontAwesome5 name={iconName} size={10} color={getIconColor()} />
+          <Ionicons name={iconName} size={22} color={getIconColor()} />
         </View>
       )}
       <Text className={getTextClasses()}>{title}</Text>

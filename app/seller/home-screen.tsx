@@ -221,7 +221,7 @@ const SellerHomeScreen = () => {
                 state="secondary"
                 title="ADD A NEW"
                 showIcon={true}
-                iconName={"plus"}
+                iconName={"add"}
                 onPress={() =>
                   router.push({
                     pathname: "/seller/new-product-uploading",
@@ -233,7 +233,7 @@ const SellerHomeScreen = () => {
                 state="secondary"
                 title="BULK UPLOAD"
                 showIcon={true}
-                iconName={"plus"}
+                iconName={"add"}
                 onPress={() =>
                   router.push({
                     pathname: "/seller/new-product-uploading",

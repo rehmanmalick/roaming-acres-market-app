@@ -41,6 +41,8 @@ const SellerHomeScreen = () => {
           showFilterButton={true}
           showMenuButton={true}
           showProfileHeader={true}
+          account="Seller"
+          profileHeaderRoute="/seller/profile-seller"
         >
           <View className=" flex-1 flex-col mt-14 ">
             {/* <ProfileHeader account="Seller" route="/seller/profile-seller" /> */}
@@ -224,7 +226,7 @@ const SellerHomeScreen = () => {
                     state="secondary"
                     title="ADD A NEW"
                     showIcon={true}
-                    iconName={"plus"}
+                    iconName={"add"}
                     onPress={() =>
                       router.push({
                         pathname: "/seller/new-product-uploading",
@@ -238,7 +240,7 @@ const SellerHomeScreen = () => {
                     state="secondary"
                     title="BULK UPLOAD"
                     showIcon={true}
-                    iconName={"plus"}
+                    iconName={"add"}
                     onPress={() =>
                       router.push({
                         pathname: "/seller/new-product-uploading",

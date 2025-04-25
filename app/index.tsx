@@ -24,7 +24,7 @@ export default function SelectYourAccount() {
               <Button
                 state="primary"
                 title="Buyer Account"
-                onPress={() => router.push("../welcome")}
+                onPress={() => router.push("/(buyer)/home")}
               />
             </View>
             <View className="flex-1">
