@@ -34,9 +34,9 @@ type FormData = {
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
 const LoginComponent: React.FC<LoginComponentProps> = ({
-  buttonPath = "",
-  SigninPath = "",
-  ResetpasswordPath = "",
+  buttonPath,
+  SigninPath,
+  ResetpasswordPath,
 }) => {
   const router = useRouter();
   const [formData, setFormData] = useState<FormData>({

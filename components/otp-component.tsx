@@ -9,13 +9,15 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import { useRouter } from "expo-router";
 import OTPInput from "./otp-input";
 import Wrapper from "@/components/wrapper";
 
 interface OtpComponentProps {
   verifyPath?: any;
   resendPath?: any;
+  email?: any;
+  role?: string;
 }
 
 const COLORS = {
@@ -28,9 +30,10 @@ const COLORS = {
 const OtpComponent: React.FC<OtpComponentProps> = ({
   verifyPath = "",
   resendPath = "",
+  email = "",
+  role = "",
 }) => {
   const router = useRouter();
-  const { email } = useLocalSearchParams();
   const [code, setCode] = useState("");
   const [showAllErrors, setShowAllErrors] = useState(false);
   const otpRef = useRef(null);
@@ -43,13 +46,20 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
       return;
     }
 
+    // ✅ When verified, go to verifyPath
     router.push(verifyPath);
   };
 
   const handleResendCode = () => {
+    if (!email) {
+      Alert.alert("Error", "Email is missing. Cannot resend code.");
+      return;
+    }
+
+    // ✅ When resending, send both email and role
     router.push({
       pathname: resendPath,
-      params: { email },
+      params: { email, role },
     });
   };
 
@@ -66,7 +76,9 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
             </Text>
 
             <Text className="text-[#9796A1] text-start mb-8">
-              Enter the 4-digit code sent to {email}
+              {email
+                ? `Enter the 4-digit code sent to ${email}`
+                : "Enter the 4-digit code"}
             </Text>
 
             <OTPInput

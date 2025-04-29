@@ -1,6 +1,6 @@
 import NotificationComponent from "@/components/notification-component";
 import MessageComponent from "@/components/messages-component";
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 import React, { useState, useEffect } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { useLocalSearchParams } from "expo-router";
@@ -117,60 +117,66 @@ export default function NotificationsAndMessages() {
       contentContainerStyle={{ paddingBottom: 20 }}
     >
       <Wrapper showBackButton={true}>
-        <View className="items-center justify-center">
-          <Text className="font-bold text-3xl mb-6">
-            {activeTab === "All Notifications" ? "Notifications" : "Messages"}
-          </Text>
-        </View>
+        <View className=" flex-1 flex-col  ">
+          <View className="mt-8 ">
+            <View className="items-center justify-center">
+              <Text className="font-bold text-3xl mb-6">
+                {activeTab === "All Notifications"
+                  ? "Notifications"
+                  : "Messages"}
+              </Text>
+            </View>
 
-        {/* Tabs */}
-        <View className="bg-white py-2 flex flex-row justify-between px-7 items-center">
-          {["All Notifications", "Messages"].map((status, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => setActiveTab(status)}
-              className="flex-1 items-center"
-            >
-              <View className="flex items-center">
-                <Text
-                  className={`font-bold text-xl ${
-                    activeTab === status
-                      ? "text-teal-600 border-b-2 border-teal-600 p-1"
-                      : "text-black"
-                  }`}
+            {/* Tabs */}
+            <View className="bg-white py-2 flex flex-row justify-between  items-center">
+              {["All Notifications", "Messages"].map((status, index) => (
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => setActiveTab(status)}
+                  className="flex-1 items-center"
                 >
-                  {status}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        <View className="p-2">
-          {activeTab === "All Notifications"
-            ? notificationsData.map((item) => (
-                <NotificationComponent
-                  key={item.id}
-                  title={item.title}
-                  text={item.text}
-                  time={item.time}
-                  status={item.status}
-                  bgColor={item.bgColor}
-                  statusTextColor={item.statusTextColor}
-                />
-              ))
-            : messagesData.map((msg) => (
-                <MessageComponent
-                  key={msg.id}
-                  name={msg.name}
-                  active={msg.active}
-                  message={msg.message}
-                  text={msg.text}
-                  time={msg.time}
-                  noOfMessage={msg.noOfMessage}
-                  source={msg.source}
-                />
+                  <View className="flex items-center">
+                    <Text
+                      className={`font-bold text-xl ${
+                        activeTab === status
+                          ? "text-teal-600 border-b-2 border-teal-600 p-1"
+                          : "text-black"
+                      }`}
+                    >
+                      {status}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
               ))}
+            </View>
+
+            <View className="py-2">
+              {activeTab === "All Notifications"
+                ? notificationsData.map((item) => (
+                    <NotificationComponent
+                      key={item.id}
+                      title={item.title}
+                      text={item.text}
+                      time={item.time}
+                      status={item.status}
+                      bgColor={item.bgColor}
+                      statusTextColor={item.statusTextColor}
+                    />
+                  ))
+                : messagesData.map((msg) => (
+                    <MessageComponent
+                      key={msg.id}
+                      name={msg.name}
+                      active={msg.active}
+                      message={msg.message}
+                      text={msg.text}
+                      time={msg.time}
+                      noOfMessage={msg.noOfMessage}
+                      source={msg.source}
+                    />
+                  ))}
+            </View>
+          </View>
         </View>
       </Wrapper>
     </ScrollView>

@@ -30,7 +30,7 @@ const MessageComponent = ({
   return (
     <TouchableOpacity
       onPress={() => router.push("/seller/chatting")}
-      className="flex-row bg-white rounded-lg p-2 my-2"
+      className="flex-row bg-white rounded-lg py-2 my-2"
     >
       <View style={{ position: "relative" }}>
         <Image

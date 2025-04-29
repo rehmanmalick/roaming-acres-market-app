@@ -5,6 +5,7 @@ import Wrapper from "@/components/wrapper";
 
 interface CongratulationComponentProps {
   continuePath?: any;
+  role?: string;
 }
 
 const COLORS = {
@@ -14,6 +15,7 @@ const COLORS = {
 
 const CongratulationComponent: React.FC<CongratulationComponentProps> = ({
   continuePath = "",
+  role,
 }) => {
   const router = useRouter();
 

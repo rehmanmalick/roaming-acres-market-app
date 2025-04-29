@@ -10,12 +10,13 @@ import {
   Keyboard,
   TextInput,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router"; // ✅ added useLocalSearchParams
 import CustomTextInput from "./custom-input";
 import Wrapper from "@/components/wrapper";
 
 interface ResetComponentProps {
   verificationPath?: any;
+  role?: any;
 }
 
 const COLORS = {
@@ -29,11 +30,11 @@ const ResetComponent: React.FC<ResetComponentProps> = ({
   verificationPath = "",
 }) => {
   const router = useRouter();
+  const { role } = useLocalSearchParams<{ role?: string }>(); // ✅ get role here
   const [email, setEmail] = useState("");
   const [showAllErrors, setShowAllErrors] = useState(false);
   const emailRef = useRef<TextInput>(null);
 
-  // Email validation
   const isEmailValid = (email: string) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -47,7 +48,7 @@ const ResetComponent: React.FC<ResetComponentProps> = ({
 
     router.push({
       pathname: verificationPath,
-      params: { email },
+      params: { email, role }, // ✅ pass both email and role
     });
   };
 

@@ -19,7 +19,7 @@ const NotificationComponent = ({
   statusTextColor,
 }: NotificationComponentProps) => {
   return (
-    <View className="flex-row border-b border-[#EBEBEB]  bg-white rounded-lg px-3 py-5 my-2">
+    <View className="flex-row border-b border-[#EBEBEB]  bg-white rounded-lg  py-5 my-2">
       <View className=" ">
         <View className="bg-gray-100 p-4 rounded-full">
           <Image

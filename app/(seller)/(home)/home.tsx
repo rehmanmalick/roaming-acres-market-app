@@ -33,8 +33,11 @@ const SellerHomeScreen = () => {
       <ScrollView
         className="bg-white"
         bounces={false}
+        showsVerticalScrollIndicator={false}
+        contentInsetAdjustmentBehavior="never" // ADD THIS!
         contentContainerStyle={{
-          paddingBottom: Platform.OS === "ios" ? 100 : 80,
+          flexGrow: 1,
+          paddingBottom: 100,
         }}
       >
         <Wrapper
@@ -42,7 +45,7 @@ const SellerHomeScreen = () => {
           showMenuButton={true}
           showProfileHeader={true}
           account="Seller"
-          profileHeaderRoute="/seller/profile-seller"
+          profileHeaderRoute="/(seller)/profile-seller"
         >
           <View className=" flex-1 flex-col mt-14 ">
             {/* <ProfileHeader account="Seller" route="/seller/profile-seller" /> */}
