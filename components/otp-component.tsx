@@ -11,13 +11,12 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import OTPInput from "./otp-input";
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 
 interface OtpComponentProps {
   verifyPath?: any;
   resendPath?: any;
   email?: any;
-  role?: string;
 }
 
 const COLORS = {
@@ -31,7 +30,6 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
   verifyPath = "",
   resendPath = "",
   email = "",
-  role = "",
 }) => {
   const router = useRouter();
   const [code, setCode] = useState("");
@@ -59,19 +57,19 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
     // ✅ When resending, send both email and role
     router.push({
       pathname: resendPath,
-      params: { email, role },
+      params: { email },
     });
   };
 
   return (
-    <Wrapper>
+    <Wrapper showBackButton={true}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View className="flex-1 w-full bg-white px-6 justify-start mt-8">
-            <Text className="text-[36.41px] font-medium text-start text-gray-800 mb-2">
+          <View className="flex-1  mt-20">
+            <Text className="text-4xl font-medium text-start text-gray-800 mb-2">
               Verification Code
             </Text>
 
@@ -86,11 +84,11 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
               code={code}
               setCode={setCode}
               maximumLength={4}
-              error={
-                showAllErrors && code.length !== 4
-                  ? "Please enter the 4-digit code"
-                  : null
-              }
+              // error={
+              //   showAllErrors && code.length !== 4
+              //     ? "Please enter the 4-digit code"
+              //     : null
+              // }
             />
 
             <View className="flex-row justify-center mt-6">
@@ -109,7 +107,7 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
             </View>
 
             <TouchableOpacity
-              className={`w-full py-4 rounded-[3px] bg-[${COLORS.primary}] flex items-center justify-center mt-8`}
+              className={`w-full py-4 rounded-md bg-[${COLORS.primary}] flex items-center justify-center mt-8`}
               onPress={handleVerify}
               disabled={code.length !== 4}
               accessibilityLabel="Verify code"

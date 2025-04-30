@@ -12,11 +12,10 @@ import {
 } from "react-native";
 import { useRouter, useLocalSearchParams } from "expo-router"; // ✅ added useLocalSearchParams
 import CustomTextInput from "./custom-input";
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 
 interface ResetComponentProps {
   verificationPath?: any;
-  role?: any;
 }
 
 const COLORS = {
@@ -48,19 +47,19 @@ const ResetComponent: React.FC<ResetComponentProps> = ({
 
     router.push({
       pathname: verificationPath,
-      params: { email, role }, // ✅ pass both email and role
+      params: { email }, // ✅ pass both email and role
     });
   };
 
   return (
-    <Wrapper>
+    <Wrapper showBackButton={true}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View className="flex-1 w-full bg-white px-6 justify-start mt-8">
-            <Text className="text-[36.41px] font-medium text-start text-gray-800 mb-2">
+          <View className="flex-1  mt-20">
+            <Text className="text-4xl font-medium text-start text-gray-800 mb-2">
               Reset Password
             </Text>
 
@@ -96,7 +95,7 @@ const ResetComponent: React.FC<ResetComponentProps> = ({
             />
 
             <TouchableOpacity
-              className={`w-full py-4 rounded-[3px] bg-[${COLORS.primary}] flex items-center justify-center mt-2`}
+              className={` py-4 rounded-md bg-[${COLORS.primary}] flex items-center justify-center mt-2`}
               onPress={handleSendCode}
               disabled={!isEmailValid(email)}
               accessibilityLabel="Send verification code"

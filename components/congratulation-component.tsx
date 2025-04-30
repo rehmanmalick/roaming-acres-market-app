@@ -1,11 +1,10 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 
 interface CongratulationComponentProps {
   continuePath?: any;
-  role?: string;
 }
 
 const COLORS = {
@@ -15,7 +14,6 @@ const COLORS = {
 
 const CongratulationComponent: React.FC<CongratulationComponentProps> = ({
   continuePath = "",
-  role,
 }) => {
   const router = useRouter();
 
@@ -25,7 +23,7 @@ const CongratulationComponent: React.FC<CongratulationComponentProps> = ({
 
   return (
     <Wrapper>
-      <View className="flex-1 bg-white px-6">
+      <View className="flex-1 ">
         {/* Main content container - takes all available space */}
         <View className="flex-1 justify-center items-center">
           {/* Success Image */}
@@ -47,9 +45,9 @@ const CongratulationComponent: React.FC<CongratulationComponentProps> = ({
         </View>
 
         {/* Button container - slightly above bottom */}
-        <View className="w-full mb-8">
+        <View className=" mb-8">
           <TouchableOpacity
-            className={`w-full py-4 rounded-[3px] bg-[${COLORS.primary}] items-center justify-center`}
+            className={`py-4 rounded-md bg-[${COLORS.primary}] items-center justify-center`}
             onPress={handleContinue}
             accessibilityLabel="Continue to app"
             accessibilityRole="button"

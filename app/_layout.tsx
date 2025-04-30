@@ -45,18 +45,19 @@ export default function RootLayout() {
 
   return (
     <>
-      {/* <Stack
+      <Stack
         screenOptions={{
           headerShown: false,
         }}
       >
-        <Stack.Screen name="/index" options={{ headerShown: false }} />
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         <Stack.Screen name="(seller)" options={{ headerShown: false }} />
         <Stack.Screen name="(buyer)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="seller" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
-      </Stack> */}
-      <Slot />
+      </Stack>
+      {/* <Slot /> */}
       <StatusBar style="auto" />
     </>
   );

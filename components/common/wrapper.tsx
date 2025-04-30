@@ -132,8 +132,8 @@ const Wrapper: FC<IWrapper> = ({
       visible={modalState === "filter"}
       onRequestClose={() => setModalState(null)}
     >
-      <View className="flex-1 bg-black/50 justify-end">
-        <View className="bg-white rounded-t-2xl max-h-[80%]">
+      <View className="flex-1    bg-black/50">
+        <View className="bg-white mt-auto  rounded-t-2xl max-h-[80%]">
           <View className="flex-row justify-between items-center p-5 border-b border-gray-200">
             <Text className="text-lg font-bold">Filters</Text>
             <TouchableOpacity onPress={() => setModalState(null)}>

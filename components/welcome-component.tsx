@@ -27,7 +27,7 @@ export default function WelcomeComponent({
       </View>
 
       <View className="flex flex-1 justify-around">
-        <View className="">
+        <View>
           <Text className="text-white text-5xl font-bold">Welcome to</Text>
           <Text className="text-yellow-400 text-3xl font-bold">
             Roaming Acres Market
@@ -35,7 +35,7 @@ export default function WelcomeComponent({
         </View>
 
         {/* email and phone btn */}
-        <View className="">
+        <View>
           <Text className="text-white text-xl font-normal">
             Make easy farming with fast delivery at your door.
           </Text>

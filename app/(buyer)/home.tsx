@@ -169,153 +169,156 @@ const RoamingAcresMarket = () => {
           showMenuButton={true}
           showProfileHeader={true}
         >
-          <View className=" flex-1 flex-col mt-14">
+          <View className=" flex-1 flex-col mt-20">
             {/* <ProfileHeader /> */}
 
-            <View className="mt-8">
-              <View className="flex-row justify-between items-center">
-                <View>
-                  <Text className="text-2xl font-bold">Welcome</Text>
-                  <Text className="text-3xl font-bold mt-1">
-                    Roaming Acres Market
-                  </Text>
-                </View>
-                <View className="flex-row absolute right-0 top-0 ">
-                  <TouchableOpacity
-                    onPress={() => router.push("/notifications")}
-                    className="relative"
-                  >
-                    <Ionicons
-                      name="notifications"
-                      size={24}
-                      color="white"
-                      style={{
-                        backgroundColor: "#008080",
-                        borderRadius: 6,
-                        padding: 4,
-                      }}
-                    />
-                    <View
-                      className="absolute bg-orange-500 rounded-full"
-                      style={{ width: 10, height: 10, top: -2, right: -2 }}
-                    />
-                  </TouchableOpacity>
-                </View>
+            <View className="flex-row justify-between items-center">
+              <View>
+                <Text className="text-2xl font-bold">Welcome</Text>
+                <Text className="text-3xl font-bold mt-1">
+                  Roaming Acres Market
+                </Text>
               </View>
-
-              <View className="mt-4 relative">
-                <TextInput
-                  className="border bg-[#F7F8F9] border-[#E8ECF4] rounded-[10px] py-4 px-4 pl-12"
-                  placeholder="Search"
-                  placeholderTextColor="#999"
-                />
-                <View className="absolute left-4 top-4">
-                  <Ionicons name="search" size={18} color="#999" />
-                </View>
+              <View className="flex-row absolute right-0 top-0 ">
+                <TouchableOpacity
+                  onPress={() =>
+                    router.push({
+                      pathname: "/seller/notification",
+                      params: { tab: "All Notifications" },
+                    })
+                  }
+                  className="relative"
+                >
+                  <Ionicons
+                    name="notifications"
+                    size={24}
+                    color="white"
+                    style={{
+                      backgroundColor: "#008080",
+                      borderRadius: 6,
+                      padding: 4,
+                    }}
+                  />
+                  <View
+                    className="absolute bg-orange-500 rounded-full"
+                    style={{ width: 10, height: 10, top: -2, right: -2 }}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
 
-            {/* --- Categories --- */}
-            <View className="mt-6 ">
-              <View className="flex-row justify-between items-center pb-3">
-                <Text className="text-xl font-bold">Categories</Text>
-                <TouchableOpacity
-                  onPress={() => router.push("/categories")}
-                  className="bg-white "
-                >
-                  <Text className="text-primary text-[#8B8B8B]">See All</Text>
-                </TouchableOpacity>
-              </View>
-
-              <View className="flex flex-row justify-between items-center">
-                <ShopCategory
-                  source={require("@/assets/images/cow.png")}
-                  text="Cattle"
-                  onPress={() => router.push("/categories")}
-                />
-                <ShopCategory
-                  source={require("@/assets/images/pig.png")}
-                  text="Pigs"
-                  onPress={() => router.push("/categories")}
-                />
-                <ShopCategory
-                  source={require("@/assets/images/sheep.png")}
-                  text="Sheep"
-                  onPress={() => router.push("/categories")}
-                />
-                <ShopCategory
-                  source={require("@/assets/images/goat.png")}
-                  text="Goats"
-                  onPress={() => router.push("/categories")}
-                />
+            <View className="mt-4 relative">
+              <TextInput
+                className="border bg-[#F7F8F9] border-[#E8ECF4] rounded-[10px] py-4 px-4 pl-12"
+                placeholder="Search"
+                placeholderTextColor="#999"
+              />
+              <View className="absolute left-4 top-4">
+                <Ionicons name="search" size={18} color="#999" />
               </View>
             </View>
+          </View>
 
-            {/* --- New Arrivals --- */}
-            <View className="mt-6 ">
-              <View className="flex-row justify-between items-center pb-3">
-                <Text className="text-xl font-bold">New Arrivals</Text>
-                <TouchableOpacity
-                  onPress={() => router.push("/new-arrivals")}
-                  className="bg-white"
-                >
-                  <Text className="text-primary text-[#8B8B8B]">See All</Text>
-                </TouchableOpacity>
-              </View>
-              <View className="flex-row item-center justify-between space-x-6 ">
-                <NewArrival price={50} />
-                <NewArrival price={50} />
-                <NewArrival price={50} />
-              </View>
+          {/* --- Categories --- */}
+          <View className="mt-6 ">
+            <View className="flex-row justify-between items-center pb-3">
+              <Text className="text-xl font-bold">Categories</Text>
+              <TouchableOpacity
+                onPress={() => router.push("/categories")}
+                className="bg-white "
+              >
+                <Text className="text-primary text-[#8B8B8B]">See All</Text>
+              </TouchableOpacity>
             </View>
 
-            {/* --- Top Sellers --- */}
-            <View className="mt-6 ">
-              <View className="flex-row justify-between items-center pb-3">
-                <Text className="text-xl font-bold">Top Sellers</Text>
-                <TouchableOpacity
-                  onPress={() => router.push("/(tabs)/top-sellers")}
-                  className="bg-white "
-                >
-                  <Text className="text-primary text-[#8B8B8B]">See All</Text>
-                </TouchableOpacity>
-              </View>
-              <View className="flex flex-row justify-between items-center ">
-                <TopSelling
-                  source={require("@/assets/images/Top-selling-1.png")}
-                  text="Oliver"
-                />
-                <TopSelling
-                  source={require("@/assets/images/Top-selling-2.png")}
-                  text="Jack"
-                />
-                <TopSelling
-                  source={require("@/assets/images/Top-selling-3.png")}
-                  text="Jacob"
-                />
-                <TopSelling
-                  source={require("@/assets/images/Top-selling-4.png")}
-                  text="Charlie"
-                />
-              </View>
+            <View className="flex flex-row justify-between items-center">
+              <ShopCategory
+                source={require("@/assets/images/cow.png")}
+                text="Cattle"
+                onPress={() => router.push("/categories")}
+              />
+              <ShopCategory
+                source={require("@/assets/images/pig.png")}
+                text="Pigs"
+                onPress={() => router.push("/categories")}
+              />
+              <ShopCategory
+                source={require("@/assets/images/sheep.png")}
+                text="Sheep"
+                onPress={() => router.push("/categories")}
+              />
+              <ShopCategory
+                source={require("@/assets/images/goat.png")}
+                text="Goats"
+                onPress={() => router.push("/categories")}
+              />
             </View>
+          </View>
 
-            {/* --- Top-Selling Products --- */}
-            <View className="mt-6 ">
-              <View className="flex-row justify-between items-center pb-3">
-                <Text className="text-xl font-bold">Top-Selling Products</Text>
-                <TouchableOpacity
-                  onPress={() => router.push("/(tabs)/top-selling-products")}
-                  className="bg-white "
-                >
-                  <Text className="text-primary text-[#8B8B8B]">See All</Text>
-                </TouchableOpacity>
-              </View>
-              <View className="flex-row gap-3">
-                <TopSellingProductComponent />
-                <TopSellingProductComponent />
-                <TopSellingProductComponent />
-              </View>
+          {/* --- New Arrivals --- */}
+          <View className="mt-6 ">
+            <View className="flex-row justify-between items-center pb-3">
+              <Text className="text-xl font-bold">New Arrivals</Text>
+              <TouchableOpacity
+                onPress={() => router.push("/new-arrivals")}
+                className="bg-white"
+              >
+                <Text className="text-primary text-[#8B8B8B]">See All</Text>
+              </TouchableOpacity>
+            </View>
+            <View className="flex-row item-center justify-between space-x-6 ">
+              <NewArrival price={50} />
+              <NewArrival price={50} />
+              <NewArrival price={50} />
+            </View>
+          </View>
+
+          {/* --- Top Sellers --- */}
+          <View className="mt-6 ">
+            <View className="flex-row justify-between items-center pb-3">
+              <Text className="text-xl font-bold">Top Sellers</Text>
+              <TouchableOpacity
+                onPress={() => router.push("/(tabs)/top-sellers")}
+                className="bg-white "
+              >
+                <Text className="text-primary text-[#8B8B8B]">See All</Text>
+              </TouchableOpacity>
+            </View>
+            <View className="flex flex-row justify-between items-center ">
+              <TopSelling
+                source={require("@/assets/images/Top-selling-1.png")}
+                text="Oliver"
+              />
+              <TopSelling
+                source={require("@/assets/images/Top-selling-2.png")}
+                text="Jack"
+              />
+              <TopSelling
+                source={require("@/assets/images/Top-selling-3.png")}
+                text="Jacob"
+              />
+              <TopSelling
+                source={require("@/assets/images/Top-selling-4.png")}
+                text="Charlie"
+              />
+            </View>
+          </View>
+
+          {/* --- Top-Selling Products --- */}
+          <View className="mt-6 ">
+            <View className="flex-row justify-between items-center pb-3">
+              <Text className="text-xl font-bold">Top-Selling Products</Text>
+              <TouchableOpacity
+                onPress={() => router.push("/(tabs)/top-selling-products")}
+                className="bg-white "
+              >
+                <Text className="text-primary text-[#8B8B8B]">See All</Text>
+              </TouchableOpacity>
+            </View>
+            <View className="flex-row gap-3">
+              <TopSellingProductComponent />
+              <TopSellingProductComponent />
+              <TopSellingProductComponent />
             </View>
           </View>
         </Wrapper>

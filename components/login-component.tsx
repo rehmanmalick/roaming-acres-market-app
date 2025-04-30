@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import CustomTextInput from "./custom-input";
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 
 interface LoginComponentProps {
   buttonPath?: any;
@@ -100,14 +100,14 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
   };
 
   return (
-    <Wrapper>
+    <Wrapper showBackButton={true}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View className="flex-1 w-full bg-white px-6 justify-start mt-8">
-            <Text className="text-[36.41px] font-medium text-start text-gray-800 mb-8">
+          <View className="flex-1 mt-20">
+            <Text className="text-4xl font-medium text-start text-gray-800 mb-8">
               Login
             </Text>
 
@@ -118,7 +118,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
               keyboardType="email-address"
               autoCapitalize="none"
               value={formData.email}
-              onChangeText={(text) => handleChange("email", text)}
+              onChangeText={(text: string) => handleChange("email", text)}
               returnKeyType="next"
               onSubmitEditing={() => passwordRef.current?.focus()}
               validationIcon={
@@ -143,7 +143,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
               placeholder="Enter your password"
               secureTextEntry={!showPassword}
               value={formData.password}
-              onChangeText={(text) => handleChange("password", text)}
+              onChangeText={(text: string) => handleChange("password", text)}
               returnKeyType="done"
               onSubmitEditing={handleLogin}
               iconRight={showPassword ? "eye" : "eye-off"}
@@ -159,12 +159,12 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
             </TouchableOpacity>
 
             <TouchableOpacity
-              className={`w-full py-4 rounded-[3px] bg-[${COLORS.primary}] flex items-center justify-center mt-2`}
+              className={` py-4 rounded-md bg-[${COLORS.primary}] flex items-center justify-center mt-2`}
               onPress={handleLogin}
               accessibilityLabel="Login"
               accessibilityRole="button"
             >
-              <Text className="text-white w-full text-center text-lg uppercase font-semibold">
+              <Text className="text-white  text-center text-lg uppercase font-semibold">
                 Login
               </Text>
             </TouchableOpacity>

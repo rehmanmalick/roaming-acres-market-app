@@ -32,15 +32,21 @@ export default function TabLayout() {
           ),
         }}
       />
-      {/* <Tabs.Screen
-        name="orders"
+      {/* type TabIcon = "home" | "heart" | "grid" | "cart" | "chatbubbles" | string; */}
+      {/* label1 = "Home",
+  label2 = "Wishlist",
+  label3 = "Products",
+  label4 = "My Orders",
+  label5 = "Message", */}
+      <Tabs.Screen
+        name="wishlist"
         options={{
           headerShown: false,
-          title: "Orders",
+          title: "Wishlist",
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               size={28}
-              name={focused ? "bag-check" : "bag-check-outline"} // Change icon based on tab focus
+              name={focused ? "heart" : "heart-outline"} // Change icon based on tab focus
               color={color}
             />
           ),
@@ -48,14 +54,14 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="inventory"
+        name="product-listing"
         options={{
           headerShown: false,
-          title: "Inventory",
+          title: "Products",
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               size={28}
-              name={focused ? "add-circle" : "add-circle-outline"}
+              name={focused ? "grid" : "grid-outline"}
               color={color}
             />
           ),
@@ -63,14 +69,14 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="earnings"
+        name="buyer-orders"
         options={{
           headerShown: false,
-          title: "Earnings",
+          title: "My Orders",
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               size={28}
-              name={focused ? "newspaper" : "newspaper-outline"} // Change icon based on focus
+              name={focused ? "cart" : "cart-outline"} // Change icon based on focus
               color={color}
             />
           ),
@@ -78,7 +84,7 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="message"
+        name="messages"
         options={{
           headerShown: false,
           title: "Message",
@@ -90,7 +96,7 @@ export default function TabLayout() {
             />
           ),
         }}
-      /> */}
+      />
     </Tabs>
   );
 }

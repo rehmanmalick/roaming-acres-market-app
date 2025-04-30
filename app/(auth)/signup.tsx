@@ -1,21 +1,15 @@
 import React from "react";
-import { Text } from "react-native";
-import { useLocalSearchParams, useRouter } from "expo-router";
 import SignupComponent from "@/components/signup-component";
+import { useUserStore } from "@/store/useUserStore";
 
 const SignupScreen = () => {
-  const { role } = useLocalSearchParams<{ role?: string }>();
-  const router = useRouter();
-
-  // const navigateToAuth = (authType: "login" | "signup") => {
-  //   router.push(`/(auth)/${authType}?role=${role}`);
-  // };
-
+  const userType = useUserStore((state) => state.userType);
+  const homePath =
+    userType === "seller"
+      ? "/(auth)/register-your-business"
+      : "/(auth)/verification-code";
   return (
-    <SignupComponent
-      verificationPath="/(auth)/otpVerification"
-      loginPath={`/(auth)/login?role=${role}`}
-    />
+    <SignupComponent verificationPath={homePath} loginPath="/(auth)/login" />
   );
 };
 

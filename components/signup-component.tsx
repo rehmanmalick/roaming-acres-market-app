@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import CustomTextInput from "./custom-input";
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 
 interface SignupScreenProps {
   verificationPath?: any;
@@ -143,14 +143,14 @@ const SignupScreen: React.FC<SignupScreenProps> = ({
   };
 
   return (
-    <Wrapper>
+    <Wrapper showBackButton={true}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View className="flex-1 w-full bg-white px-6 justify-start mt-8">
-            <Text className="text-[36.41px] font-medium text-start text-gray-800 mb-8">
+          <View className="flex-1  mt-20">
+            <Text className="text-4xl font-medium text-start text-gray-800 mb-8">
               Sign Up
             </Text>
 
@@ -159,7 +159,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({
               ref={fullNameRef}
               placeholder="Full Name"
               value={formData.fullName}
-              onChangeText={(text) => handleChange("fullName", text)}
+              onChangeText={(text: string) => handleChange("fullName", text)}
               autoCapitalize="words"
               returnKeyType="next"
               onSubmitEditing={() => emailRef.current?.focus()}
@@ -173,7 +173,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({
               keyboardType="email-address"
               autoCapitalize="none"
               value={formData.email}
-              onChangeText={(text) => handleChange("email", text)}
+              onChangeText={(text: string) => handleChange("email", text)}
               returnKeyType="next"
               onSubmitEditing={() => passwordRef.current?.focus()}
               validationIcon={
@@ -198,7 +198,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({
               placeholder="Enter your password"
               secureTextEntry={!showPassword}
               value={formData.password}
-              onChangeText={(text) => handleChange("password", text)}
+              onChangeText={(text: string) => handleChange("password", text)}
               returnKeyType="done"
               onSubmitEditing={handleSignup}
               iconRight={showPassword ? "eye" : "eye-off"}
@@ -251,12 +251,12 @@ const SignupScreen: React.FC<SignupScreenProps> = ({
             )}
 
             <TouchableOpacity
-              className={`w-full py-4 rounded-[3px] bg-[#008080] flex items-center justify-center mt-2`}
+              className={` py-4 rounded-md bg-[#008080] flex items-center justify-center mt-2`}
               onPress={handleSignup}
               accessibilityLabel="Sign up"
               accessibilityRole="button"
             >
-              <Text className="text-white w-full text-center text-lg uppercase font-semibold">
+              <Text className="text-white l text-center text-lg uppercase font-semibold">
                 Sign Up
               </Text>
             </TouchableOpacity>
