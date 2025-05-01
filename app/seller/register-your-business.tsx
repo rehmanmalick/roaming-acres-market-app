@@ -13,7 +13,7 @@ import {
 import { useRouter } from "expo-router";
 
 import Wrapper from "@/components/wrapper";
-import CustomTextInput from "../../components/custom-input";
+import CustomTextInput from "../../components/ui/custom-input";
 import Dropdown from "@/components/dropdown-component";
 
 // Define a type for your form data
@@ -48,10 +48,7 @@ const BusinessRegistrationScreen: React.FC = () => {
     type: "Business",
     nature: "",
   });
-  const businessTypes = [
-    "Sole Proprietorship",
-    "Partnership",
-  ];
+  const businessTypes = ["Sole Proprietorship", "Partnership"];
 
   const handleChange = (name: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -86,14 +83,18 @@ const BusinessRegistrationScreen: React.FC = () => {
                 <View className="flex-1">
                   <CustomTextInput
                     value={formData.firstName}
-                    onChangeText={(text: string) => handleChange("firstName", text)}
+                    onChangeText={(text: string) =>
+                      handleChange("firstName", text)
+                    }
                     placeholder="First Name"
                   />
                 </View>
                 <View className="flex-1">
                   <CustomTextInput
                     value={formData.lastName}
-                    onChangeText={(text: string) => handleChange("lastName", text)}
+                    onChangeText={(text: string) =>
+                      handleChange("lastName", text)
+                    }
                     placeholder="Last Name"
                   />
                 </View>
@@ -111,7 +112,9 @@ const BusinessRegistrationScreen: React.FC = () => {
             <CustomTextInput
               label="Business Name"
               value={formData.businessName}
-              onChangeText={(text: string) => handleChange("businessName", text)}
+              onChangeText={(text: string) =>
+                handleChange("businessName", text)
+              }
             />
 
             <View className="flex-row justify-between gap-6">
@@ -119,7 +122,9 @@ const BusinessRegistrationScreen: React.FC = () => {
                 <CustomTextInput
                   label="Contact Number"
                   value={formData.contactNumber}
-                  onChangeText={(text: string) => handleChange("contactNumber", text)}
+                  onChangeText={(text: string) =>
+                    handleChange("contactNumber", text)
+                  }
                   keyboardType="phone-pad"
                 />
               </View>
@@ -128,7 +133,9 @@ const BusinessRegistrationScreen: React.FC = () => {
                 <CustomTextInput
                   label="Postal / Zip Code"
                   value={formData.postalCode}
-                  onChangeText={(text: string) => handleChange("postalCode", text)}
+                  onChangeText={(text: string) =>
+                    handleChange("postalCode", text)
+                  }
                 />
               </View>
             </View>

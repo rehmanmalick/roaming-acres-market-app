@@ -118,7 +118,7 @@ export default function NotificationsAndMessages() {
     >
       <Wrapper showBackButton={true}>
         <View className=" flex-1 flex-col  ">
-          <View className="mt-8 ">
+          <View className=" ">
             <View className="items-center justify-center">
               <Text className="font-bold text-3xl mb-6">
                 {activeTab === "All Notifications"

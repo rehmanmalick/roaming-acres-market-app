@@ -12,7 +12,7 @@ import {
   TextInput,
 } from "react-native";
 import { useRouter } from "expo-router";
-import CustomTextInput from "../../components/custom-input";
+import CustomTextInput from "../../components/ui/custom-input";
 import Wrapper from "@/components/wrapper";
 import ResetComponent from "./../../components/reset-password-component";
 

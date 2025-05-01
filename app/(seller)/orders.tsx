@@ -17,12 +17,13 @@ export default function SellerOrder() {
     >
       <Wrapper
         showBackButton={true}
+        showFilterButton={true}
         showProfileHeader={true}
         account="Seller"
         profileHeaderRoute="/seller/profile-seller"
       >
-        <View className=" flex-1 flex-col mt-14 ">
-          <View className="mt-8  py-4">
+        <View className=" flex-1 flex-col">
+          <View className="  py-4">
             <View className="flex  flex-row gap-5">
               <View className="flex-1">
                 <Button state="primary" title="Orders" />

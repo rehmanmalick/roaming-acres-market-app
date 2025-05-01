@@ -30,8 +30,8 @@ export default function BuyerOrders() {
         account="Seller"
         profileHeaderRoute="/seller/profile-seller"
       >
-        <View className=" flex-1 flex-col mt-14 ">
-          <View className="mt-8 ">
+        <View className=" flex-1 flex-col  ">
+          <View className=" ">
             {/* <ProfileHeader account="Seller" route="/seller/profile-seller" /> */}
             <View className=" py-4 flex-row justify-between items-center">
               <View className=" relative  w-[40%]">

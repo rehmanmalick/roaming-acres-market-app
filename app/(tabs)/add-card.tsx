@@ -13,7 +13,7 @@ import {
   Alert,
 } from "react-native";
 import Wrapper from "@/components/wrapper";
-import CustomTextInput from "../../components/custom-input";
+import CustomTextInput from "../../components/ui/custom-input";
 import { useRouter } from "expo-router";
 import CustomSwitch from "@/components/custom-switch";
 

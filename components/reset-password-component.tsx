@@ -1,110 +1,146 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
-  Alert,
   KeyboardAvoidingView,
-  Platform,
   TouchableWithoutFeedback,
   Keyboard,
-  TextInput,
 } from "react-native";
-import { useRouter, useLocalSearchParams } from "expo-router"; // ✅ added useLocalSearchParams
-import CustomTextInput from "./custom-input";
-import Wrapper from "@/components/common/wrapper";
+import { useRouter } from "expo-router";
+import { useForm } from "react-hook-form";
 
-interface ResetComponentProps {
-  verificationPath?: any;
+import Wrapper from "@/components/common/wrapper";
+import PasswordStrengthMeter from "@/components/ui/password-strength-meter";
+import CustomTextInput from "./ui/custom-input"; // Updated input with Controller inside
+
+/** ---------------- Types ---------------- */
+interface SignupScreenProps {
+  verificationPath: string;
+  loginPath: string;
 }
 
-const COLORS = {
-  primary: "#008080",
-  text: "#111719",
-  white: "#FFFFFF",
-  gray: "#E0E0E0",
-} as const;
+type FormData = {
+  fullName: string;
+  email: string;
+  password: string;
+};
 
-const ResetComponent: React.FC<ResetComponentProps> = ({
-  verificationPath = "",
+/** ---------------- Validation Helpers ---------------- */
+const isEmailValid = (email: string) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+const isPasswordValid = (password: string) => password.length >= 6;
+
+const validateField = (name: keyof FormData, value: string): string => {
+  switch (name) {
+    case "fullName":
+      return value.trim() ? "" : "Full name is required";
+    case "email":
+      if (!value.trim()) return "Email is required";
+      if (!isEmailValid(value)) return "Invalid email format";
+      return "";
+    case "password":
+      if (!value) return "Password is required";
+      if (!isPasswordValid(value))
+        return "Password must be at least 6 characters";
+      return "";
+    default:
+      return "";
+  }
+};
+
+/** ---------------- Component ---------------- */
+const SignupScreen: React.FC<SignupScreenProps> = ({
+  verificationPath,
+  loginPath,
 }) => {
   const router = useRouter();
-  const { role } = useLocalSearchParams<{ role?: string }>(); // ✅ get role here
-  const [email, setEmail] = useState("");
-  const [showAllErrors, setShowAllErrors] = useState(false);
-  const emailRef = useRef<TextInput>(null);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm<FormData>();
 
-  const isEmailValid = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleSendCode = () => {
-    setShowAllErrors(true);
-
-    if (!isEmailValid(email)) {
-      Alert.alert("Error", "Please enter a valid email address");
-      return;
-    }
-
+  const handleSignup = (data: FormData) => {
     router.push({
       pathname: verificationPath,
-      params: { email }, // ✅ pass both email and role
+      params: { email: data.email },
     });
   };
 
+  const handleNavigateToLogin = () => {
+    router.push(loginPath);
+  };
+
+  const passwordValue = watch("password");
+
   return (
     <Wrapper showBackButton={true}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={{ flex: 1 }}
-      >
+      <KeyboardAvoidingView style={{ flex: 1 }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View className="flex-1  mt-20">
-            <Text className="text-4xl font-medium text-start text-gray-800 mb-2">
-              Reset Password
+          <View className="flex-1 mt-20">
+            <Text className="text-4xl font-medium text-start text-gray-800 mb-8">
+              Sign Up
             </Text>
 
-            <Text className="text-[#9796A1] text-start mb-8">
-              Please enter your email address to request a password reset
-            </Text>
-
+            {/* Full Name Input */}
             <CustomTextInput
-              ref={emailRef}
-              placeholder="Email Address"
-              keyboardType="email-address"
-              autoCapitalize="none"
-              value={email}
-              onChangeText={setEmail}
-              returnKeyType="send"
-              onSubmitEditing={handleSendCode}
-              validationIcon={
-                showAllErrors && email
-                  ? isEmailValid(email)
-                    ? "checkmark-circle"
-                    : "close-circle"
-                  : undefined
-              }
-              validationIconColor={
-                isEmailValid(email) ? COLORS.primary : "#E26D08"
-              }
-              showValidationIcon={showAllErrors && !!email}
-              errorMessage={
-                showAllErrors && !isEmailValid(email)
-                  ? "Please enter a valid email address"
-                  : undefined
-              }
+              control={control}
+              name="fullName"
+              label="Full Name"
+              placeholder="Full Name"
+              errorMessage={errors.fullName?.message}
             />
 
+            {/* Email Input */}
+            <CustomTextInput
+              control={control}
+              name="email"
+              label="E-mail"
+              placeholder="Email Address"
+              errorMessage={errors.email?.message}
+            />
+
+            {/* Password Input */}
+            <CustomTextInput
+              control={control}
+              name="password"
+              label="Password"
+              placeholder="Enter your password"
+              secureTextEntry={!showPassword}
+              onIconRightPress={() => setShowPassword(!showPassword)}
+              iconRight={showPassword ? "eye" : "eye-off"}
+              errorMessage={errors.password?.message}
+            />
+
+            {/* Password Strength Meter */}
+            <PasswordStrengthMeter password={passwordValue} />
+
+            {/* Sign Up Button */}
             <TouchableOpacity
-              className={` py-4 rounded-md bg-[${COLORS.primary}] flex items-center justify-center mt-2`}
-              onPress={handleSendCode}
-              disabled={!isEmailValid(email)}
-              accessibilityLabel="Send verification code"
-              accessibilityRole="button"
+              className="py-4 rounded-md bg-[#008080] flex items-center justify-center mt-2"
+              onPress={handleSubmit(handleSignup)}
             >
-              <Text className="text-white w-full text-center text-lg uppercase font-semibold">
-                Send Code
+              <Text className="text-white text-center text-lg uppercase font-semibold">
+                Sign Up
               </Text>
             </TouchableOpacity>
+
+            {/* Login Navigation */}
+            <View className="flex-row justify-center mt-6">
+              <Text className="text-[#111719] font-medium">
+                Already have an account?{" "}
+              </Text>
+              <TouchableOpacity onPress={handleNavigateToLogin}>
+                <Text className="text-[#008080] underline px-2 font-semibold">
+                  Login
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
@@ -112,4 +148,4 @@ const ResetComponent: React.FC<ResetComponentProps> = ({
   );
 };
 
-export default ResetComponent;
+export default SignupScreen;

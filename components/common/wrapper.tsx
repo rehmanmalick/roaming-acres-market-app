@@ -126,155 +126,171 @@ const Wrapper: FC<IWrapper> = ({
   };
 
   const FilterModal = () => (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={modalState === "filter"}
-      onRequestClose={() => setModalState(null)}
-    >
-      <View className="flex-1    bg-black/50">
-        <View className="bg-white mt-auto  rounded-t-2xl max-h-[80%]">
-          <View className="flex-row justify-between items-center p-5 border-b border-gray-200">
-            <Text className="text-lg font-bold">Filters</Text>
-            <TouchableOpacity onPress={() => setModalState(null)}>
-              <Ionicons name="close" size={24} color="#000" />
-            </TouchableOpacity>
+    <>
+      {modalState === "filter" && (
+        <>
+          <View className="flex-1 bg-black/50 absolute inset-0 z-50">
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={true}
+              onRequestClose={() => setModalState(null)}
+            >
+              <View className="flex-1    justify-end">
+                <View className="bg-white mt-auto  rounded-t-2xl max-h-[80%]">
+                  <View className="flex-row justify-between items-center p-5 border-b border-gray-200">
+                    <Text className="text-lg font-bold">Filters</Text>
+                    <TouchableOpacity onPress={() => setModalState(null)}>
+                      <Ionicons name="close" size={24} color="#000" />
+                    </TouchableOpacity>
+                  </View>
+
+                  <ScrollView className="px-5 pt-3">
+                    <View className="mb-5">
+                      <Text className="text-base font-semibold mb-2">
+                        Categories
+                      </Text>
+                      <View className="flex-row flex-wrap gap-2">
+                        {[
+                          "All",
+                          "Livestock",
+                          "Poultry",
+                          "Other Animals",
+                          "Homegrown Produce",
+                          "Eggs and Dairy",
+                          "Homemade Canned or Baked Goods",
+                          "Handmade Products",
+                          "Agricultural Equipment and Supplies",
+                        ].map((item) => (
+                          <TouchableOpacity
+                            key={`category-${item}`}
+                            className={`px-4 py-2 rounded-lg border border-teal-600 ${
+                              selectedCategories.includes(item)
+                                ? "bg-teal-600"
+                                : "bg-white"
+                            }`}
+                            onPress={() => {
+                              toggleFilter("category", item);
+                              setModalState(null);
+                              router.push("/search");
+                            }}
+                          >
+                            <Text
+                              className={`text-sm ${
+                                selectedCategories.includes(item)
+                                  ? "text-white"
+                                  : "text-gray-800"
+                              }`}
+                            >
+                              {item}
+                            </Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    </View>
+
+                    <View className="mb-5">
+                      <Text className="text-base font-semibold mb-2">
+                        On Sales
+                      </Text>
+                      <View className="flex-row flex-wrap gap-2">
+                        {[
+                          "All",
+                          "Hot Deal",
+                          "Favorite Shop",
+                          "Top Pick",
+                          "E-Voucher",
+                          "Deal $9",
+                        ].map((item) => (
+                          <TouchableOpacity
+                            key={`sale-${item}`}
+                            className={`px-4 py-2 rounded-lg border border-teal-600 ${
+                              selectedSales.includes(item)
+                                ? "bg-teal-600"
+                                : "bg-white"
+                            }`}
+                            onPress={() => {
+                              toggleFilter("sale", item);
+                              setModalState(null);
+                              router.push("/search");
+                            }}
+                          >
+                            <Text
+                              className={`text-sm ${
+                                selectedSales.includes(item)
+                                  ? "text-white"
+                                  : "text-gray-800"
+                              }`}
+                            >
+                              {item}
+                            </Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    </View>
+
+                    <View className="mb-5">
+                      <Text className="text-base font-semibold mb-2">
+                        Locations
+                      </Text>
+                      <View className="flex-row flex-wrap gap-2">
+                        {[
+                          "All",
+                          "Americas",
+                          "Asia",
+                          "Australia",
+                          "South Pole",
+                          "Africa",
+                        ].map((item) => (
+                          <TouchableOpacity
+                            key={`location-${item}`}
+                            className={`px-4 py-2 rounded-lg border border-teal-600 ${
+                              selectedLocations.includes(item)
+                                ? "bg-teal-600"
+                                : "bg-white"
+                            }`}
+                            onPress={() => {
+                              toggleFilter("location", item);
+                              setModalState(null);
+                              router.push("/search");
+                            }}
+                          >
+                            <Text
+                              className={`text-sm ${
+                                selectedLocations.includes(item)
+                                  ? "text-white"
+                                  : "text-gray-800"
+                              }`}
+                            >
+                              {item}
+                            </Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    </View>
+                    <View className="p-5">
+                      <Button
+                        title="APPLY FILTER"
+                        state="primary"
+                        onPress={() => {
+                          console.log("Selected Filters:", {
+                            categories: selectedCategories,
+                            sales: selectedSales,
+                            locations: selectedLocations,
+                          });
+                          setModalState(null);
+                          router.push("/search");
+                        }}
+                      />
+                    </View>
+                  </ScrollView>
+                </View>
+              </View>
+            </Modal>
           </View>
-
-          <ScrollView className="px-5 pt-3">
-            <View className="mb-5">
-              <Text className="text-base font-semibold mb-2">Categories</Text>
-              <View className="flex-row flex-wrap gap-2">
-                {[
-                  "All",
-                  "Livestock",
-                  "Poultry",
-                  "Other Animals",
-                  "Homegrown Produce",
-                  "Eggs and Dairy",
-                  "Homemade Canned or Baked Goods",
-                  "Handmade Products",
-                  "Agricultural Equipment and Supplies",
-                ].map((item) => (
-                  <TouchableOpacity
-                    key={`category-${item}`}
-                    className={`px-4 py-2 rounded-lg border border-teal-600 ${
-                      selectedCategories.includes(item)
-                        ? "bg-teal-600"
-                        : "bg-white"
-                    }`}
-                    onPress={() => {
-                      toggleFilter("category", item);
-                      setModalState(null);
-                      router.push("/search");
-                    }}
-                  >
-                    <Text
-                      className={`text-sm ${
-                        selectedCategories.includes(item)
-                          ? "text-white"
-                          : "text-gray-800"
-                      }`}
-                    >
-                      {item}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            </View>
-
-            <View className="mb-5">
-              <Text className="text-base font-semibold mb-2">On Sales</Text>
-              <View className="flex-row flex-wrap gap-2">
-                {[
-                  "All",
-                  "Hot Deal",
-                  "Favorite Shop",
-                  "Top Pick",
-                  "E-Voucher",
-                  "Deal $9",
-                ].map((item) => (
-                  <TouchableOpacity
-                    key={`sale-${item}`}
-                    className={`px-4 py-2 rounded-lg border border-teal-600 ${
-                      selectedSales.includes(item) ? "bg-teal-600" : "bg-white"
-                    }`}
-                    onPress={() => {
-                      toggleFilter("sale", item);
-                      setModalState(null);
-                      router.push("/search");
-                    }}
-                  >
-                    <Text
-                      className={`text-sm ${
-                        selectedSales.includes(item)
-                          ? "text-white"
-                          : "text-gray-800"
-                      }`}
-                    >
-                      {item}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            </View>
-
-            <View className="mb-5">
-              <Text className="text-base font-semibold mb-2">Locations</Text>
-              <View className="flex-row flex-wrap gap-2">
-                {[
-                  "All",
-                  "Americas",
-                  "Asia",
-                  "Australia",
-                  "South Pole",
-                  "Africa",
-                ].map((item) => (
-                  <TouchableOpacity
-                    key={`location-${item}`}
-                    className={`px-4 py-2 rounded-lg border border-teal-600 ${
-                      selectedLocations.includes(item)
-                        ? "bg-teal-600"
-                        : "bg-white"
-                    }`}
-                    onPress={() => {
-                      toggleFilter("location", item);
-                      setModalState(null);
-                      router.push("/search");
-                    }}
-                  >
-                    <Text
-                      className={`text-sm ${
-                        selectedLocations.includes(item)
-                          ? "text-white"
-                          : "text-gray-800"
-                      }`}
-                    >
-                      {item}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            </View>
-            <View className="p-5">
-              <Button
-                title="APPLY FILTER"
-                state="primary"
-                onPress={() => {
-                  console.log("Selected Filters:", {
-                    categories: selectedCategories,
-                    sales: selectedSales,
-                    locations: selectedLocations,
-                  });
-                  setModalState(null);
-                  router.push("/search");
-                }}
-              />
-            </View>
-          </ScrollView>
-        </View>
-      </View>
-    </Modal>
+        </>
+      )}
+    </>
   );
 
   const PeriodModal = () => (
@@ -408,48 +424,50 @@ const Wrapper: FC<IWrapper> = ({
         resizeMode="cover"
         className="w-screen absolute top-0 right-0"
       />
-      {(showBackButton || showMenuButton) && (
-        <TouchableOpacity
-          onPress={() =>
-            router[showBackButton ? "back" : "push"](
-              showBackButton ? undefined : menuLink || "/(tabs)/buyer-account"
-            )
-          }
-          className="absolute top-7 left-6 z-10"
-        >
-          <View className="w-9 h-9 bg-white rounded-xl mt-7 shadow-sm justify-center items-center">
+
+      <View className="relative flex-row items-center justify-between ">
+        {(showBackButton || showMenuButton) && (
+          <TouchableOpacity
+            onPress={() =>
+              router[showBackButton ? "back" : "push"](
+                showBackButton ? undefined : menuLink || "/(tabs)/buyer-account"
+              )
+            }
+            className="w-9 h-9 bg-white  shadow-sm   rounded-xl justify-center items-center"
+          >
             <Ionicons
               name={showBackButton ? "chevron-back-outline" : "menu"}
               size={16}
               color="#000"
             />
-          </View>
-        </TouchableOpacity>
-      )}
+          </TouchableOpacity>
+        )}
 
-      <View className="absolute top-7 right-6 z-10">
-        {showFilterButton && (
-          <TouchableOpacity
-            onPress={() => setModalState("filter")}
-            className="w-9 h-9 bg-white mt-7 shadow-sm  rounded-xl justify-center items-center"
-          >
-            <Ionicons name="options" size={16} color="#000" />
-          </TouchableOpacity>
+        {/* Conditionally render ProfileHeader */}
+        {showProfileHeader && (
+          <ProfileHeader account={account} route={profileHeaderRoute} />
         )}
-        {showPeriodButton && (
-          <TouchableOpacity
-            onPress={() => setModalState("period")}
-            className="w-9 h-9 bg-white mt-7 shadow-sm  rounded-xl justify-center items-center"
-          >
-            <Ionicons name="options" size={16} color="#000" />
-          </TouchableOpacity>
-        )}
+
+        <View>
+          {showFilterButton && (
+            <TouchableOpacity
+              onPress={() => setModalState("filter")}
+              className="w-9 h-9 bg-white  shadow-sm  rounded-xl justify-center items-center"
+            >
+              <Ionicons name="options" size={16} color="#000" />
+            </TouchableOpacity>
+          )}
+          {showPeriodButton && (
+            <TouchableOpacity
+              onPress={() => setModalState("period")}
+              className="w-9 h-9 bg-white  shadow-sm  rounded-xl justify-center items-center"
+            >
+              <Ionicons name="options" size={16} color="#000" />
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
 
-      {/* Conditionally render ProfileHeader */}
-      {showProfileHeader && (
-        <ProfileHeader account={account} route={profileHeaderRoute} />
-      )}
       <FilterModal />
       <PeriodModal />
 

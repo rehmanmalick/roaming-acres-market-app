@@ -10,7 +10,7 @@ import {
   TextInput,
 } from "react-native";
 import { useRouter } from "expo-router";
-import CustomTextInput from "./custom-input";
+import CustomTextInput from "./ui/custom-input";
 import Wrapper from "@/components/common/wrapper";
 
 interface LoginComponentProps {

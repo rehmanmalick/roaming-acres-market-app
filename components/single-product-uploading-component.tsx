@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
-import CustomTextInput from "@/components/custom-input";
+import CustomTextInput from "@/components/ui/custom-input";
 import Dropdown from "@/components/dropdown-component";
 import { useRouter } from "expo-router";
 
@@ -173,7 +173,9 @@ const ProductUploadComponent = () => {
         </View>
 
         <View className="w-[48%]">
-          <Text className="text-sm font-medium text-gray-700 mb-1">Quantity</Text>
+          <Text className="text-sm font-medium text-gray-700 mb-1">
+            Quantity
+          </Text>
           <View className="w-full h-14 border rounded-[3px] px-4 flex-row border-gray-300 items-center">
             <Pressable
               onPress={() => handleQuantityChange(quantity - 1)}
@@ -245,12 +247,11 @@ const ProductUploadComponent = () => {
                 fontSize: 18,
                 marginVertical: 10,
                 textAlign: "center",
-                color:"#008080",
-                fontWeight:600,
+                color: "#008080",
+                fontWeight: 600,
               }}
-              
             >
-              Your product has been uploaded 
+              Your product has been uploaded
             </Text>
             <TouchableOpacity
               onPress={() => {
