@@ -3,144 +3,111 @@ import {
   View,
   Text,
   TouchableOpacity,
+  Alert,
   KeyboardAvoidingView,
+  Platform,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { useForm } from "react-hook-form";
-
+import CustomTextInput from "./ui/custom-input";
 import Wrapper from "@/components/common/wrapper";
-import PasswordStrengthMeter from "@/components/ui/password-strength-meter";
-import CustomTextInput from "./ui/custom-input"; // Updated input with Controller inside
 
-/** ---------------- Types ---------------- */
-interface SignupScreenProps {
-  verificationPath: string;
-  loginPath: string;
+interface ResetComponentProps {
+  verificationPath?: any;
 }
 
+const COLORS = {
+  primary: "#008080",
+  text: "#111719",
+  white: "#FFFFFF",
+  gray: "#E0E0E0",
+} as const;
+
 type FormData = {
-  fullName: string;
   email: string;
-  password: string;
 };
 
-/** ---------------- Validation Helpers ---------------- */
-const isEmailValid = (email: string) =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-const isPasswordValid = (password: string) => password.length >= 6;
-
-const validateField = (name: keyof FormData, value: string): string => {
-  switch (name) {
-    case "fullName":
-      return value.trim() ? "" : "Full name is required";
-    case "email":
-      if (!value.trim()) return "Email is required";
-      if (!isEmailValid(value)) return "Invalid email format";
-      return "";
-    case "password":
-      if (!value) return "Password is required";
-      if (!isPasswordValid(value))
-        return "Password must be at least 6 characters";
-      return "";
-    default:
-      return "";
-  }
-};
-
-/** ---------------- Component ---------------- */
-const SignupScreen: React.FC<SignupScreenProps> = ({
-  verificationPath,
-  loginPath,
+const ResetComponent: React.FC<ResetComponentProps> = ({
+  verificationPath = "",
 }) => {
   const router = useRouter();
+  const { role } = useLocalSearchParams<{ role?: string }>();
+
   const {
     control,
     handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm<FormData>();
+    formState: { errors, isValid },
+  } = useForm<FormData>({
+    defaultValues: {
+      email: "",
+    },
+    mode: "onChange",
+  });
 
-  const [showPassword, setShowPassword] = useState(false);
+  const isEmailValid = (email: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  const handleSignup = (data: FormData) => {
+  const handleSendCode = (data: FormData) => {
+    if (!isEmailValid(data.email)) {
+      Alert.alert("Error", "Please enter a valid email address");
+      return;
+    }
+
     router.push({
       pathname: verificationPath,
       params: { email: data.email },
     });
   };
 
-  const handleNavigateToLogin = () => {
-    router.push(loginPath);
-  };
-
-  const passwordValue = watch("password");
-
   return (
     <Wrapper showBackButton={true}>
-      <KeyboardAvoidingView style={{ flex: 1 }}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={{ flex: 1 }}
+      >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View className="flex-1 mt-20">
-            <Text className="text-4xl font-medium text-start text-gray-800 mb-8">
-              Sign Up
+            <Text className="text-4xl font-medium text-start text-gray-800 mb-2">
+              Reset Password
             </Text>
 
-            {/* Full Name Input */}
-            <CustomTextInput
-              control={control}
-              name="fullName"
-              label="Full Name"
-              placeholder="Full Name"
-              errorMessage={errors.fullName?.message}
-            />
+            <Text className="text-[#9796A1] text-start mb-8">
+              Please enter your email address to request a password reset
+            </Text>
 
             {/* Email Input */}
-            <CustomTextInput
+            <CustomTextInput<FormData>
               control={control}
               name="email"
-              label="E-mail"
+              label="Email"
               placeholder="Email Address"
-              errorMessage={errors.email?.message}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoComplete="email"
+              textContentType="emailAddress"
+              autoCorrect={false}
+              rules={{
+                required: "Email is required",
+                validate: (value) =>
+                  isEmailValid(value) || "Enter valid email address",
+              }}
             />
 
-            {/* Password Input */}
-            <CustomTextInput
-              control={control}
-              name="password"
-              label="Password"
-              placeholder="Enter your password"
-              secureTextEntry={!showPassword}
-              onIconRightPress={() => setShowPassword(!showPassword)}
-              iconRight={showPassword ? "eye" : "eye-off"}
-              errorMessage={errors.password?.message}
-            />
-
-            {/* Password Strength Meter */}
-            <PasswordStrengthMeter password={passwordValue} />
-
-            {/* Sign Up Button */}
             <TouchableOpacity
-              className="py-4 rounded-md bg-[#008080] flex items-center justify-center mt-2"
-              onPress={handleSubmit(handleSignup)}
+              className={`py-4 rounded-md ${
+                isValid ? "bg-[#008080]" : "bg-gray-300"
+              } flex items-center justify-center mt-2`}
+              onPress={handleSubmit(handleSendCode)}
+              disabled={!isValid}
+              accessibilityLabel="Send verification code"
+              accessibilityRole="button"
             >
               <Text className="text-white text-center text-lg uppercase font-semibold">
-                Sign Up
+                Send Code
               </Text>
             </TouchableOpacity>
-
-            {/* Login Navigation */}
-            <View className="flex-row justify-center mt-6">
-              <Text className="text-[#111719] font-medium">
-                Already have an account?{" "}
-              </Text>
-              <TouchableOpacity onPress={handleNavigateToLogin}>
-                <Text className="text-[#008080] underline px-2 font-semibold">
-                  Login
-                </Text>
-              </TouchableOpacity>
-            </View>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
@@ -148,4 +115,4 @@ const SignupScreen: React.FC<SignupScreenProps> = ({
   );
 };
 
-export default SignupScreen;
+export default ResetComponent;

@@ -1,22 +1,22 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
-  TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
-  TextInput,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { useRouter, Href } from "expo-router";
+import { useForm } from "react-hook-form";
 import CustomTextInput from "./ui/custom-input";
 import Wrapper from "@/components/common/wrapper";
+import Button from "./button";
 
 interface LoginComponentProps {
-  buttonPath?: any;
-  SigninPath?: any;
-  ResetpasswordPath?: any;
+  buttonPath: Href;
+  SigninPath: Href;
+  ResetpasswordPath: Href;
 }
 
 const COLORS = {
@@ -31,73 +31,33 @@ type FormData = {
   password: string;
 };
 
-type FormErrors = Partial<Record<keyof FormData, string>>;
-
 const LoginComponent: React.FC<LoginComponentProps> = ({
   buttonPath,
   SigninPath,
   ResetpasswordPath,
 }) => {
   const router = useRouter();
-  const [formData, setFormData] = useState<FormData>({
-    email: "",
-    password: "",
-  });
-  const [errors, setErrors] = useState<FormErrors>({});
   const [showPassword, setShowPassword] = useState(false);
-  const [showAllErrors, setShowAllErrors] = useState(false);
 
-  const emailRef = useRef<TextInput>(null);
-  const passwordRef = useRef<TextInput>(null);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<FormData>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    mode: "onChange",
+  });
 
-  // Validation functions
+  const handleLogin = (data: FormData) => {
+    console.log("Form Data Submitted:", data); // Logs the form data
+    router.push(buttonPath);
+  };
+
   const isEmailValid = (email: string) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const isPasswordValid = (password: string) => password.length >= 6;
-
-  const validateField = (name: keyof FormData, value: string): string => {
-    switch (name) {
-      case "email":
-        if (!value.trim()) return "Email is required";
-        if (!isEmailValid(value)) return "Invalid email format";
-        return "";
-      case "password":
-        if (!value) return "Password is required";
-        return "";
-      default:
-        return "";
-    }
-  };
-
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-    let isValid = true;
-
-    (Object.keys(formData) as Array<keyof FormData>).forEach((fieldName) => {
-      const error = validateField(fieldName, formData[fieldName]);
-      if (error) {
-        newErrors[fieldName] = error;
-        isValid = false;
-      }
-    });
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
-  const handleChange = (name: keyof FormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
-
-  const handleLogin = () => {
-    setShowAllErrors(true);
-    if (validateForm()) {
-      router.push(buttonPath);
-    }
-  };
 
   return (
     <Wrapper showBackButton={true}>
@@ -111,77 +71,68 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
               Login
             </Text>
 
+            {/* Email Input */}
             <CustomTextInput
-              label="E-mail"
-              ref={emailRef}
+              control={control}
+              name="email"
+              label="Email"
               placeholder="Email Address"
               keyboardType="email-address"
               autoCapitalize="none"
-              value={formData.email}
-              onChangeText={(text: string) => handleChange("email", text)}
-              returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current?.focus()}
-              validationIcon={
-                showAllErrors && errors.email && formData.email
-                  ? isEmailValid(formData.email)
-                    ? "checkmark-circle"
-                    : "close-circle"
-                  : undefined
-              }
-              validationIconColor={
-                isEmailValid(formData.email) ? COLORS.primary : "#E26D08"
-              }
-              showValidationIcon={
-                showAllErrors && !!errors.email && !!formData.email
-              }
-              errorMessage={showAllErrors ? errors.email : undefined}
+              rules={{
+                required: "Email is required",
+                validate: (value) =>
+                  isEmailValid(value) || "Enter valid email address",
+              }}
             />
 
+            {/* Password Input */}
             <CustomTextInput
+              control={control}
+              name="password"
               label="Password"
-              ref={passwordRef}
               placeholder="Enter your password"
               secureTextEntry={!showPassword}
-              value={formData.password}
-              onChangeText={(text: string) => handleChange("password", text)}
-              returnKeyType="done"
-              onSubmitEditing={handleLogin}
               iconRight={showPassword ? "eye" : "eye-off"}
-              onIconRightPress={() => setShowPassword(!showPassword)}
-              errorMessage={showAllErrors ? errors.password : undefined}
+              onIconRightPress={() => setShowPassword((prev) => !prev)}
+              rules={{
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Must be at least 6 characters",
+                },
+              }}
             />
 
-            <TouchableOpacity
-              className="self-end mb-6"
-              onPress={() => router.push(ResetpasswordPath)}
+            {/* Forgot Password Link */}
+            <TouchableWithoutFeedback
+              onPress={() => router.push(ResetpasswordPath as Href)}
             >
-              <Text className="text-[#008080] text-sm">Forgot Password?</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              className={` py-4 rounded-md bg-[${COLORS.primary}] flex items-center justify-center mt-2`}
-              onPress={handleLogin}
-              accessibilityLabel="Login"
-              accessibilityRole="button"
-            >
-              <Text className="text-white  text-center text-lg uppercase font-semibold">
-                Login
+              <Text className="text-[#008080] text-sm self-end mb-6">
+                Forgot Password?
               </Text>
-            </TouchableOpacity>
+            </TouchableWithoutFeedback>
 
+            {/* Login Button */}
+            <Button
+              state="primary"
+              title="LOGIN"
+              onPress={handleSubmit(handleLogin)}
+              disabled={!isValid} // Button disabled if form is invalid
+            />
+
+            {/* Sign Up Navigation */}
             <View className="flex-row justify-center mt-6">
               <Text className="text-[#111719] font-medium">
                 Don't have an account?{" "}
               </Text>
-              <TouchableOpacity
-                onPress={() => router.push(SigninPath)}
-                accessibilityLabel="Go to signup"
-                accessibilityRole="link"
+              <TouchableWithoutFeedback
+                onPress={() => router.push(SigninPath as Href)}
               >
                 <Text className="text-[#008080] underline px-2 font-semibold">
                   Sign Up
                 </Text>
-              </TouchableOpacity>
+              </TouchableWithoutFeedback>
             </View>
           </View>
         </TouchableWithoutFeedback>
