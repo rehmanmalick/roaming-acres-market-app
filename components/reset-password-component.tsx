@@ -13,6 +13,7 @@ import { useRouter, useLocalSearchParams } from "expo-router";
 import { useForm } from "react-hook-form";
 import CustomTextInput from "./ui/custom-input";
 import Wrapper from "@/components/common/wrapper";
+import Button from "./button";
 
 interface ResetComponentProps {
   verificationPath?: any;
@@ -94,20 +95,12 @@ const ResetComponent: React.FC<ResetComponentProps> = ({
                   isEmailValid(value) || "Enter valid email address",
               }}
             />
-
-            <TouchableOpacity
-              className={`py-4 rounded-md ${
-                isValid ? "bg-[#008080]" : "bg-gray-300"
-              } flex items-center justify-center mt-2`}
+            {/* Login Button */}
+            <Button
+              state="primary"
+              title="Send Code"
               onPress={handleSubmit(handleSendCode)}
-              disabled={!isValid}
-              accessibilityLabel="Send verification code"
-              accessibilityRole="button"
-            >
-              <Text className="text-white text-center text-lg uppercase font-semibold">
-                Send Code
-              </Text>
-            </TouchableOpacity>
+            />
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>

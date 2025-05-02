@@ -118,7 +118,6 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
               state="primary"
               title="LOGIN"
               onPress={handleSubmit(handleLogin)}
-              disabled={!isValid} // Button disabled if form is invalid
             />
 
             {/* Sign Up Navigation */}

@@ -2,16 +2,17 @@ import React, { useState, useRef } from "react";
 import {
   View,
   Text,
-  TouchableOpacity,
   Alert,
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
+  TouchableOpacity,
 } from "react-native";
 import { useRouter } from "expo-router";
 import OTPInput from "./otp-input";
 import Wrapper from "@/components/common/wrapper";
+import Button from "./button"; // Your custom button component
 
 interface OtpComponentProps {
   verifyPath?: any;
@@ -33,18 +34,13 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
 }) => {
   const router = useRouter();
   const [code, setCode] = useState("");
-  const [showAllErrors, setShowAllErrors] = useState(false);
   const otpRef = useRef(null);
 
   const handleVerify = () => {
-    setShowAllErrors(true);
-
     if (code.length !== 4) {
       Alert.alert("Error", "Please enter a 4-digit verification code");
       return;
     }
-
-    // ✅ When verified, go to verifyPath
     router.push(verifyPath);
   };
 
@@ -53,8 +49,6 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
       Alert.alert("Error", "Email is missing. Cannot resend code.");
       return;
     }
-
-    // ✅ When resending, send both email and role
     router.push({
       pathname: resendPath,
       params: { email },
@@ -68,11 +62,10 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
         style={{ flex: 1 }}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View className="flex-1  mt-20">
+          <View className="flex-1 mt-20">
             <Text className="text-4xl font-medium text-start text-gray-800 mb-2">
               Verification Code
             </Text>
-
             <Text className="text-[#9796A1] text-start mb-8">
               {email
                 ? `Enter the 4-digit code sent to ${email}`
@@ -84,11 +77,6 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
               code={code}
               setCode={setCode}
               maximumLength={4}
-              // error={
-              //   showAllErrors && code.length !== 4
-              //     ? "Please enter the 4-digit code"
-              //     : null
-              // }
             />
 
             <View className="flex-row justify-center mt-6">
@@ -106,6 +94,7 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
               </TouchableOpacity>
             </View>
 
+            {/* TouchableOpacity button */}
             <TouchableOpacity
               className={`w-full py-4 rounded-md bg-[${COLORS.primary}] flex items-center justify-center mt-8`}
               onPress={handleVerify}
