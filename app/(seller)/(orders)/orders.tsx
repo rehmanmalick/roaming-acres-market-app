@@ -19,11 +19,10 @@ export default function SellerOrder() {
         showBackButton={true}
         showFilterButton={true}
         showProfileHeader={true}
-        account="Seller"
         profileHeaderRoute="/seller/profile-seller"
       >
         <View className=" flex-1 flex-col">
-          <View className="  py-4">
+          <View className="  mt-5">
             <View className="flex  flex-row gap-5">
               <View className="flex-1">
                 <Button state="primary" title="Orders" />
@@ -32,7 +31,7 @@ export default function SellerOrder() {
                 <Button
                   state="secondary"
                   title="Inventory"
-                  onPress={() => router.push("/seller/seller-inventory")}
+                  onPress={() => router.push("/(seller)/(inventory)/inventory")}
                 />
               </View>
             </View>
@@ -47,7 +46,7 @@ export default function SellerOrder() {
               </View>
               <View className="flex  mt-6 items-center">
                 <TouchableOpacity
-                  onPress={() => router.push("/seller/earning")}
+                  onPress={() => router.push("/(seller)/(earnings)/earnings")}
                   className="flex flex-row justify-center items-center"
                 >
                   <Text className="text-[#F8E473] text-sm font-bold">
@@ -62,18 +61,47 @@ export default function SellerOrder() {
                 <Text className="text-xl font-bold">All Orders</Text>
                 <TouchableOpacity
                   onPress={() =>
-                    router.push("/seller/pending-order-view-details")
+                    router.push("/(seller)/(orders)/pending-order-view-details")
                   }
                   className="bg-white py-1 "
                 >
-                  <Text className="text-primary text-[#8B8B8B]">VIEW ALL</Text>
+                  <Text className="text-primary font-bold text-[#8B8B8B]">
+                    VIEW ALL
+                  </Text>
                 </TouchableOpacity>
               </View>
 
               <View className=" justify-center item-center space-x-4">
-                <OrderCard status={"Pending"} />
-                <OrderCard status={"Completed"} />
-                <OrderCard status={"Cancelled"} />
+                <OrderCard
+                  orderId="1010"
+                  status="Pending"
+                  amount="$120"
+                  orderedAt="2025-05-07"
+                  addressLine1="House No–ABC 00000"
+                  addressLine2="Main Street, NY"
+                  directionButton={true}
+                  onPressDetails={() => console.log("Details pressed")}
+                  onPressDirection={() => console.log("Direction pressed")}
+                  onPressStatus={() => console.log("status")}
+                />
+                <OrderCard
+                  orderId="1020"
+                  status="Completed"
+                  amount="$200"
+                  orderedAt="2025-05-06"
+                  directionButton={true}
+                  onPressDetails={() => console.log("Details pressed")}
+                  onPressStatus={() => console.log("status")}
+                />
+                <OrderCard
+                  orderId="1030"
+                  status="Cancelled"
+                  amount="$90"
+                  orderedAt="2025-05-05"
+                  directionButton={true}
+                  onPressDetails={() => console.log("Details pressed")}
+                  onPressStatus={() => console.log("status")}
+                />
               </View>
             </View>
           </View>

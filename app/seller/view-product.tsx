@@ -19,7 +19,7 @@ export default function ViewProduct() {
       contentContainerStyle={{ paddingBottom: 20 }}
     >
       <Wrapper showBackButton={true}>
-        <ProfileHeader account="Seller" route="/seller/profile-seller" />
+        <ProfileHeader route="/seller/profile-seller" />
 
         <View className="p-4">
           {/* Product listing card */}

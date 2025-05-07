@@ -27,8 +27,7 @@ export default function SellerInventory() {
       <Wrapper
         showBackButton={true}
         showProfileHeader={true}
-        account="Seller"
-        profileHeaderRoute="/seller/profile-seller"
+        profileHeaderRoute="/(seller)/profile-seller"
       >
         <View className=" flex-1 flex-col ">
           <View className=" ">
@@ -55,7 +54,9 @@ export default function SellerInventory() {
                   title="Add Inv"
                   showIcon={true}
                   iconName={"add-circle-outline"}
-                  onPress={() => router.push("/seller/new-product-uploading")}
+                  onPress={() =>
+                    router.push("/(seller)/(home)/new-product-uploading")
+                  }
                 />
               </View>
             </View>

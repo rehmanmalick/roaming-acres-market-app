@@ -7,7 +7,7 @@ const LoginScreen = () => {
 
   // Type-safe path handling
   const homePath = (
-    userType === "seller" ? "/(seller)/home" : "/(buyer)/home"
+    userType === "Seller" ? "/(seller)/home" : "/(buyer)/home"
   ) as Href;
 
   return (

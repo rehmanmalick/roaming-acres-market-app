@@ -169,9 +169,7 @@ const RoamingAcresMarket = () => {
           showMenuButton={true}
           showProfileHeader={true}
         >
-          <View className=" flex-1 flex-col mt-20">
-            {/* <ProfileHeader /> */}
-
+          <View className=" flex-1 flex-col ">
             <View className="flex-row justify-between items-center">
               <View>
                 <Text className="text-2xl font-bold">Welcome</Text>

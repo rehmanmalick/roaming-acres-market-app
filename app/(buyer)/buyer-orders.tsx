@@ -1,6 +1,6 @@
 import OrderComponent from "@/components/order-component";
 import ProfileHeader from "@/components/profile-header";
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
@@ -170,9 +170,13 @@ export default function BuyerOrders() {
       bounces={false}
       contentContainerStyle={{ paddingBottom: 20 }}
     >
-      <Wrapper showFilterButton={true} showMenuButton={true}>
-        <ProfileHeader />
-        <View className="p-4" style={{ width: "100%" }}>
+      <Wrapper
+        showFilterButton={true}
+        showMenuButton={true}
+        showProfileHeader={true}
+      >
+        {/* <ProfileHeader /> */}
+        <View className="py-4" style={{ width: "100%" }}>
           <View className="mt-4 relative">
             <TextInput
               className="border bg-[#F7F8F9] border-[#E8ECF4] rounded-[10px] py-4 px-4 pl-12"
@@ -186,7 +190,7 @@ export default function BuyerOrders() {
         </View>
 
         {/* Tabs */}
-        <View className="bg-white py-2 flex flex-row justify-between px-3 items-center">
+        <View className="bg-white py-2 flex flex-row justify-between  items-center">
           {(["Active", "Completed", "Cancelled"] as OrderStatus[]).map(
             (status, index) => (
               <TouchableOpacity
@@ -211,7 +215,7 @@ export default function BuyerOrders() {
         </View>
 
         {/* Orders List */}
-        <View className="p-3">
+        <View className="py-3">
           {ordersData[activeTab].map((order) => (
             <OrderComponent
               key={order.id}

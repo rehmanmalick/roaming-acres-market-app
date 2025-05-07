@@ -23,7 +23,7 @@ export default function TabLayout() {
         }}
       >
         <Tabs.Screen
-          name="(home)/home"
+          name="(home)"
           options={{
             headerShown: false,
             title: "Home",
@@ -37,7 +37,7 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="orders"
+          name="(orders)"
           options={{
             headerShown: false,
             title: "Orders",
@@ -52,7 +52,7 @@ export default function TabLayout() {
         />
 
         <Tabs.Screen
-          name="inventory"
+          name="(inventory)"
           options={{
             headerShown: false,
             title: "Inventory",
@@ -67,7 +67,7 @@ export default function TabLayout() {
         />
 
         <Tabs.Screen
-          name="earnings"
+          name="(earnings)"
           options={{
             headerShown: false,
             title: "Earnings",
@@ -82,7 +82,7 @@ export default function TabLayout() {
         />
 
         <Tabs.Screen
-          name="message"
+          name="(message)"
           options={{
             headerShown: false,
             title: "Message",
@@ -103,9 +103,6 @@ export default function TabLayout() {
             headerShown: false,
             href: null,
 
-            // Optional: Set a header title if you enable headers later
-            // title: 'Seller Profile',
-            // headerShown: true, // Example if you want ONLY this screen to have a header
           }}
         />
       </Tabs>

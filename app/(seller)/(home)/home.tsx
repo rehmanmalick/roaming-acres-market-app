@@ -1,29 +1,8 @@
-import NewArrival from "@/components/new-arrival-component";
-import ProfileHeader from "@/components/profile-header";
-import ShopByCategory from "@/components/shop-by-category";
-import ShopCategory from "@/components/shop-categories";
-
-import TopSelling from "@/components/top-selling";
-import TopSellingProductComponent from "@/components/top-selling-product-component";
 import Wrapper from "@/components/common/wrapper";
 import Button from "@/components/button";
-
-import {
-  FontAwesome6,
-  Ionicons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-  Modal,
-  Platform,
-} from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 
 const SellerHomeScreen = () => {
   const router = useRouter();
@@ -34,22 +13,19 @@ const SellerHomeScreen = () => {
         className="bg-white"
         bounces={false}
         showsVerticalScrollIndicator={false}
-        contentInsetAdjustmentBehavior="never" // ADD THIS!
+        contentInsetAdjustmentBehavior="never"
         contentContainerStyle={{
-          flexGrow: 1,
           paddingBottom: 100,
         }}
       >
         <Wrapper
           showFilterButton={true}
           showMenuButton={true}
+          menuLink="/(seller)/(home)/seller-account"
           showProfileHeader={true}
-          account="Seller"
           profileHeaderRoute="/(seller)/profile-seller"
         >
-          <View className=" flex-1 flex-col  ">
-            {/* <ProfileHeader account="Seller" route="/seller/profile-seller" /> */}
-
+          <View className=" flex-1">
             <View className="flex-row justify-between ">
               <View>
                 <Text className="text-2xl font-bold">Welcome</Text>
@@ -62,7 +38,7 @@ const SellerHomeScreen = () => {
                 <TouchableOpacity
                   onPress={() =>
                     router.push({
-                      pathname: "/(seller)/message",
+                      pathname: "/(seller)/(message)/message",
                       params: { tab: "Messages" },
                     })
                   }
@@ -84,7 +60,7 @@ const SellerHomeScreen = () => {
                 <TouchableOpacity
                   onPress={() =>
                     router.push({
-                      pathname: "/(seller)/message",
+                      pathname: "/(seller)/(message)/message",
                       params: { tab: "All Notifications" },
                     })
                   }
@@ -170,7 +146,7 @@ const SellerHomeScreen = () => {
                 <Text className="text-2xl font-extrabold">Orders</Text>
                 <TouchableOpacity
                   className="bg-white py-1 "
-                  onPress={() => router.push("/seller/seller-orders")}
+                  onPress={() => router.push("/(seller)/(orders)/orders")}
                 >
                   <Text className="text-primary text-[#8B8B8B] font-semibold">
                     View All
@@ -232,7 +208,7 @@ const SellerHomeScreen = () => {
                   iconName={"add"}
                   onPress={() =>
                     router.push({
-                      pathname: "/seller/new-product-uploading",
+                      pathname: "/(seller)/(home)/new-product-uploading",
                       params: { tab: "Add New Product" },
                     })
                   }
@@ -257,7 +233,7 @@ const SellerHomeScreen = () => {
               <Button
                 state="secondary"
                 title="VIEW ALL"
-                onPress={() => router.push("/seller/view-product")}
+                onPress={() => router.push("/(seller)/(home)/view-product")}
               />
             </View>
 
@@ -267,7 +243,7 @@ const SellerHomeScreen = () => {
                 <Text className="text-2xl font-extrabold">Earnings</Text>
                 <TouchableOpacity
                   className="bg-white py-1 "
-                  onPress={() => router.push("/seller/earning")}
+                  onPress={() => router.push("/(seller)/(earnings)/earnings")}
                 >
                   <Text className="text-primary text-[#8B8B8B] font-semibold">
                     View Details

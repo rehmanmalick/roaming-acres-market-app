@@ -65,7 +65,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({
           behavior={Platform.OS === "ios" ? "padding" : undefined}
         >
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View className="flex-1 mt-20">
+            <View className="flex-1 mt-5">
               <Text className="text-4xl font-medium text-start text-gray-800 mb-8">
                 Sign Up
               </Text>

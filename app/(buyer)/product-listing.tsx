@@ -31,7 +31,7 @@ export default function WishList() {
         showProfileHeader={true}
       >
         {/* <ProfileHeader /> */}
-        <View className="mt-20" style={{ width: "100%" }}>
+        <View className="py-4" style={{ width: "100%" }}>
           <View className="mt-4 relative">
             <TextInput
               className="border bg-[#F7F8F9] border-[#E8ECF4] rounded-[10px] py-4 px-4 pl-12"
@@ -48,7 +48,7 @@ export default function WishList() {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 16 }}
+            // contentContainerStyle={{ paddingHorizontal: 16 }}
           >
             {categories.map((category, index) => (
               <TouchableOpacity

@@ -7,7 +7,7 @@ import { useUserStore } from "@/store/useUserStore";
 export default function SelectYourAccount() {
   const router = useRouter();
   const setUserType = useUserStore((state) => state.setUserType);
-  const handleSelectAccount = (type: "buyer" | "seller") => {
+  const handleSelectAccount = (type: "Buyer" | "Seller") => {
     setUserType(type); // Store user type
     router.push("/(auth)/welcome"); // Navigate to the welcome screen
   };
@@ -30,14 +30,14 @@ export default function SelectYourAccount() {
             <Button
               state="primary"
               title="Buyer Account"
-              onPress={() => handleSelectAccount("buyer")}
+              onPress={() => handleSelectAccount("Buyer")}
             />
           </View>
           <View className="flex-1">
             <Button
               state="primary"
               title="Seller Account"
-              onPress={() => handleSelectAccount("seller")}
+              onPress={() => handleSelectAccount("Seller")}
             />
           </View>
         </View>

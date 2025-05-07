@@ -1,116 +1,136 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Button from "./button";
 
-const OrderCard = ({ directionButton, status }) => {
+interface OrderCardProps {
+  orderId: string;
+  status: "Pending" | "Completed" | "Cancelled";
+  amount: string;
+  orderedAt: string;
+  addressLine1?: string; // Only for Pending
+  addressLine2?: string; // Only for Pending
+  directionButton?: boolean; // Only for Pending
+  onPressDetails: () => void;
+  onPressDirection?: () => void; // Optional
+  onPressStatus?: () => void; // For Completed/Cancelled
+}
+
+const OrderCard: React.FC<OrderCardProps> = ({
+  orderId,
+  status,
+  amount,
+  orderedAt,
+  addressLine1,
+  addressLine2,
+  directionButton,
+  onPressDetails,
+  onPressDirection,
+  onPressStatus,
+}) => {
+  const renderStatusBadge = () => {
+    let bgColor = "#F8E473";
+    let textColor = "#000000";
+    let badgeText = "Pending";
+
+    if (status === "Completed") {
+      bgColor = "#008080";
+      textColor = "#ffffff";
+      badgeText = "Completed";
+    } else if (status === "Cancelled") {
+      bgColor = "#E26D08";
+      textColor = "#ffffff";
+      badgeText = "Cancelled";
+    }
+
+    return (
+      <View className="flex flex-col items-end">
+        <TouchableOpacity onPress={onPressStatus} activeOpacity={0.7}>
+          <Text
+            className="text-sm font-medium px-2 py-1 rounded"
+            style={{ backgroundColor: bgColor, color: textColor }}
+          >
+            {badgeText}
+          </Text>
+        </TouchableOpacity>
+        {(status === "Completed" || status === "Cancelled") && (
+          <>
+            <Text className="text-sm font-medium text-gray-800 mt-1">
+              Amount
+            </Text>
+            <Text className="text-sm font-medium text-teal-600 mt-1">
+              {amount}
+            </Text>
+          </>
+        )}
+      </View>
+    );
+  };
+
+  const renderStatusDetails = () => {
+    if (status === "Completed" || status === "Cancelled") {
+      const label = status === "Completed" ? "Delivered" : "Cancelled";
+
+      return (
+        <>
+          <Text className="text-sm   py-1">
+            Status: <Text className="text-[#008080]">{label}</Text>
+          </Text>
+
+          <Text className="text-sm text-gray-600">Ordered at: {orderedAt}</Text>
+        </>
+      );
+    }
+
+    return (
+      <>
+        <Text className="text-sm text-gray-600 mb-1">{addressLine1}</Text>
+        <Text className="text-sm text-gray-600">{addressLine2}</Text>
+      </>
+    );
+  };
+
   return (
-    <View className="shadow-md bg-white p-4 my-2 rounded-xl ">
-      <View className=" flex-row rounded-lg ">
+    <View className="shadow-md bg-white p-4 my-2 rounded-xl">
+      {/* Header Section */}
+      <View className="flex-row">
         {status === "Pending" && (
-          <View className="items-center justify-center mr-4">
+          <View className="justify-center items-center mr-4">
             <MaterialCommunityIcons
               name="map-marker-outline"
               size={20}
-              color={"#868889"}
+              color="#868889"
             />
           </View>
         )}
-
-        {/* Top Row */}
-        <View className="justify-between flex-1 flex-row">
-          <View className=" mb-3">
-            <Text className="text-base font-semibold text-gray-800">
-              Order ID #0000
+        <View className="flex-row justify-between flex-1">
+          <View>
+            <Text className="text-base font-semibold text-gray-800 py-1">
+              Order ID #{orderId}
             </Text>
-            {status === "Completed" ? (
-              <>
-                <Text className="text-sm text-gray-600 mb-1">
-                  Status: Delivered
-                </Text>
-                <Text className="text-sm text-gray-600">Ordered at: Date</Text>
-              </>
-            ) : status === "Cancelled" ? (
-              <>
-                <Text className="text-sm text-gray-600 mb-1">
-                  Status: Cancel Order
-                </Text>
-                <Text className="text-sm text-gray-600">Ordered at: Date</Text>
-              </>
-            ) : (
-              <>
-                <Text className="text-sm text-gray-600 mb-1">
-                  House No–ABC 00000
-                </Text>
-                <Text className="text-sm text-gray-600">Avg,0a0</Text>
-              </>
-            )}
+            {renderStatusDetails()}
           </View>
-
-          {/* <View className="bg-orange-50 px-2 py-1 rounded"> */}
-          {status == "Completed" ? (
-            <View className="flex flex-col">
-              <Text
-                className="text-sm font-medium text-green-600"
-                style={{
-                  backgroundColor: "rgba(34, 197, 94, 0.2)",
-                  padding: 4,
-                  borderRadius: 4,
-                  alignSelf: "flex-start",
-                }}
-              >
-                Completed
-              </Text>
-              <Text className="text-sm font-medium text-gray-800 mt-1">
-                Amount
-              </Text>
-              <Text className="text-sm font-medium text-gray-800 mt-1">
-                $100
-              </Text>
-            </View>
-          ) : status == "Cancelled" ? (
-            <View className="flex flex-col">
-              <Text
-                className="text-sm font-medium text-red-600"
-                style={{
-                  backgroundColor: "rgba(239, 68, 68, 0.2)",
-                  padding: 4,
-                  borderRadius: 4,
-                  alignSelf: "flex-start",
-                }}
-              >
-                Cancelled
-              </Text>
-              <Text className="text-sm font-medium text-gray-800 mt-1">
-                Amount
-              </Text>
-              <Text className="text-sm font-medium text-gray-800 mt-1">
-                $100
-              </Text>
-            </View>
-          ) : (
-            <Text
-              className="text-sm font-medium text-amber-600"
-              style={{
-                backgroundColor: "rgba(251, 191, 36, 0.2)",
-                padding: 4,
-                borderRadius: 4,
-                alignSelf: "flex-start",
-              }}
-            >
-              Pending
-            </Text>
-          )}
-          {/* </View> */}
+          {renderStatusBadge()}
         </View>
-        {/* Address */}
-
-        {/* Bottom Row */}
       </View>
-      <View className="flex-row justify-between items-center mt-4">
-        <Button state="secondary" title="View Details" />
-        {status === "Pending" && directionButton && (
-          <Button state="primary" title="Direction" />
+
+      {/* Buttons Section */}
+      <View className="flex-row justify-between items-center mt-4 gap-4">
+        <View className="flex-1">
+          <Button
+            state="secondary"
+            title="View Details"
+            onPress={onPressDetails}
+          />
+        </View>
+        {status === "Pending" && directionButton && onPressDirection && (
+          <View className="flex-1">
+            <Button
+              state="secondary"
+              title="Direction"
+              onPress={onPressDirection}
+            />
+          </View>
         )}
       </View>
     </View>

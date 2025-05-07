@@ -62,7 +62,7 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
         style={{ flex: 1 }}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View className="flex-1 mt-20">
+          <View className="flex-1 mt-5">
             <Text className="text-4xl font-medium text-start text-gray-800 mb-2">
               Verification Code
             </Text>

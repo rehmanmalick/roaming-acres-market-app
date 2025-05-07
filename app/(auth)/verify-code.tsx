@@ -7,7 +7,7 @@ const VerificationSuccessScreen = () => {
 
   // Set the home path based on the userType
   const homePath =
-    userType === "seller" ? "/(seller)/(home)/home" : "/(buyer)/home";
+    userType === "Seller" ? "/(seller)/(home)/home" : "/(buyer)/home";
 
   return <CongratulationComponent continuePath={homePath} />;
 };

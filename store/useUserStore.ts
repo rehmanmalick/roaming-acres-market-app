@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type UserType = "buyer" | "seller" | null;
+type UserType = "Buyer" | "Seller" | null;
 
 interface UserStore {
   userType: UserType;

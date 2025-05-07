@@ -1,27 +1,26 @@
-import Button from "@/components/button";
-import Wrapper from "@/components/wrapper";
-import { Image, StyleSheet, Platform, Text, View } from "react-native";
-import { useRouter } from "expo-router";
+import Wrapper from "@/components/common/wrapper";
+import { Text, View, ScrollView } from "react-native";
 import {
   Ionicons,
   MaterialCommunityIcons,
   FontAwesome,
-  MaterialIcons,
-  EvilIcons,
 } from "@expo/vector-icons";
-import { ScrollView } from "react-native-gesture-handler";
 
 export default function OrderCompletedDetailComponent() {
-  const router = useRouter();
   return (
     <>
       <ScrollView
         className="bg-white flex-1"
         bounces={false}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        showsVerticalScrollIndicator={false}
+        contentInsetAdjustmentBehavior="never"
+        contentContainerStyle={{
+          flexGrow: 1,
+          paddingBottom: 100,
+        }}
       >
         <Wrapper showBackButton={true}>
-          <View className="flex flew-col flex-1 items-center  gap-5 mt-[-5px]">
+          <View className="flex flew-col flex-1 items-center  gap-5 mt-[5px]">
             <View className="mb-16">
               <Text className="text-center text-3xl font-semibold mb-8">
                 Order Details
@@ -125,14 +124,7 @@ export default function OrderCompletedDetailComponent() {
                 {/* Payment Info */}
                 <View className="mt-6">
                   <Text className="text-xl font-semibold mb-2">Paid with</Text>
-                  <View className="flex-row items-center gap-2 py-2">
-                    <MaterialCommunityIcons
-                      name="cash"
-                      size={22}
-                      color="black"
-                    />
-                    <Text className="text-sm"> Cash on Delivery</Text>
-                  </View>
+
                   <View className="flex-row items-center gap-4 py-2">
                     <FontAwesome name="file-pdf-o" size={18} color="black" />
                     <Text className="text-sm"> Download Invoice</Text>

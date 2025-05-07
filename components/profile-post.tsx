@@ -33,7 +33,7 @@ const ProfilePost = ({
   };
 
   return (
-    <View className="bg-white p-4 rounded-xl mb-4">
+    <View className="bg-white py-4 rounded-xl mb-4">
       {/* Header */}
       <View className="flex-row items-center mb-3 relative">
         <Image

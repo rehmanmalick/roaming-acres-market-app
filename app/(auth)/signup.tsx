@@ -8,7 +8,7 @@ const SignupScreen = () => {
 
   // Cast to Href or use explicit union types
   const verificationPath =
-    userType === "seller"
+    userType === "Seller"
       ? "/(auth)/register-your-business"
       : "/(auth)/verification-code";
 

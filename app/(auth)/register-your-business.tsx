@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import {
   View,
   Text,
@@ -8,6 +8,8 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import { useFocusEffect } from "@react-navigation/native";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import { format } from "date-fns";
 
 import Wrapper from "@/components/common/wrapper";
 import CustomTextInput from "../../components/ui/custom-input";
@@ -32,6 +34,7 @@ type FormData = {
 
 const BusinessRegistrationScreen: React.FC = () => {
   const router = useRouter();
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   const {
     control,
@@ -65,7 +68,6 @@ const BusinessRegistrationScreen: React.FC = () => {
 
   const businessTypes = ["Sole Proprietorship", "Partnership"];
 
-  // Reset form every time screen is focused
   useFocusEffect(
     useCallback(() => {
       reset({
@@ -96,7 +98,7 @@ const BusinessRegistrationScreen: React.FC = () => {
       }}
     >
       <Wrapper showBackButton={true}>
-        <View className="flex-1 mt-20">
+        <View className="flex-1 mt-5">
           <Text className="text-3xl font-bold mb-8">
             Register Your Business
           </Text>
@@ -123,20 +125,42 @@ const BusinessRegistrationScreen: React.FC = () => {
             </View>
           </View>
 
-          <CustomTextInput
-            control={control}
-            name="dob"
-            label="Date of Birth"
-            placeholder="DD/MM/YYYY"
-            keyboardType="numbers-and-punctuation"
-            rules={{
-              required: "Date of birth is required",
-              pattern: {
-                value: /^\d{2}\/\d{2}\/\d{4}$/,
-                message: "Enter a valid date in DD/MM/YYYY format",
-              },
-            }}
-          />
+          {/* Date of Birth with Date Picker */}
+          <View className="mb-4">
+            <Text className="font-semibold text-start px-2 text-[#9796A1] mb-2">
+              Date of Birth*
+            </Text>
+            <TouchableOpacity
+              onPress={() => setShowDatePicker(true)}
+              className="border border-gray-300 px-4 py-4 rounded-lg"
+            >
+              <Text className={watch("dob") ? "text-black" : "text-gray-400"}>
+                {watch("dob") || "Select Date"}
+              </Text>
+            </TouchableOpacity>
+
+            {showDatePicker && (
+              <DateTimePicker
+                value={watch("dob") ? new Date(watch("dob")) : new Date()}
+                mode="date"
+                display={Platform.OS === "ios" ? "inline" : "default"}
+                maximumDate={new Date()}
+                onChange={(event, selectedDate) => {
+                  setShowDatePicker(false);
+                  if (selectedDate) {
+                    const formattedDate = format(selectedDate, "dd/MM/yyyy");
+                    setValue("dob", formattedDate);
+                  }
+                }}
+              />
+            )}
+
+            {errors.dob && (
+              <Text className="text-red-500 text-sm mt-1 px-2">
+                {errors.dob.message}
+              </Text>
+            )}
+          </View>
 
           <CustomTextInput
             control={control}
@@ -219,7 +243,6 @@ const BusinessRegistrationScreen: React.FC = () => {
             rules={{ required: "Nature is required" }}
           />
 
-          {/* Using your Button component here */}
           <Button
             state="primary"
             title="SUBMIT"

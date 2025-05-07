@@ -57,7 +57,7 @@ export default function Button({
 
   const getIconColor = () => {
     if (state === "primary") {
-      return isPressed ? "#E0E0E0" : iconColor || "#FFFFFF";
+      return isPressed ? "#008080" : iconColor || "#FFFFFF";
     } else if (state === "secondary") {
       return isPressed ? "#FFFFFF" : iconColor || "#008080";
     } else if (state === "disable") {

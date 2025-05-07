@@ -1,6 +1,6 @@
 import ProfileHeader from "@/components/profile-header";
 import WishlistComponent from "@/components/wishlist-component";
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
@@ -25,9 +25,13 @@ export default function WishList() {
       bounces={false}
       contentContainerStyle={{ paddingBottom: 20 }}
     >
-      <Wrapper showFilterButton={true} showMenuButton={true}>
-        <ProfileHeader />
-        <View className="p-4" style={{ width: "100%" }}>
+      <Wrapper
+        showFilterButton={true}
+        showMenuButton={true}
+        showProfileHeader={true}
+      >
+        {/* <ProfileHeader /> */}
+        <View className="py-4" style={{ width: "100%" }}>
           <View className="mt-4 relative">
             <TextInput
               className="border bg-[#F7F8F9] border-[#E8ECF4] rounded-[10px] py-4 px-4 pl-12"
@@ -44,7 +48,7 @@ export default function WishList() {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 16 }}
+            // contentContainerStyle={{ paddingHorizontal: 16 }}
           >
             {categories.map((category, index) => (
               <TouchableOpacity

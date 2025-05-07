@@ -9,22 +9,27 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
-import CustomTextInput from "@/components/ui/custom-input";
+import CustomTextInput from "@/components/ui/custom-input"; // Import your CustomTextInput
 import Dropdown from "@/components/dropdown-component";
 import { useRouter } from "expo-router";
+import { useForm } from "react-hook-form";
 
 const ProductUploadComponent = () => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [pickupLocation, setPickupLocation] = useState("");
-  const [price, setPrice] = useState("");
-  const [salesPrice, setSalesPrice] = useState("");
-  const [category, setCategory] = useState("");
-  const [quantity, setQuantity] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
-
   const router = useRouter();
+  const { setValue, watch } = useForm();
+  const businessTypes = [
+    "Sole Proprietorship",
+    "Partnership",
+    "LLC",
+    "Corporation",
+  ];
 
   const pickupOptions = [
     "Main Street, NY",
@@ -40,23 +45,26 @@ const ProductUploadComponent = () => {
     }
 
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images, // Corrected with latest API
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     });
 
     if (!result.canceled) {
-      setSelectedImage(result.assets[0].uri);
+      setSelectedImage(result.assets[0].uri); // Set the selected image URI
     }
   };
 
-  const handleQuantityChange = (value: number) => {
-    setQuantity(Math.max(0, value));
-  };
+  const onSubmit = (data: any) => {
+    // Include the image URI in the form data
+    const formDataWithImage = {
+      ...data,
+      selectedImage: selectedImage, // Add the image URI to the data
+    };
 
-  const handleUpload = () => {
-    // TODO: Perform actual upload logic here
+    console.log("Form data with image submitted:", formDataWithImage); // Log the data and image URI
+
     setModalVisible(true); // Show the success modal after uploading
   };
 
@@ -112,92 +120,60 @@ const ProductUploadComponent = () => {
 
       {/* Product Details */}
       <CustomTextInput
+        control={control}
+        name="name"
         label="Name"
-        value={name}
-        onChangeText={setName}
-        autoCapitalize="words"
-        returnKeyType="next"
+        rules={{ required: "Product name is required" }}
       />
 
       <CustomTextInput
+        control={control}
+        name="description"
         label="Description"
-        value={description}
-        onChangeText={setDescription}
+        rules={{ required: "Description is required" }}
         multiline
         numberOfLines={6}
         textAlignVertical="top"
-        inputClassName="h-32"
         placeholder="Enter description..."
-        returnKeyType="done"
       />
 
       <Dropdown
         label="Pickup Location"
         variant="pickup"
         options={pickupOptions}
-        selectedValue={pickupLocation}
-        onValueChange={(value) => setPickupLocation(value)}
+        selectedValue={watch("pickupLocation")}
+        onValueChange={(value) => setValue("pickupLocation", value)}
       />
 
-      <View className="flex-row justify-between mb-4">
-        <View className="w-[48%]">
-          <CustomTextInput
-            label="Price"
-            placeholder="$0.00"
-            value={price}
-            onChangeText={setPrice}
-            keyboardType="numeric"
-          />
-        </View>
-        <View className="w-[48%]">
-          <CustomTextInput
-            label="Sales Price"
-            placeholder="$0.00"
-            value={salesPrice}
-            onChangeText={setSalesPrice}
-            keyboardType="numeric"
-          />
-        </View>
-      </View>
+      <CustomTextInput
+        control={control}
+        name="price"
+        label="Price"
+        placeholder="$0.00"
+        keyboardType="numeric"
+        rules={{ required: "Price is required" }}
+      />
 
-      <View className="flex-row justify-between mb-4">
-        <View className="w-[48%]">
-          <Dropdown
-            label="Category"
-            options={["Electronics", "Fashion", "Home & Garden", "Sports"]}
-            selectedValue={category}
-            onValueChange={(value) => setCategory(value)}
-            focusedBorderColor="#008080"
-            defaultBorderColor="#ccc"
-          />
-        </View>
+      <CustomTextInput
+        control={control}
+        name="salesPrice"
+        label="Sales Price"
+        placeholder="$0.00"
+        keyboardType="numeric"
+        rules={{ required: "Sales price is required" }}
+      />
 
-        <View className="w-[48%]">
-          <Text className="text-sm font-medium text-gray-700 mb-1">
-            Quantity
-          </Text>
-          <View className="w-full h-14 border rounded-[3px] px-4 flex-row border-gray-300 items-center">
-            <Pressable
-              onPress={() => handleQuantityChange(quantity - 1)}
-              className="flex-1 items-center py-2"
-            >
-              <Text className="text-xl">−</Text>
-            </Pressable>
-            <Text className="w-10 text-center">{quantity}</Text>
-            <Pressable
-              onPress={() => handleQuantityChange(quantity + 1)}
-              className="flex-1 items-center py-2"
-            >
-              <Text className="text-xl">+</Text>
-            </Pressable>
-          </View>
-        </View>
-      </View>
+      <Dropdown
+        label="Type of Business"
+        options={businessTypes}
+        selectedValue={watch("businessType")}
+        onValueChange={(value) => setValue("businessType", value)}
+      />
 
       {/* Action Buttons */}
       <View className="flex-row justify-between mb-8">
         <Pressable
-          onPress={handleUpload}
+          onPress={handleSubmit(onSubmit)}
           className="bg-[#008080] px-6 py-3 rounded-md flex-1 mr-2"
         >
           <Text className="text-white text-center font-semibold">

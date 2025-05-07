@@ -61,7 +61,7 @@ const messagesData = [
     text: "Sounds awesome!",
     time: "19:37",
     noOfMessage: "1",
-    source: require("../../assets/images/Top-selling-4.png"),
+    source: require("../../../assets/images/Top-selling-4.png"),
   },
   {
     id: 2,
@@ -71,7 +71,7 @@ const messagesData = [
     text: "Ok, Just hurry up little bit...😊",
     time: "19:37",
     noOfMessage: "2",
-    source: require("../../assets/images/Top-selling-2.png"),
+    source: require("../../../assets/images/Top-selling-2.png"),
   },
   {
     id: 3,
@@ -79,7 +79,7 @@ const messagesData = [
     active: true,
     text: "Thanks dude.",
     time: "19:37",
-    source: require("../../assets/images/Top-selling-3.png"),
+    source: require("../../../assets/images/Top-selling-3.png"),
   },
   {
     id: 4,
@@ -87,14 +87,14 @@ const messagesData = [
     active: true,
     text: "How is going...?",
     time: "19:37",
-    source: require("../../assets/images/Top-selling-1.png"),
+    source: require("../../../assets/images/Top-selling-1.png"),
   },
   {
     id: 5,
     name: "Eleanor Pena",
     text: "Thanks for the awesome food man...!",
     time: "19:37",
-    source: require("../../assets/images/Top-selling-5.png"),
+    source: require("../../../assets/images/Top-selling-5.png"),
   },
 ];
 

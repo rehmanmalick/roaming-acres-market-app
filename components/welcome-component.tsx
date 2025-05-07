@@ -41,7 +41,7 @@ export default function WelcomeComponent({
           </Text>
           {/* email btn */}
           <TouchableOpacity
-            className="border border-white bg-[#fefefe4b] py-3 mt-[20%]   rounded-[3px] items-center "
+            className="border border-white bg-[#fefefe4b] py-3 mt-[20%]   rounded-lg items-center "
             onPress={onEmailPress}
           >
             <Text className="text-white text-lg">Start with Email</Text>

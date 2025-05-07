@@ -19,13 +19,6 @@ interface LoginComponentProps {
   ResetpasswordPath: Href;
 }
 
-const COLORS = {
-  primary: "#008080",
-  text: "#111719",
-  white: "#FFFFFF",
-  gray: "#E0E0E0",
-} as const;
-
 type FormData = {
   email: string;
   password: string;
@@ -66,7 +59,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
         style={{ flex: 1 }}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View className="flex-1 mt-20">
+          <View className="flex-1 mt-5">
             <Text className="text-4xl font-medium text-start text-gray-800 mb-8">
               Login
             </Text>

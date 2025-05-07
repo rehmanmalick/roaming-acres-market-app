@@ -4,9 +4,7 @@ import {
   Text,
   TouchableOpacity,
   Image,
-  ImageBackground,
   ScrollView,
-  Pressable,
   ImageSourcePropType,
 } from "react-native";
 import {
@@ -16,10 +14,11 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import Button from "./../../components/button";
-import NotificationComponent from "@/components/notification-component";
+
 import ProfilePost from "./../../components/profile-post";
 import ProfileProduct from "@/components/profile-product";
 import { useRouter } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function EditProfile() {
   const [activeTab, setActiveTab] = useState("Posts");
@@ -93,60 +92,62 @@ export default function EditProfile() {
 
   return (
     <ScrollView
-      contentContainerStyle={{ flexGrow: 1 }}
-      showsVerticalScrollIndicator={false}
+      className="bg-white"
       bounces={false}
+      showsVerticalScrollIndicator={false}
+      contentInsetAdjustmentBehavior="never" // ADD THIS!
+      contentContainerStyle={{
+        flexGrow: 1,
+        paddingBottom: 100,
+      }}
     >
-      <View className="flex-1 bg-[#FDFDFD] items-center">
-        <ImageBackground
+      <SafeAreaView className="flex-1 px-6 bg-white">
+        {/* Top Image absolutely positioned */}
+        <Image
           source={backgroundImage}
           resizeMode="cover"
-          className="w-full h-[250px] justify-center items-center bg-white"
-        >
+          className="w-screen h-64 absolute top-0 right-0"
+        />
+
+        <View className=" flex-row items-center justify-between py-4">
           <TouchableOpacity
             onPress={() => router.back()}
-            className="absolute top-6 left-4 z-10"
+            className="w-9 h-9 bg-white  shadow-sm  rounded-xl justify-center items-center"
           >
-            <View className="w-9 h-9 bg-white rounded-xl mt-7 justify-center items-center">
-              <Ionicons name="chevron-back-outline" size={16} color="black" />
-            </View>
+            <Ionicons name="chevron-back-outline" size={16} color="#000" />
           </TouchableOpacity>
-          <View className="items-center">
-            <Image
-              source={profileImage}
-              className="w-40 h-40 rounded-full border-[7px] border-white mt-20"
+        </View>
+        <View className="items-center">
+          <Image
+            source={profileImage}
+            className="w-40 h-40 rounded-full border-4 border-white "
+          />
+          <Text className="text-lg font-bold mt-2">Try Temp</Text>
+          <Text className="text-sm text-gray-500">
+            Joined Roaming Acres Market in 2000
+          </Text>
+          <Text className="text-sm text-gray-500">00+ Active Listings</Text>
+        </View>
+        <View className="flex flex-row gap-4  mt-10">
+          <View className="flex-1">
+            <Button
+              state="primary"
+              title="Add"
+              showIcon={true}
+              iconName={"add"}
+              onPress={() => router.push("/seller/select-uploading")}
             />
-            <Text className="text-lg font-bold mt-2">Try Temp</Text>
-            <Text className="text-sm text-gray-500">
-              Joined Roaming Acres Market in 2000
-            </Text>
-            <Text className="text-sm text-gray-500">00+ Active Listings</Text>
           </View>
-        </ImageBackground>
-        <View className="px-4 flex flex-row justify-center items-center mt-10">
-          <Pressable
-            onPress={() => router.push("/seller/select-uploading")}
-            className="bg-[#008080] px-6 py-3 rounded-md flex-1 flex-row justify-center items-center mr-2"
-          >
-            <Text className="text-white text-center font-semibold">Add</Text>
-            <Ionicons
-              name="add-outline"
-              size={18}
-              color="white"
-              className="pl-2"
+          <View className="flex-1">
+            <Button
+              state="primary"
+              title="Edit Profile"
+              onPress={() => router.push("/(tabs)/profile")}
             />
-          </Pressable>
-          <Pressable
-            onPress={() => router.push("/(tabs)/profile")}
-            className="bg-[#008080] px-6 py-3 rounded-md flex-1 flex-row justify-center items-center mr-2"
-          >
-            <Text className="text-white text-center font-semibold">
-              Edit Profile
-            </Text>
-          </Pressable>
+          </View>
         </View>
 
-        <View className="px-4 py-6 w-full bg-white  mx-4 my-2">
+        <View className=" py-4 w-full  ">
           <Text className="text-xl font-semibold mb-4">About Me</Text>
 
           <View className="flex-row items-center mb-3">
@@ -182,13 +183,13 @@ export default function EditProfile() {
           </View>
         </View>
 
-        <View className="bg-white mt-4 w-full">
-          <View className="bg-white py-2 flex flex-row justify-between px-7 items-center">
+        <View className=" mt-4 w-full">
+          <View className=" py-2 flex flex-row justify-between  items-center">
             {["Posts", "Products"].map((status, index) => (
               <TouchableOpacity
                 key={index}
                 onPress={() => setActiveTab(status)}
-                className="flex-1 items-center"
+                className=" flex-1 items-center"
               >
                 <Text
                   className={`font-bold text-xl ${
@@ -203,7 +204,7 @@ export default function EditProfile() {
             ))}
           </View>
 
-          <View className="p-2">
+          <View className="py-2">
             {activeTab === "Products" && (
               <View>
                 <Text className="text-lg font-bold mb-2">Product Section</Text>
@@ -245,7 +246,7 @@ export default function EditProfile() {
             )}
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     </ScrollView>
   );
 }

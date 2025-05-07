@@ -1,6 +1,6 @@
 import NotificationComponent from "@/components/notification-component";
 import MessageComponent from "@/components/messages-component";
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 import React, { useState, useEffect } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { useLocalSearchParams } from "expo-router";
@@ -124,7 +124,7 @@ export default function NotificationsAndMessages() {
         </View>
 
         {/* Tabs */}
-        <View className="bg-white py-2 flex flex-row justify-between px-7 items-center">
+        <View className="bg-white py-2 flex flex-row justify-between items-center">
           {["All Notifications", "Messages"].map((status, index) => (
             <TouchableOpacity
               key={index}
@@ -146,7 +146,7 @@ export default function NotificationsAndMessages() {
           ))}
         </View>
 
-        <View className="p-2">
+        <View className="py-2">
           {activeTab === "All Notifications"
             ? notificationsData.map((item) => (
                 <NotificationComponent

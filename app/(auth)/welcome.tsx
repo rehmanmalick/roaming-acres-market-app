@@ -8,7 +8,7 @@ export default function Welcome() {
   const userType = useUserStore((state) => state.userType);
 
   const handleSkip = () => {
-    if (userType === "seller") {
+    if (userType === "Seller") {
       router.push(`/(seller)/(home)/home`);
     } else {
       router.push(`/(buyer)/home`);

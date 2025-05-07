@@ -25,7 +25,6 @@ interface IWrapper {
   menuLink?: string;
   className?: string;
   showProfileHeader?: boolean;
-  account?: string; // Add account prop
   profileHeaderRoute?: string; // Add profileHeaderRoute prop
 }
 
@@ -60,7 +59,6 @@ const Wrapper: FC<IWrapper> = ({
   menuLink = "/(tabs)/buyer-account",
   className = "",
   showProfileHeader = false,
-  account,
   profileHeaderRoute,
 }) => {
   const router = useRouter();
@@ -136,7 +134,7 @@ const Wrapper: FC<IWrapper> = ({
               visible={true}
               onRequestClose={() => setModalState(null)}
             >
-              <View className="flex-1    justify-end">
+              <View className="flex-1 justify-end">
                 <View className="bg-white mt-auto  rounded-t-2xl max-h-[80%]">
                   <View className="flex-row justify-between items-center p-5 border-b border-gray-200">
                     <Text className="text-lg font-bold">Filters</Text>
@@ -294,127 +292,147 @@ const Wrapper: FC<IWrapper> = ({
   );
 
   const PeriodModal = () => (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={modalState === "period"}
-      onRequestClose={() => setModalState(null)}
-    >
-      <View className="flex-1 bg-black/50 justify-end">
-        <View className="bg-white rounded-t-2xl max-h-[80%]">
-          <View className="flex-row justify-between items-center p-5 border-b border-gray-200">
-            <Text className="text-lg font-bold">Select Period</Text>
-            <TouchableOpacity onPress={() => setModalState(null)}>
-              <Ionicons name="close" size={24} color="#000" />
-            </TouchableOpacity>
+    <>
+      {modalState === "period" && (
+        <>
+          <View className="flex-1 bg-black/50 absolute inset-0 z-50">
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={true}
+              onRequestClose={() => setModalState(null)}
+            >
+              <View className="flex-1 justify-end">
+                <View className="bg-white mt-auto  rounded-t-2xl max-h-[80%]">
+                  <View className="flex-row justify-between items-center p-5 border-b border-gray-200">
+                    <Text className="text-lg font-bold">Select Period</Text>
+                    <TouchableOpacity onPress={() => setModalState(null)}>
+                      <Ionicons name="close" size={24} color="#000" />
+                    </TouchableOpacity>
+                  </View>
+
+                  <ScrollView className="px-5 pt-3">
+                    <View className="mb-5">
+                      <Text className="text-base font-semibold mb-2">
+                        Period
+                      </Text>
+                      <View className="flex-row flex-wrap gap-2">
+                        {["Today", "This week", "This month"].map((item) => (
+                          <TouchableOpacity
+                            key={`period-${item}`}
+                            className={`px-4 py-2 rounded-lg border border-teal-600 ${
+                              selectedPeriod === item
+                                ? "bg-teal-600"
+                                : "bg-white"
+                            }`}
+                            onPress={() => setSelectedPeriod(item)}
+                          >
+                            <Text
+                              className={`text-sm ${
+                                selectedPeriod === item
+                                  ? "text-white"
+                                  : "text-gray-800"
+                              }`}
+                            >
+                              {item}
+                            </Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                      <View className="flex-row flex-wrap gap-2 mt-2">
+                        {["Previous month", "This year"].map((item) => (
+                          <TouchableOpacity
+                            key={`period-${item}`}
+                            className={`px-4 py-2 rounded-lg border border-teal-600 ${
+                              selectedPeriod === item
+                                ? "bg-teal-600"
+                                : "bg-white"
+                            }`}
+                            onPress={() => setSelectedPeriod(item)}
+                          >
+                            <Text
+                              className={`text-sm ${
+                                selectedPeriod === item
+                                  ? "text-white"
+                                  : "text-gray-800"
+                              }`}
+                            >
+                              {item}
+                            </Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    </View>
+
+                    <View className="mb-5">
+                      <Text className="text-base font-semibold mb-2">
+                        Select Period
+                      </Text>
+                      <View className="flex-row items-center justify-center gap-2">
+                        <Text className="text-sm text-teal-600 font-medium">
+                          {dateRange.start}
+                        </Text>
+                        <Text className="text-sm text-gray-500">to</Text>
+                        <Text className="text-sm text-teal-600 font-medium">
+                          {dateRange.end}
+                        </Text>
+                      </View>
+                    </View>
+
+                    <View className="mb-5">
+                      <Text className="text-base font-semibold mb-2">
+                        Status
+                      </Text>
+                      <View className="flex-row flex-wrap gap-2">
+                        {["Confirmed", "Pending", "Canceled"].map((item) => (
+                          <TouchableOpacity
+                            key={`status-${item}`}
+                            className={`px-4 py-2 rounded-lg border border-teal-600 ${
+                              selectedStatuses.includes(item)
+                                ? "bg-teal-600"
+                                : "bg-white"
+                            }`}
+                            onPress={() => {
+                              toggleStatus(item);
+                              setModalState(null);
+                              router.push("/(tabs)/all-transactions");
+                            }}
+                          >
+                            <Text
+                              className={`text-sm ${
+                                selectedStatuses.includes(item)
+                                  ? "text-white"
+                                  : "text-gray-800"
+                              }`}
+                            >
+                              {item}
+                            </Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    </View>
+                    <View className="p-5">
+                      <Button
+                        title={`SHOW RESULTS (${3261})`}
+                        state="primary"
+                        onPress={() => {
+                          console.log("Selected Period:", {
+                            period: selectedPeriod,
+                            dateRange,
+                            statuses: selectedStatuses,
+                          });
+                          setModalState(null);
+                        }}
+                      />
+                    </View>
+                  </ScrollView>
+                </View>
+              </View>
+            </Modal>
           </View>
-
-          <ScrollView className="px-5 pt-3">
-            <View className="mb-5">
-              <Text className="text-base font-semibold mb-2">Period</Text>
-              <View className="flex-row flex-wrap gap-2">
-                {["Today", "This week", "This month"].map((item) => (
-                  <TouchableOpacity
-                    key={`period-${item}`}
-                    className={`px-4 py-2 rounded-lg border border-teal-600 ${
-                      selectedPeriod === item ? "bg-teal-600" : "bg-white"
-                    }`}
-                    onPress={() => setSelectedPeriod(item)}
-                  >
-                    <Text
-                      className={`text-sm ${
-                        selectedPeriod === item ? "text-white" : "text-gray-800"
-                      }`}
-                    >
-                      {item}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-              <View className="flex-row flex-wrap gap-2 mt-2">
-                {["Previous month", "This year"].map((item) => (
-                  <TouchableOpacity
-                    key={`period-${item}`}
-                    className={`px-4 py-2 rounded-lg border border-teal-600 ${
-                      selectedPeriod === item ? "bg-teal-600" : "bg-white"
-                    }`}
-                    onPress={() => setSelectedPeriod(item)}
-                  >
-                    <Text
-                      className={`text-sm ${
-                        selectedPeriod === item ? "text-white" : "text-gray-800"
-                      }`}
-                    >
-                      {item}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            </View>
-
-            <View className="mb-5">
-              <Text className="text-base font-semibold mb-2">
-                Select Period
-              </Text>
-              <View className="flex-row items-center justify-center gap-2">
-                <Text className="text-sm text-teal-600 font-medium">
-                  {dateRange.start}
-                </Text>
-                <Text className="text-sm text-gray-500">to</Text>
-                <Text className="text-sm text-teal-600 font-medium">
-                  {dateRange.end}
-                </Text>
-              </View>
-            </View>
-
-            <View className="mb-5">
-              <Text className="text-base font-semibold mb-2">Status</Text>
-              <View className="flex-row flex-wrap gap-2">
-                {["Confirmed", "Pending", "Canceled"].map((item) => (
-                  <TouchableOpacity
-                    key={`status-${item}`}
-                    className={`px-4 py-2 rounded-lg border border-teal-600 ${
-                      selectedStatuses.includes(item)
-                        ? "bg-teal-600"
-                        : "bg-white"
-                    }`}
-                    onPress={() => {
-                      toggleStatus(item);
-                      setModalState(null);
-                      router.push("/(tabs)/all-transactions");
-                    }}
-                  >
-                    <Text
-                      className={`text-sm ${
-                        selectedStatuses.includes(item)
-                          ? "text-white"
-                          : "text-gray-800"
-                      }`}
-                    >
-                      {item}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            </View>
-            <View className="p-5">
-              <Button
-                title={`SHOW RESULTS (${3261})`}
-                state="primary"
-                onPress={() => {
-                  console.log("Selected Period:", {
-                    period: selectedPeriod,
-                    dateRange,
-                    statuses: selectedStatuses,
-                  });
-                  setModalState(null);
-                }}
-              />
-            </View>
-          </ScrollView>
-        </View>
-      </View>
-    </Modal>
+        </>
+      )}
+    </>
   );
   return (
     <SafeAreaView className="flex-1 px-6 bg-white">
@@ -425,7 +443,7 @@ const Wrapper: FC<IWrapper> = ({
         className="w-screen absolute top-0 right-0"
       />
 
-      <View className="relative flex-row items-center justify-between ">
+      <View className="relative flex-row items-center justify-between py-4">
         {(showBackButton || showMenuButton) && (
           <TouchableOpacity
             onPress={() =>
@@ -444,9 +462,7 @@ const Wrapper: FC<IWrapper> = ({
         )}
 
         {/* Conditionally render ProfileHeader */}
-        {showProfileHeader && (
-          <ProfileHeader account={account} route={profileHeaderRoute} />
-        )}
+        {showProfileHeader && <ProfileHeader route={profileHeaderRoute} />}
 
         <View>
           {showFilterButton && (
