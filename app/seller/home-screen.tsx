@@ -6,7 +6,7 @@ import ShopCategory from "@/components/shop-categories";
 import TopSelling from "@/components/top-selling";
 import TopSellingProductComponent from "@/components/top-selling-product-component";
 import Wrapper from "@/components/wrapper";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 
 import {
   FontAwesome6,

@@ -31,6 +31,9 @@ const ProductUploadScreen = () => {
     <ScrollView
       className="bg-white"
       bounces={false}
+      showsVerticalScrollIndicator={false}
+      overScrollMode="never" // Android
+      contentInsetAdjustmentBehavior="never" // iOS
       contentContainerStyle={{
         paddingBottom: Platform.OS === "ios" ? 0 : 0,
       }}

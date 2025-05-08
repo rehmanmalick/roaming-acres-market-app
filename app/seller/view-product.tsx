@@ -7,7 +7,7 @@ import Wrapper from "@/components/wrapper";
 import ProfileHeader from "@/components/profile-header";
 import EarningComponent from "@/components/earning-component";
 import ProductCard from "@/components/product-listing";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 
 export default function ViewProduct() {
   const router = useRouter();

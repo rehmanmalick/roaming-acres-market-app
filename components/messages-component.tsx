@@ -29,7 +29,7 @@ const MessageComponent = ({
 }: MessageComponentProps) => {
   return (
     <TouchableOpacity
-      onPress={() => router.push("/seller/chatting")}
+      onPress={() => router.push("/(seller)/chatting")}
       className="flex-row bg-white rounded-lg py-2 my-2"
     >
       <View style={{ position: "relative" }}>

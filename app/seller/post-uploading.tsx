@@ -1,4 +1,4 @@
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import Wrapper from "@/components/wrapper";
 import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";

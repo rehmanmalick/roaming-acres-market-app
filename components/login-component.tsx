@@ -11,7 +11,7 @@ import { useRouter, Href } from "expo-router";
 import { useForm } from "react-hook-form";
 import CustomTextInput from "./ui/custom-input";
 import Wrapper from "@/components/common/wrapper";
-import Button from "./button";
+import Button from "./ui/button";
 
 interface LoginComponentProps {
   buttonPath: Href;

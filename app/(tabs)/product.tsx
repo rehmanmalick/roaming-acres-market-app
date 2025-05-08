@@ -1,4 +1,4 @@
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import ProductComponent from "@/components/product-component";
 import ProductReviewComponent from "@/components/product-reviews-component";
 import ProfileHeader from "@/components/profile-header";
@@ -41,42 +41,42 @@ export default function WishList() {
           {/* <Text className="font-bold text-3xl">My Wish</Text> */}
         </View>
         <View className="flex flex-row justify-between items-center mt-5 px-4">
-          <ProductComponent/>
-            </View>
-            <View className="flex-row justify-between items-center px-6">
-              <Text className="text-xl font-bold mb-4">Suggested Categories</Text>
-            </View>
-            <View className="space-y-4 px-6">
-                <SuggestedCategoriesComponent
-                    name='Poultry Name'
-                    source={require('../../assets/images/egg-tray.png')}
-                    buttonText='View Product'
-                    rating={4.7}
-                />
-                <SuggestedCategoriesComponent
-                    name='Poultry Name'
-                    source={require('../../assets/images/chicken.jpg')}
-                    buttonText='View Product'
-                    rating={4.3}
-                />
-                <SuggestedCategoriesComponent
-                    name='Poultry Name'
-                    source={require('../../assets/images/egg-tray.png')}
-                    buttonText='View Product'
-                    rating={4.1}
-                />
-            </View>
-            <View className="pt-6 px-2">
-              <Button
-                        showIcon={true}
-                        iconName="shopping-bag"
-                        state="primary"
-                        iconColor="#008080"
-                        iconBackground="#ffffff"
-                        title="ADD TO CART"
-                        onPress={() => router.push("/(tabs)/place-order")}
-                      />
-            </View>
+          <ProductComponent />
+        </View>
+        <View className="flex-row justify-between items-center px-6">
+          <Text className="text-xl font-bold mb-4">Suggested Categories</Text>
+        </View>
+        <View className="space-y-4 px-6">
+          <SuggestedCategoriesComponent
+            name="Poultry Name"
+            source={require("../../assets/images/egg-tray.png")}
+            buttonText="View Product"
+            rating={4.7}
+          />
+          <SuggestedCategoriesComponent
+            name="Poultry Name"
+            source={require("../../assets/images/chicken.jpg")}
+            buttonText="View Product"
+            rating={4.3}
+          />
+          <SuggestedCategoriesComponent
+            name="Poultry Name"
+            source={require("../../assets/images/egg-tray.png")}
+            buttonText="View Product"
+            rating={4.1}
+          />
+        </View>
+        <View className="pt-6 px-2">
+          <Button
+            showIcon={true}
+            iconName="shopping-bag"
+            state="primary"
+            iconColor="#008080"
+            iconBackground="#ffffff"
+            title="ADD TO CART"
+            onPress={() => router.push("/(tabs)/place-order")}
+          />
+        </View>
       </Wrapper>
     </ScrollView>
   );

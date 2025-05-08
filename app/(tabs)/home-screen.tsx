@@ -18,7 +18,7 @@ import ShopCategory from "@/components/shop-categories";
 import NewArrival from "@/components/new-arrival-component";
 import TopSelling from "@/components/top-selling";
 import TopSellingProductComponent from "@/components/top-selling-product-component";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 
 const RoamingAcresMarket = () => {
   const router = useRouter();

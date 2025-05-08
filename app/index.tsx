@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { useRouter } from "expo-router";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import Wrapper from "@/components/common/wrapper";
 import { useUserStore } from "@/store/useUserStore";
 

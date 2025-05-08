@@ -11,27 +11,27 @@ import {
 import MapView from "react-native-maps";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { FontAwesome6, Ionicons } from "@expo/vector-icons";
-
 import Wrapper from "@/components/common/wrapper";
-import ProfileHeader from "@/components/profile-header";
 import ShopCategory from "@/components/shop-categories";
 import NewArrival from "@/components/new-arrival-component";
 import TopSelling from "@/components/top-selling";
 import TopSellingProductComponent from "@/components/top-selling-product-component";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
+import { useUserStore } from "@/store/useUserStore";
 
 const RoamingAcresMarket = () => {
   const router = useRouter();
-  const { showLocationModal: showModalParam } = useLocalSearchParams();
+
+  const { userType } = useUserStore();
 
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
 
   useEffect(() => {
-    if (showModalParam === "true") {
+    if (userType === "Buyer") {
       setShowLocationModal(true);
     }
-  }, [showModalParam]);
+  }, [userType]);
 
   const handleConfirmLocation = () => {
     setShowLocationModal(false);
@@ -40,7 +40,8 @@ const RoamingAcresMarket = () => {
   const LocationModal = () => (
     <Modal
       visible={showLocationModal}
-      transparent
+      transparent={true}
+      statusBarTranslucent={true}
       animationType="slide"
       onRequestClose={() => setShowLocationModal(false)}
     >

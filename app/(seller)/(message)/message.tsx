@@ -114,6 +114,8 @@ export default function NotificationsAndMessages() {
     <ScrollView
       className="bg-white flex-1"
       bounces={false}
+      overScrollMode="never" // Android
+      contentInsetAdjustmentBehavior="never" // iOS
       contentContainerStyle={{ paddingBottom: 20 }}
     >
       <Wrapper showBackButton={true}>

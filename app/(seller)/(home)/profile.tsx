@@ -14,7 +14,7 @@ import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useForm } from "react-hook-form";
 import CustomTextInput from "@/components/ui/custom-input";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 
 export default function EditProfile() {
   const {
@@ -34,7 +34,8 @@ export default function EditProfile() {
       className="bg-white"
       bounces={false}
       showsVerticalScrollIndicator={false}
-      contentInsetAdjustmentBehavior="never" // ADD THIS!
+      overScrollMode="never" // Android
+      contentInsetAdjustmentBehavior="never" // iOS
       contentContainerStyle={{
         flexGrow: 1,
         paddingBottom: 100,

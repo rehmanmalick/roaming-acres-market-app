@@ -1,5 +1,5 @@
 import PendingOrderInnerComponent from "@/components/pending-order-inner-component";
-import Wrapper from "@/components/wrapper";
+import Wrapper from "@/components/common/wrapper";
 import ProfileHeader from "@/components/profile-header";
 import React, { useState } from "react";
 import {
@@ -39,10 +39,12 @@ export default function BuyerOrders() {
       <ScrollView
         className="bg-white flex-1"
         bounces={false}
+        overScrollMode="never" // Android
+        contentInsetAdjustmentBehavior="never" // iOS
         contentContainerStyle={{ paddingBottom: 20 }}
       >
         <Wrapper showBackButton={true}>
-          <View className="flex-1 p-4">
+          <View className="flex-1 py-4">
             {/* Directly render PendingOrderInnerComponent */}
 
             <PendingOrderInnerComponent
@@ -126,19 +128,21 @@ export default function BuyerOrders() {
             </View>
           </View>
           <View className="flex-row items-center mt-16">
-            <Button
-              title="READY TO DELIVER"
-              state="primary"
-              onPress={handleUpload}
-            />
+            <View className="flex-1">
+              <Button
+                title="READY TO DELIVER"
+                state="primary"
+                onPress={handleUpload}
+              />
+            </View>
           </View>
         </Wrapper>
       </ScrollView>
-      {/* Success Modal */}
       <Modal
         visible={modalVisible}
         transparent={true}
         animationType="fade"
+        statusBarTranslucent={true}
         onRequestClose={() => setModalVisible(false)}
       >
         <View
@@ -161,7 +165,7 @@ export default function BuyerOrders() {
             className="flex flex-col gap-3"
           >
             <Image
-              source={require("../../assets/images/thumb.png")}
+              source={require("../../../assets/images/thumb.png")}
               style={{ width: 90, height: 90 }}
               resizeMode="contain"
             />
@@ -171,15 +175,15 @@ export default function BuyerOrders() {
                 marginVertical: 10,
                 textAlign: "center",
                 color: "#008080",
-                fontWeight: 600,
+                fontWeight: "600",
               }}
             >
               You Have Been Place Your Order
             </Text>
             <TouchableOpacity
               onPress={() => {
-                setModalVisible(false); // Close modal
-                router.push("/seller/orders-status"); // Navigate to the dashboard
+                setModalVisible(false);
+                router.push("/(seller)/(orders)/orders-status");
               }}
               className="flex flex-row items-center gap-2 py-3 px-6 rounded-md"
             >

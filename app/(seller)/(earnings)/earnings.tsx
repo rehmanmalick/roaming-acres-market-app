@@ -12,7 +12,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 
 export default function BuyerOrders() {
   const router = useRouter();
@@ -28,9 +28,12 @@ export default function BuyerOrders() {
 
   return (
     <ScrollView
-      className="bg-white flex-1"
+      className="bg-white"
+      showsVerticalScrollIndicator={false}
+      overScrollMode="never" // Android
+      contentInsetAdjustmentBehavior="never" // iOS
       bounces={false}
-      contentContainerStyle={{ paddingBottom: 20 }}
+      contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
     >
       <Wrapper
         showBackButton={true}

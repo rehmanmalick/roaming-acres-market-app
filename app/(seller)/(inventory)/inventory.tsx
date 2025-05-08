@@ -12,7 +12,7 @@ import {
   TextInput,
 } from "react-native";
 import InventoryComponent from "@/components/seller-inventory-component";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 
 export default function SellerInventory() {
   const router = useRouter();
@@ -22,6 +22,8 @@ export default function SellerInventory() {
     <ScrollView
       className="bg-white flex-1"
       bounces={false}
+      overScrollMode="never" // Android
+      contentInsetAdjustmentBehavior="never" // iOS
       contentContainerStyle={{ paddingBottom: 20 }}
     >
       <Wrapper
@@ -64,7 +66,7 @@ export default function SellerInventory() {
               <View className="flex-row justify-end items-center pb-3">
                 <TouchableOpacity
                   className="bg-white  "
-                  onPress={() => router.push("/seller/view-product")}
+                  onPress={() => router.push("/(seller)/(home)/view-product")}
                 >
                   <Text className="text-primary text-[#8B8B8B] font-semibold">
                     View All

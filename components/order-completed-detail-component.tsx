@@ -10,10 +10,11 @@ export default function OrderCompletedDetailComponent() {
   return (
     <>
       <ScrollView
-        className="bg-white flex-1"
+        className="bg-white"
         bounces={false}
         showsVerticalScrollIndicator={false}
-        contentInsetAdjustmentBehavior="never"
+        overScrollMode="never" // Android
+        contentInsetAdjustmentBehavior="never" // iOS
         contentContainerStyle={{
           flexGrow: 1,
           paddingBottom: 100,

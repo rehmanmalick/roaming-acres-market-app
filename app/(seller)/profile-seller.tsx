@@ -13,7 +13,7 @@ import {
   Ionicons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import Button from "./../../components/button";
+import Button from "../../components/ui/button";
 
 import ProfilePost from "./../../components/profile-post";
 import ProfileProduct from "@/components/profile-product";
@@ -95,7 +95,8 @@ export default function EditProfile() {
       className="bg-white"
       bounces={false}
       showsVerticalScrollIndicator={false}
-      contentInsetAdjustmentBehavior="never" // ADD THIS!
+      overScrollMode="never" // Android
+      contentInsetAdjustmentBehavior="never" // iOS
       contentContainerStyle={{
         flexGrow: 1,
         paddingBottom: 100,
@@ -135,14 +136,14 @@ export default function EditProfile() {
               title="Add"
               showIcon={true}
               iconName={"add"}
-              onPress={() => router.push("/seller/select-uploading")}
+              onPress={() => router.push("/(seller)/select-uploading")}
             />
           </View>
           <View className="flex-1">
             <Button
               state="primary"
               title="Edit Profile"
-              onPress={() => router.push("/(tabs)/profile")}
+              onPress={() => router.push("/(seller)/(home)/profile")}
             />
           </View>
         </View>

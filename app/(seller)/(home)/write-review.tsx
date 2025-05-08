@@ -1,41 +1,27 @@
 import Button from "@/components/ui/button";
-import ProductReviewComponent from "@/components/product-reviews-component";
-import ProfileHeader from "@/components/profile-header";
 import ReviewComponent from "@/components/review-component";
-import WishlistComponent from "@/components/wishlist-component";
-import Wrapper from "@/components/wrapper";
-import { Ionicons } from "@expo/vector-icons";
+import Wrapper from "@/components/common/wrapper";
 import { useRouter } from "expo-router";
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-  Modal,
-  KeyboardAvoidingView,
-} from "react-native";
+import { View, Text, ScrollView } from "react-native";
 
-export default function ActiveOrder() {
+export default function WriteReview() {
   const router = useRouter();
-  const [showCancelModal, setShowCancelModal] = useState(false);
-  const [cancelReason, setCancelReason] = useState("");
-  const maxReasonLength = 220;
-
   return (
     <>
       <ScrollView
         className="bg-white flex-1"
         bounces={false}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        showsVerticalScrollIndicator={false}
+        overScrollMode="never" // Android
+        contentInsetAdjustmentBehavior="never" // iOS
+        contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
       >
         <Wrapper showBackButton={true}>
-          <View className="items-center justify-center mt-9 pb-4 mx-6 border-b border-[#E26D08]">
+          <View className="items-center justify-center pb-4  border-b border-[#E26D08]">
             <Text className="font-bold text-3xl ">Reviews</Text>
           </View>
 
-          <View className="mt-4 mx-6 pb-6">
+          <View className="flex-1 flex-col gap-3 py-5">
             <ReviewComponent
               name="Eleanor Pena"
               review="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
@@ -62,11 +48,11 @@ export default function ActiveOrder() {
             />
           </View>
 
-          <View className="mx-4 pb-6 flex flex-row justify-between">
+          <View className="flex-1 justify-end pb-5 ">
             <Button
               state="primary"
               title="BACK TO HOME"
-              onPress={() => router.push("/seller/home-screen")}
+              onPress={() => router.push("/(seller)/(home)/home")}
             />
           </View>
         </Wrapper>

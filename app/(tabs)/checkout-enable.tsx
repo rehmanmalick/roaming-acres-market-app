@@ -1,4 +1,4 @@
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import CheckoutComponent from "@/components/checkout-component";
 import Wrapper from "@/components/wrapper";
 import { useRouter } from "expo-router";

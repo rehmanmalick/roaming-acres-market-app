@@ -2,7 +2,7 @@ import PendingOrderInnerComponent from "@/components/pending-order-inner-compone
 import Wrapper from "@/components/wrapper";
 import React, { useState } from "react";
 import { ScrollView, Text, View } from "react-native";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import { useRouter } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
 

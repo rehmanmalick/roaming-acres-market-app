@@ -9,7 +9,7 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import Button from "./button";
+import Button from "./ui/button";
 
 type ModalState = "filter" | "period" | null;
 

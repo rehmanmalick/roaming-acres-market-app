@@ -13,6 +13,7 @@ import CustomTextInput from "@/components/ui/custom-input"; // Import your Custo
 import Dropdown from "@/components/dropdown-component";
 import { useRouter } from "expo-router";
 import { useForm } from "react-hook-form";
+import Button from "./ui/button";
 
 const ProductUploadComponent = () => {
   const {
@@ -171,20 +172,23 @@ const ProductUploadComponent = () => {
       />
 
       {/* Action Buttons */}
-      <View className="flex-row justify-between mb-8">
-        <Pressable
-          onPress={handleSubmit(onSubmit)}
-          className="bg-[#008080] px-6 py-3 rounded-md flex-1 mr-2"
-        >
-          <Text className="text-white text-center font-semibold">
-            UPLOAD PRODUCT
-          </Text>
-        </Pressable>
-        <Pressable className="border border-gray-300 px-6 py-3 rounded-md flex-1 ml-2">
-          <Text className="text-center font-semibold text-gray-700">
-            CANCEL
-          </Text>
-        </Pressable>
+      <View className="flex-row justify-between gap-4 mb-8">
+        <View className="flex-1">
+          <Button
+            state="primary"
+            title="Upload Products"
+            onPress={handleSubmit(onSubmit)}
+          />
+        </View>
+        <View className="flex-1">
+          <Button
+            state="primary"
+            title="Cancel"
+            onPress={() => {
+              router.back();
+            }}
+          />
+        </View>
       </View>
 
       {/* Success Modal */}

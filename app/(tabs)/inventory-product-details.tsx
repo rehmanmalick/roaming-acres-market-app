@@ -1,4 +1,4 @@
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import ProductReviewComponent from "@/components/product-reviews-component";
 import ProfileHeader from "@/components/profile-header";
 import TopSellersComponent from "@/components/top-sellers-component";

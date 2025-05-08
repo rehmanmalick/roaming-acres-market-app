@@ -50,11 +50,12 @@ export default function RootLayout() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-        <Stack.Screen name="(seller)" options={{ headerShown: false }} />
-        <Stack.Screen name="(buyer)" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="seller" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)" />
+        <Stack.Screen name="(seller)" />
+        <Stack.Screen name="(buyer)" />
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="seller" />
+        <Stack.Screen name="index" />
         <Stack.Screen name="+not-found" />
       </Stack>
       {/* <Slot /> */}

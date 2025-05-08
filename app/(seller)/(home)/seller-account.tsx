@@ -5,7 +5,7 @@ import ProfileHeader from "@/components/profile-header";
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 type ModalState = "logout" | "signin" | null;
 export default function SellerAccount() {
   const router = useRouter();
@@ -15,45 +15,44 @@ export default function SellerAccount() {
     <>
       {modalState === "logout" && (
         <>
-          <View className="flex-1 bg-black/50 absolute inset-0 z-50">
-            <Modal
-              animationType="fade"
-              transparent={true}
-              visible={true}
-              onRequestClose={() => setModalState(null)}
-            >
-              <View className="flex-1 justify-center items-center ">
-                <View className="bg-white rounded-lg px-8 py-14 w-4/5">
-                  <Text className="text-[19px] font-bold mb-6 text-center">
-                    Are you sure you want to Log out?
-                  </Text>
-                  <Text className="text-gray-600 mb-12 text-center">
-                    This action cannot be undone. Are you sure you want to Log
-                    out?
-                  </Text>
-                  <View className="flex flex-row justify-center items-center gap-4">
-                    <View className="flex-1">
-                      <Button
-                        state="primary"
-                        title="LOGOUT"
-                        onPress={() => {
-                          setModalState(null);
-                          router.push("/");
-                        }}
-                      />
-                    </View>
-                    <View className="flex-1">
-                      <Button
-                        state="primary"
-                        title="Cancel"
-                        onPress={() => setModalState(null)}
-                      />
-                    </View>
+          <Modal
+            animationType="fade"
+            transparent={true}
+            statusBarTranslucent={true}
+            visible={true}
+            onRequestClose={() => setModalState(null)}
+          >
+            <View className="flex-1 bg-black/50 justify-center items-center ">
+              <View className="bg-white rounded-lg px-8 py-14 w-4/5">
+                <Text className="text-[19px] font-bold mb-6 text-center">
+                  Are you sure you want to Log out?
+                </Text>
+                <Text className="text-gray-600 mb-12 text-center">
+                  This action cannot be undone. Are you sure you want to Log
+                  out?
+                </Text>
+                <View className="flex flex-row justify-center items-center gap-4">
+                  <View className="flex-1">
+                    <Button
+                      state="primary"
+                      title="LOGOUT"
+                      onPress={() => {
+                        setModalState(null);
+                        router.push("/");
+                      }}
+                    />
+                  </View>
+                  <View className="flex-1">
+                    <Button
+                      state="primary"
+                      title="Cancel"
+                      onPress={() => setModalState(null)}
+                    />
                   </View>
                 </View>
               </View>
-            </Modal>
-          </View>
+            </View>
+          </Modal>
         </>
       )}
     </>
@@ -63,45 +62,44 @@ export default function SellerAccount() {
     <>
       {modalState === "signin" && (
         <>
-          <View className="flex-1 bg-black/50 absolute inset-0 z-50">
-            <Modal
-              animationType="fade"
-              transparent={true}
-              visible={true}
-              onRequestClose={() => setModalState(null)}
-            >
-              <View className="flex-1 justify-center items-center ">
-                <View className="bg-white rounded-lg px-8 py-14 w-4/5">
-                  <Text className="text-[19px] font-bold mb-6 text-center">
-                    Are you sure you want to delete your account?
-                  </Text>
-                  <Text className="text-gray-600 mb-12 text-center">
-                    This action is permanent and cannot be undone. All your data
-                    will be lost.
-                  </Text>
-                  <View className="flex flex-row justify-center items-center gap-4">
-                    <View className="flex-1">
-                      <Button
-                        state="primary"
-                        title="DELETE"
-                        onPress={() => {
-                          setModalState(null);
-                          router.push("/");
-                        }}
-                      />
-                    </View>
-                    <View className="flex-1">
-                      <Button
-                        state="primary"
-                        title="Cancel"
-                        onPress={() => setModalState(null)}
-                      />
-                    </View>
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={true}
+            statusBarTranslucent={true}
+            onRequestClose={() => setModalState(null)}
+          >
+            <View className="flex-1 bg-black/50 justify-center items-center ">
+              <View className="bg-white rounded-lg px-8 py-14 w-4/5">
+                <Text className="text-[19px] font-bold mb-6 text-center">
+                  Are you sure you want to delete your account?
+                </Text>
+                <Text className="text-gray-600 mb-12 text-center">
+                  This action is permanent and cannot be undone. All your data
+                  will be lost.
+                </Text>
+                <View className="flex flex-row justify-center items-center gap-4">
+                  <View className="flex-1">
+                    <Button
+                      state="primary"
+                      title="DELETE"
+                      onPress={() => {
+                        setModalState(null);
+                        router.push("/");
+                      }}
+                    />
+                  </View>
+                  <View className="flex-1">
+                    <Button
+                      state="primary"
+                      title="Cancel"
+                      onPress={() => setModalState(null)}
+                    />
                   </View>
                 </View>
               </View>
-            </Modal>
-          </View>
+            </View>
+          </Modal>
         </>
       )}
     </>

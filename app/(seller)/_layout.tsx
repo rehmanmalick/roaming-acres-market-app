@@ -102,7 +102,30 @@ export default function TabLayout() {
             // HIDE this screen from the tab bar
             headerShown: false,
             href: null,
-
+          }}
+        />
+        <Tabs.Screen
+          name="select-uploading" // Points to app/(seller)/profile-seller.tsx
+          options={{
+            // HIDE this screen from the tab bar
+            headerShown: false,
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="post-uploading" // Points to app/(seller)/profile-seller.tsx
+          options={{
+            // HIDE this screen from the tab bar
+            headerShown: false,
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="chatting" // Points to app/(seller)/profile-seller.tsx
+          options={{
+            // HIDE this screen from the tab bar
+            headerShown: false,
+            href: null,
           }}
         />
       </Tabs>

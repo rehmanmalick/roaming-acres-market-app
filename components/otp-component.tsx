@@ -12,7 +12,7 @@ import {
 import { useRouter } from "expo-router";
 import OTPInput from "./otp-input";
 import Wrapper from "@/components/common/wrapper";
-import Button from "./button"; // Your custom button component
+import Button from "./ui/button"; // Your custom button component
 
 interface OtpComponentProps {
   verifyPath?: any;

@@ -2,8 +2,8 @@ import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface WishlistComponentProps {
-  iconName: string;
-  buttonText: string;
+  iconName?: string;
+  buttonText?: string;
   onPress?: () => void;
   showButton?: boolean;
   showHeartIcon?: boolean; // <-- New prop added

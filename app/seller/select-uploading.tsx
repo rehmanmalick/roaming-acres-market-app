@@ -44,7 +44,7 @@ const SelectUploading = () => {
               </Pressable>
               <Pressable
                 onPress={() => router.push("/seller/new-product-uploading")}
-                className="bg-orange-500 px-6 py-3 rounded-md flex-1 flex-row justify-center items-center mr-2"
+                className="bg-[#E26D08] px-6 py-3 rounded-md flex-1 flex-row justify-center items-center mr-2"
               >
                 <Text className="text-white text-center font-semibold">
                   Products

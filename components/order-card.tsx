@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Button from "./button";
+import Button from "./ui/button";
 
 interface OrderCardProps {
   orderId: string;

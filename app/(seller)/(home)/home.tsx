@@ -1,5 +1,5 @@
 import Wrapper from "@/components/common/wrapper";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
@@ -13,8 +13,10 @@ const SellerHomeScreen = () => {
         className="bg-white"
         bounces={false}
         showsVerticalScrollIndicator={false}
-        contentInsetAdjustmentBehavior="never"
+        overScrollMode="never" // Android
+        contentInsetAdjustmentBehavior="never" // iOS
         contentContainerStyle={{
+          flexGrow: 1,
           paddingBottom: 100,
         }}
       >

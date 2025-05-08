@@ -15,7 +15,7 @@ import {
   Ionicons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import Button from "./../../components/button";
+import Button from "../../components/ui/button";
 import NotificationComponent from "@/components/notification-component";
 import ProfilePost from "./../../components/profile-post";
 import ProfileProduct from "@/components/profile-product";

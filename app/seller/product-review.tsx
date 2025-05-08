@@ -1,4 +1,4 @@
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import ProductReviewComponent from "@/components/product-reviews-component";
 import ProfileHeader from "@/components/profile-header";
 import ReviewComponent from "@/components/review-component";
@@ -31,7 +31,7 @@ export default function ActiveOrder() {
         contentContainerStyle={{ paddingBottom: 20 }}
       >
         <Wrapper showBackButton={true}>
-          <ProfileHeader account="Seller" route="/seller/profile-seller" />
+          <ProfileHeader route="/seller/profile-seller" />
           <View className="items-center justify-center mt-9 pb-4 mx-6 border-b border-[#E26D08]">
             <Text className="font-bold text-3xl ">Reviews</Text>
           </View>

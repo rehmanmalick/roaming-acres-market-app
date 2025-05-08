@@ -10,9 +10,12 @@ export default function BuyerOrders() {
 
   return (
     <ScrollView
-      className="bg-white flex-1"
+      className="bg-white"
       bounces={false}
-      contentContainerStyle={{ paddingBottom: 20 }}
+      showsVerticalScrollIndicator={false}
+      overScrollMode="never" // Android
+      contentInsetAdjustmentBehavior="never" // iOS
+      contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
     >
       <Wrapper
         showPeriodButton={true}

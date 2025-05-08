@@ -15,7 +15,7 @@ import Wrapper from "@/components/common/wrapper";
 import CustomTextInput from "../../components/ui/custom-input";
 import Dropdown from "@/components/dropdown-component";
 import { useForm } from "react-hook-form";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 
 type FormData = {
   firstName: string;

@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import Wrapper from "@/components/common/wrapper";
 import PasswordStrengthMeter from "@/components/ui/password-strength-meter";
 import CustomTextInput from "./ui/custom-input";
-import Button from "./button";
+import Button from "./ui/button";
 
 /** ---------------- Types ---------------- */
 interface SignupScreenProps {

@@ -5,7 +5,7 @@ import ProfileHeader from "@/components/profile-header";
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 
 export default function SellerAccount() {
   const router = useRouter();

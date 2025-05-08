@@ -3,7 +3,7 @@ import { Text, View, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Button from "@/components/button";
+import Button from "@/components/ui/button";
 import OrderCard from "@/components/order-card";
 
 export default function SellerOrder() {
@@ -11,15 +11,18 @@ export default function SellerOrder() {
 
   return (
     <ScrollView
-      className="bg-white flex-1"
+      className="bg-white"
       bounces={false}
-      contentContainerStyle={{ paddingBottom: 20 }}
+      showsVerticalScrollIndicator={false}
+      overScrollMode="never" // Android
+      contentInsetAdjustmentBehavior="never" // iOS
+      contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
     >
       <Wrapper
         showBackButton={true}
         showFilterButton={true}
         showProfileHeader={true}
-        profileHeaderRoute="/seller/profile-seller"
+        profileHeaderRoute="/(seller)/profile-seller"
       >
         <View className=" flex-1 flex-col">
           <View className="  mt-5">

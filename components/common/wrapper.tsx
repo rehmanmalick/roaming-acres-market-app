@@ -14,7 +14,7 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import Button from "../button";
+import Button from "../ui/button";
 
 interface IWrapper {
   children?: React.ReactNode;
