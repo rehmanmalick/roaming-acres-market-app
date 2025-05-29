@@ -19,10 +19,11 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="home"
+        name="(home)"
         options={{
           headerShown: false,
           title: "Home",
+          popToTopOnBlur: true, // Reset the stack when navigating back to this tab
           tabBarIcon: ({ color, focused }) => (
             <MaterialCommunityIcons
               name={focused ? "home" : "home-outline"}
@@ -39,10 +40,11 @@ export default function TabLayout() {
   label4 = "My Orders",
   label5 = "Message", */}
       <Tabs.Screen
-        name="wishlist"
+        name="(wishlist)"
         options={{
           headerShown: false,
           title: "Wishlist",
+          popToTopOnBlur: true, // Reset the stack when navigating back to this tab
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               size={28}
@@ -54,10 +56,11 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="product-listing"
+        name="(product)"
         options={{
           headerShown: false,
           title: "Products",
+          popToTopOnBlur: true, // Reset the stack when navigating back to this tab
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               size={28}
@@ -69,10 +72,11 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="buyer-orders"
+        name="(orders)"
         options={{
           headerShown: false,
           title: "My Orders",
+          popToTopOnBlur: true, // Reset the stack when navigating back to this tab
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               size={28}
@@ -84,10 +88,11 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="messages"
+        name="(message)"
         options={{
           headerShown: false,
           title: "Message",
+          popToTopOnBlur: true, // Reset the stack when navigating back to this tab
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               size={28}
@@ -96,6 +101,10 @@ export default function TabLayout() {
             />
           ),
         }}
+      />
+      <Tabs.Screen
+        name="chatting"
+        options={{ href: null, headerShown: false }}
       />
     </Tabs>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import SignupComponent from "@/components/signup-component";
+import SignupComponent from "@/components/auth/signup-component";
 import { useUserStore } from "@/store/useUserStore";
 import { Href } from "expo-router";
 
@@ -10,7 +10,7 @@ const SignupScreen = () => {
   const verificationPath =
     userType === "Seller"
       ? "/(auth)/register-your-business"
-      : "/(auth)/verification-code";
+      : "/(auth)/verify-otp";
 
   return (
     <SignupComponent

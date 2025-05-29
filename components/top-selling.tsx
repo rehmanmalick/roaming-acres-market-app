@@ -16,7 +16,7 @@ interface TopSellingProps {
 export default function TopSelling({ text, source, onPress }: TopSellingProps) {
   const router = useRouter();
   const defaultOnPress = () => {
-    router.push("/(tabs)/profile-buyer");
+    router.push("/(buyer)/(home)/profile-buyer");
   };
   const handlePress = onPress || defaultOnPress;
   return (

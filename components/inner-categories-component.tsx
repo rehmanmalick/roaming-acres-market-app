@@ -15,7 +15,7 @@ export default function InnerCategoriesComponent({
 }: InnerCategoriesComponentProps) {
   const router = useRouter();
   const defaultOnPress = () => {
-    router.push("/(tabs)/inventory-product-details");
+    router.push("/(buyer)/(home)/inventory-product-details");
   };
   const handlePress = onPress || defaultOnPress;
   return (

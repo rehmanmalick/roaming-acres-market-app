@@ -27,6 +27,7 @@ export default function TabLayout() {
           options={{
             headerShown: false,
             title: "Home",
+            popToTopOnBlur: true, // Reset the stack when navigating back to this tab
             tabBarIcon: ({ color, focused }) => (
               <MaterialCommunityIcons
                 name={focused ? "home" : "home-outline"}
@@ -40,6 +41,7 @@ export default function TabLayout() {
           name="(orders)"
           options={{
             headerShown: false,
+            popToTopOnBlur: true, // Reset the stack when navigating back to this tab
             title: "Orders",
             tabBarIcon: ({ color, focused }) => (
               <Ionicons
@@ -56,6 +58,7 @@ export default function TabLayout() {
           options={{
             headerShown: false,
             title: "Inventory",
+            popToTopOnBlur: true, // Reset the stack when navigating back to this tab
             tabBarIcon: ({ color, focused }) => (
               <Ionicons
                 size={28}
@@ -71,6 +74,7 @@ export default function TabLayout() {
           options={{
             headerShown: false,
             title: "Earnings",
+            popToTopOnBlur: true, // Reset the stack when navigating back to this tab
             tabBarIcon: ({ color, focused }) => (
               <Ionicons
                 size={28}
@@ -86,6 +90,7 @@ export default function TabLayout() {
           options={{
             headerShown: false,
             title: "Message",
+            popToTopOnBlur: true, // Reset the stack when navigating back to this tab
             tabBarIcon: ({ color, focused }) => (
               <Ionicons
                 size={28}

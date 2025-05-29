@@ -3,7 +3,7 @@ import MessageComponent from "@/components/messages-component";
 import Wrapper from "@/components/common/wrapper";
 import React, { useState, useEffect } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 
 // ✅ Notifications data
 const notificationsData = [
@@ -167,6 +167,7 @@ export default function NotificationsAndMessages() {
                   ))
                 : messagesData.map((msg) => (
                     <MessageComponent
+                      onPress={() => router.push("/(seller)/chatting")}
                       key={msg.id}
                       name={msg.name}
                       active={msg.active}

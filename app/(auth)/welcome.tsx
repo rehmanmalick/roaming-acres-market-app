@@ -1,6 +1,5 @@
-import { Text } from "react-native";
 import { useRouter } from "expo-router";
-import WelcomeComponent from "@/components/welcome-component";
+import WelcomeComponent from "@/components/auth/welcome-component";
 import { useUserStore } from "@/store/useUserStore";
 
 export default function Welcome() {
@@ -9,9 +8,9 @@ export default function Welcome() {
 
   const handleSkip = () => {
     if (userType === "Seller") {
-      router.push(`/(seller)/(home)/home`);
+      router.push(`/(seller)/(home)`);
     } else {
-      router.push(`/(buyer)/home`);
+      router.push(`/(buyer)/(home)`);
     }
   };
 

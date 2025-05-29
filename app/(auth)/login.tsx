@@ -1,4 +1,4 @@
-import LoginComponent from "@/components/login-component";
+import LoginComponent from "@/components/auth/login-component";
 import { useUserStore } from "@/store/useUserStore";
 import { Href } from "expo-router";
 
@@ -7,7 +7,7 @@ const LoginScreen = () => {
 
   // Type-safe path handling
   const homePath = (
-    userType === "Seller" ? "/(seller)/home" : "/(buyer)/home"
+    userType === "Seller" ? "/(seller)/(home)" : "/(buyer)/(home)"
   ) as Href;
 
   return (

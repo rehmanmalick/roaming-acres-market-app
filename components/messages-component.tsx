@@ -16,6 +16,7 @@ interface MessageComponentProps {
   noOfMessage?: string;
   source?: { uri: string };
   active?: boolean;
+  onPress?: () => void;
 }
 
 const MessageComponent = ({
@@ -26,10 +27,11 @@ const MessageComponent = ({
   noOfMessage,
   source,
   active,
+  onPress,
 }: MessageComponentProps) => {
   return (
     <TouchableOpacity
-      onPress={() => router.push("/(seller)/chatting")}
+      onPress={onPress}
       className="flex-row bg-white rounded-lg py-2 my-2"
     >
       <View style={{ position: "relative" }}>

@@ -56,7 +56,7 @@ const Wrapper: FC<IWrapper> = ({
   showMenuButton = false,
   showFilterButton = false,
   showPeriodButton = false,
-  menuLink = "/(tabs)/buyer-account",
+  menuLink = "",
   className = "",
   showProfileHeader = false,
   profileHeaderRoute,
@@ -448,7 +448,9 @@ const Wrapper: FC<IWrapper> = ({
           <TouchableOpacity
             onPress={() =>
               router[showBackButton ? "back" : "push"](
-                showBackButton ? undefined : menuLink || "/(tabs)/buyer-account"
+                showBackButton
+                  ? undefined
+                  : menuLink || "/(buyer)/(home)/buyer-account"
               )
             }
             className="w-9 h-9 bg-white  shadow-sm   rounded-xl justify-center items-center"

@@ -22,7 +22,9 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ route }) => {
     <View className="relative flex-row items-center  justify-center ">
       <View className="flex-row absolute  justify-center   ">
         <TouchableOpacity
-          onPress={() => router.push((route || "/(tabs)/buyer-account") as any)}
+          onPress={() =>
+            router.push((route || "/(buyer)/(home)/buyer-account") as any)
+          }
           className=" rounded-full  border-white"
         >
           <Image

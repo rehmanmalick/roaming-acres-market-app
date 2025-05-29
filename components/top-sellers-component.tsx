@@ -28,7 +28,7 @@ const TopSellersComponent = ({
 }: TopSellersComponentProps) => {
   const router = useRouter();
   const defaultOnPress = () => {
-    router.push("/(tabs)/profile-buyer");
+    router.push("/(buyer)/(home)/profile-buyer");
   };
   const handlePress = onViewProfile || defaultOnPress;
 

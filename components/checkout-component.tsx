@@ -13,7 +13,7 @@ const CheckoutComponent: React.FC<{
   return (
     <TouchableOpacity
       onPress={onPress}
-      className="flex-row items-center justify-between p-4 rounded-xl bg-gray-100 mx-5 mt-4"
+      className="flex-row items-center justify-between p-4 rounded-xl bg-gray-100  mt-4"
     >
       <View className="w-10 h-10 justify-center items-center mr-3">
         <Ionicons name={icon} size={24} color="#4B5563" />

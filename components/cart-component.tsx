@@ -1,11 +1,10 @@
-import { Ionicons } from '@expo/vector-icons';
-import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { Ionicons } from "@expo/vector-icons";
+import React, { useState } from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 
+const CartComponent = ({ basePrice }: { basePrice: number }) => {
+  const [quantity, setQuantity] = useState(1);
 
-  const CartComponent = ({ basePrice }: { basePrice: number }) => {
-    const [quantity, setQuantity] = useState(1);
-  
   const increaseQuantity = () => setQuantity(quantity + 1);
   const decreaseQuantity = () => {
     if (quantity > 1) setQuantity(quantity - 1);
@@ -14,25 +13,23 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
   const totalPrice = basePrice * quantity;
 
   return (
+    // p-3 m-2 mx-7
     <View className="bg-white flex flex-row justify-between items-center rounded-lg overflow-hidden p-3 m-2 mx-7 shadow-md shadow-black/10 ">
-
       <TouchableOpacity
         className="absolute top-2 right-2 w-6 h-6 justify-center items-center rounded-full"
-        onPress={() => console.log('Product removed')}
+        onPress={() => console.log("Product removed")}
       >
         <Ionicons name="close" size={14} color="red" />
       </TouchableOpacity>
 
       <View className="flex flex-row items-center flex-1">
-
         <View className="h-20 w-20 bg-gray-100 rounded-lg justify-center items-center mr-3">
           <Image
-            source={require('../assets/images/top-selling.png')}
+            source={require("../assets/images/top-selling.png")}
             style={{
               width: 100,
               height: 100,
             }}
-
             className="w-full h-full rounded-lg"
             resizeMode="contain"
           />

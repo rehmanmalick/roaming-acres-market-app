@@ -50,15 +50,14 @@ export default function RootLayout() {
           headerShown: false,
         }}
       >
+        <Stack.Screen name="index" />
         <Stack.Screen name="(auth)" />
         <Stack.Screen name="(seller)" />
         <Stack.Screen name="(buyer)" />
-        <Stack.Screen name="(tabs)" />
         <Stack.Screen name="seller" />
-        <Stack.Screen name="index" />
         <Stack.Screen name="+not-found" />
       </Stack>
-      {/* <Slot /> */}
+
       <StatusBar style="auto" />
     </>
   );

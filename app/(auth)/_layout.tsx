@@ -10,19 +10,13 @@ export default function Layout() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="login" options={{ headerShown: false }} />
-        <Stack.Screen name="signup" options={{ headerShown: false }} />
-        <Stack.Screen name="reset-password" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="verification-code"
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="verify-code" options={{ headerShown: false }} />
-        <Stack.Screen name="welcome" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="register-your-business"
-          options={{ headerShown: false }}
-        />
+        <Stack.Screen name="welcome" />
+        <Stack.Screen name="login" />
+        <Stack.Screen name="signup" />
+        <Stack.Screen name="register-your-business" />
+        <Stack.Screen name="reset-password" />
+        <Stack.Screen name="verify-otp" />
+        <Stack.Screen name="congratulations" />
       </Stack>
       <StatusBar style="auto" />
     </>
